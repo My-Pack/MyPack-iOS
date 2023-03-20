@@ -121,12 +121,13 @@ Dependencies/
 # Instead, use fastlane to re-generate the screenshots whenever they are needed.
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/#source-control
-
+fastlane/27H4MK7PP6.json
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
-
+/fastlane/.env
+fastlane/.env
 # Code Injection
 # After new code Injection tools there's a generated folder /iOSInjectionProject
 # https://github.com/johnno1962/injectionforxcode
@@ -153,3 +154,31 @@ xcuserdata
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/swift,swiftpm,xcode,git,macos
+
+# Created by https://www.toptal.com/developers/gitignore/api/fastlane
+# Edit at https://www.toptal.com/developers/gitignore?templates=fastlane
+
+### fastlane ###
+# fastlane - A streamlined workflow tool for Cocoa deployment
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/#source-control
+
+# fastlane specific
+**/fastlane/report.xml
+
+# deliver temporary files
+**/fastlane/Preview.html
+
+# snapshot generated screenshots
+**/fastlane/screenshots
+
+# scan temporary files
+**/fastlane/test_output
+
+# Fastlane.swift runner binary
+**/fastlane/FastlaneRunner
+
+# End of https://www.toptal.com/developers/gitignore/api/fastlane
