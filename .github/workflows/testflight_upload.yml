@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - run: bundle lock --add-platform x86_64-linux
+    - run: bundle lock --add-platform x86_64-darwin-19
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.0'
