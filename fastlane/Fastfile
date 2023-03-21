@@ -34,14 +34,14 @@ platform :ios do
     )
     slack(
         message: "Testflight 배포에 성공했습니다!",
-        slack_url: "https://hooks.slack.com/services/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",
+        slack_url: ENV['SLACK_URL]
     )
   end
   error do |lane, exception, options|
     slack(
       message: "에러 발생 : #{exception}",
       success: false,
-      slack_url: "https://hooks.slack.com/services/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",
+      slack_url: ENV['SLACK_URL]
     )
   end
 end
