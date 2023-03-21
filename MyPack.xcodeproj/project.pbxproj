@@ -151,6 +151,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				432BFF3429C9A8C6000AF069 /* PBXTargetDependency */,
 			);
 			name = MyPack;
 			packageProductDependencies = (
@@ -341,6 +342,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		432BFF3429C9A8C6000AF069 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 432BFF3329C9A8C6000AF069 /* SnapKit */;
+		};
 		43CEE78C29C2D69500AC7B28 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 43CEE77329C2D69500AC7B28 /* MyPack */;
@@ -683,6 +688,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		4306BB5229C9A00900C2971E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4306BB5129C9A00900C2971E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		432BFF3329C9A8C6000AF069 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4306BB5129C9A00900C2971E /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
