@@ -16,8 +16,8 @@ jobs:
     - name: Lint Check
       run: swiftlint .
 
-    - name: Build
-      run: swift build -v
+    - name: Xcode Project Build
+      run: xcodebuild
 
     - name: Run tests
       run: swift test -v
