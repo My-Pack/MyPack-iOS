@@ -18,5 +18,6 @@ jobs:
     - uses: maierj/fastlane-action@v3.0.0
       env:
         FASTLANE_API_KEY: ${{ secrets.FASTLANE_KEY }}
+        SLACK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       with:
         lane: 'beta'
