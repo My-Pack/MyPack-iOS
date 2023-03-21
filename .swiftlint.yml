@@ -1,0 +1,17 @@
+disabled_rules:
+    - trailing_whitespace
+    - xctfail_message
+    - function_parameter_count
+    - legacy_constructor
+    - force_cast
+    - trailing_comma
+    - force_try
+    - identifier_name
+    - unused_optional_binding
+    - line_length
+
+excluded: # SwiftLint 검사에서 제외할 파일 경로
+    - Pods
+    - MyPack/AppDelegate.swift
+    - MyPack/SceneDelegate.swift
+

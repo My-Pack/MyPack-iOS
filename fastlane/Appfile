@@ -1,0 +1,8 @@
+app_identifier("gdsc.MyPack") # The bundle identifier of your app
+apple_id(ENV["APPLE_ID"]) # Your Apple Developer Portal username
+
+itc_team_id("123689455") # App Store Connect Team ID
+team_id("X843D4L2C2") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
