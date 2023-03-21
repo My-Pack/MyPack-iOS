@@ -18,8 +18,10 @@ jobs:
     - name: Xcode Project Build
       run: xcodebuild clean test -project MyPack.xcodeproj -scheme MyPack -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=latest'
 
-    - name: Slack Webhook
-      uses: craftech-io/slack-action@v1
+    - name: Send custom JSON data to Slack workflow
+      id: slack
+      uses: slackapi/slack-github-action@v1.23.0
       with:
-        slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
-      if: always()
+        payload-file-path: "./payload-slack-content.json"
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
