@@ -17,7 +17,7 @@ jobs:
       run: swiftlint .
 
     - name: Xcode Project Build
-      run: xcodebuild
+      run: xcodebuild -allowProvisioningUpdates
 
     - name: Run tests
       run: swift test -v
