@@ -16,8 +16,9 @@ jobs:
     - name: Lint Check
       run: swiftlint .
 
-    - name: Build
-      run: swift build -v
+    - name: Xcode Project Build
+      run:   xcodebuild clean test -project MyPack.xcodeproj -scheme MyPack -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=latest'
+
 
     - name: Run tests
       run: swift test -v
