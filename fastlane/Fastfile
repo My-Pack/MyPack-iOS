@@ -20,7 +20,7 @@ platform :ios do
   desc "Push a new beta build to TestFlight"
 
   lane :beta do
-    pilot( api_key_path: "fastlane/27H4MK7PP6.json" )
+    pilot( api_key: ENV['FASTLANE_API_KEY'])
     get_certificates
     get_provisioning_profile
     increment_build_number(
