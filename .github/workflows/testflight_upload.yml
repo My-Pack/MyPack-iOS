@@ -9,13 +9,13 @@ jobs:
     runs-on: macos-latest
 
     steps:
+    - run: bundle lock --add-platform x86_64-darwin-19
+    
     - uses: actions/checkout@v3
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.0'
         bundler-cache: true
-        
-    - run: bundle lock --add-platform x86_64-darwin-19
     
     - name: install fastlane
       run: brew install fastlane
