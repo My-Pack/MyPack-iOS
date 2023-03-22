@@ -14,7 +14,11 @@ jobs:
       with:
         ruby-version: '3.0'
         bundler-cache: true
-    - uses: fastlane beta
+        
+    - name: install fastlane
+      run: brew install fastlane
+
+    - run: fastlane beta
       env:
         FASTLANE_API_KEY: ${{ secrets.FASTLANE_KEY }}
         SLACK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -23,5 +27,3 @@ jobs:
         APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
         APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
         APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}
-      with:
-        lane: 'beta'
