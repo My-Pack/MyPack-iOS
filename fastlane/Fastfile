@@ -28,7 +28,7 @@ platform :ios do
       clean: true,
       export_options: {
         method: "app-store",
-        signingStyle: "manual"
+        signingStyle: "manual",
         xcodebuild_command: xcodebuild -allowProvisioningUpdates
       }
     )
