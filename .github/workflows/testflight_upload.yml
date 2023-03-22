@@ -27,6 +27,8 @@ jobs:
       with:
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
+        known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+
 
     - run: fastlane beta
       env:
