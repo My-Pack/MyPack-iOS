@@ -29,6 +29,7 @@ platform :ios do
       export_options: {
         method: "app-store",
         signingStyle: "manual"
+        xcodebuild_command: xcodebuild -allowProvisioningUpdates
       }
     )
 
