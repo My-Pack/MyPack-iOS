@@ -27,6 +27,7 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
         
+    - run: ssh-add ~/.ssh/id_rsa
     - run: ssh -vT git@github.com
     
     - run: fastlane beta
