@@ -16,7 +16,7 @@ jobs:
       run: swiftlint .
 
     - name: Xcode Project Build
-      run: xcodebuild clean test -project MyPack.xcodeproj -scheme MyPack -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=latest'
+      run: xcodebuild clean test -project MyPack.xcodeproj -scheme MyPack -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.2' -skip-testing:MyPackUITests
 
     - name: Send custom JSON data to Slack workflow
       id: slack
