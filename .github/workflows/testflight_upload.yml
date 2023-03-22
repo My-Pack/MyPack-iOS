@@ -31,6 +31,7 @@ jobs:
     - run: ssh -V
     
     - run: ls -al ~/.ssh
+    - run: ssh-add ~/.ssh/id_rsa
     - run: ssh -vT git@github.com
     
     - run: fastlane beta
