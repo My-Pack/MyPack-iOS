@@ -10,14 +10,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - run: bundle lock --add-platform x86_64-darwin-19
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.0'
         bundler-cache: true
-    - uses: maierj/fastlane-action@v3.0.0
+    - uses: fastlane beta
       env:
         FASTLANE_API_KEY: ${{ secrets.FASTLANE_KEY }}
         SLACK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
+        KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+        APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+        APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
+        APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}
       with:
         lane: 'beta'
