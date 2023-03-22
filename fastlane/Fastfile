@@ -17,7 +17,6 @@ platform :ios do
       type: "appstore",
       readonly: true,
       keychain_name: ENV['KEYCHAIN_NAME'],
-      keychain_password: ENV['KEYCHAIN_PASSWORD'],
       clone_branch_directly: true
     )
 
