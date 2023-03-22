@@ -21,6 +21,12 @@ jobs:
     
     - name: install fastlane
       run: brew install fastlane
+    
+    - name: Set up SSH
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
 
     - run: fastlane beta
       env:
