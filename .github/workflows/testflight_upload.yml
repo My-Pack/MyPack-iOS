@@ -9,6 +9,7 @@ jobs:
     runs-on: macos-latest
 
     steps:
+    - run: bundle install
     - run: bundle lock --add-platform x86_64-darwin-19
     
     - uses: actions/checkout@v3
