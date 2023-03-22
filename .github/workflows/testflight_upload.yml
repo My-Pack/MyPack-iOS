@@ -31,7 +31,7 @@ jobs:
     - run: ssh -V
     
     - run: ls -al ~/.ssh
-    - run: ssh -T git@github.com
+    - run: ssh -vT git@github.com
     
     - run: fastlane beta
       env:
