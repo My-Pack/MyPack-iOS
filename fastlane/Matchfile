@@ -1,4 +1,4 @@
-git_url("git@github.com-MojitoBar:My-Pack/FastlaneMatch.git")
+git_url("git@github.com:My-Pack/FastlaneMatch.git")
 
 storage_mode("git")
 
