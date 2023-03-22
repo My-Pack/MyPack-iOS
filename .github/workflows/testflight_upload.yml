@@ -28,7 +28,11 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
 
-
+    - run: ssh -V
+    
+    - run: ls -al ~/.ssh
+    - run: ssh -T git@github.com
+    
     - run: fastlane beta
       env:
         FASTLANE_API_KEY: ${{ secrets.FASTLANE_KEY }}
