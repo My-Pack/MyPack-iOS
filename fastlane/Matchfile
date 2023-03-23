@@ -2,7 +2,7 @@ git_url("git@github.com:My-Pack/FastlaneMatch.git")
 
 storage_mode("git")
 
-type("development") # The default type, can be: appstore, adhoc, enterprise or development
+type("appstore") # The default type, can be: appstore, adhoc, enterprise or development
 
 app_identifier(["gdsc.MyPack"])
 username("wnehdtjr5@naver.com") # Your Apple Developer Portal username
