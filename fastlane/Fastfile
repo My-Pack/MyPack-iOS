@@ -25,12 +25,12 @@ platform :ios do
     )
 
     gym(
+      allowProvisioningUpdates: true,
       clean: true,
       export_options: {
         method: "app-store",
         signingStyle: "manual"
       },
-      export_xcargs: "-allowProvisioningUpdates"
     )
 
     upload_to_testflight
