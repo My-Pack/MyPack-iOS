@@ -15,6 +15,7 @@ platform :ios do
       git_url: "git@github.com:My-Pack/FastlaneMatch.git",
       storage_mode: "git",
       type: "appstore",
+      app_identifier: "gdsc.MyPack",
       readonly: true,
       keychain_name: ENV['KEYCHAIN_NAME'],
       clone_branch_directly: true
