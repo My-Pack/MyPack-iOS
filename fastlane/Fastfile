@@ -41,14 +41,14 @@ platform :ios do
     
     slack(
         message: "Testflight 배포에 성공했습니다!",
-        slack_url: ENV['SLACK_URL']
+        slack_url: ENV['SLACK_WEBHOOK_URL']
     )
   end
   error do |lane, exception, options|
     slack(
       message: "에러 발생 : #{exception}",
       success: false,
-      slack_url: ENV['SLACK_URL']
+      slack_url: ENV['SLACK_WEBHOOK_URL']
     )
   end
 end
