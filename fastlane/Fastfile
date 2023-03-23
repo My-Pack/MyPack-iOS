@@ -26,10 +26,10 @@ platform :ios do
 
     gym(
       clean: true,
+      xcodebuild_command: xcodebuild -allowProvisioningUpdates,
       export_options: {
         method: "app-store",
-        signingStyle: "manual",
-        xcodebuild_command: xcodebuild -allowProvisioningUpdates
+        signingStyle: "manual"
       }
     )
 
