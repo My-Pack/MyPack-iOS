@@ -26,7 +26,7 @@ jobs:
       with:
         key: ${{ secrets.SSH_KEY }}
         known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-
+        
     - run: fastlane beta
       env:
         FASTLANE_API_KEY: ${{ secrets.FASTLANE_KEY }}

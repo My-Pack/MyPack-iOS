@@ -5,6 +5,8 @@ platform :ios do
   desc "Push a new beta build to TestFlight"
 
   lane :beta do
+    setup_ci if ENV['CI']
+    
     app_store_connect_api_key(
       key_id: ENV['APP_STORE_CONNECT_API_KEY_ID'],
       issuer_id: ENV['APP_STORE_CONNECT_API_ISSUER_ID'],
@@ -28,12 +30,15 @@ platform :ios do
       clean: true,
       export_options: {
         method: "app-store",
-        signingStyle: "manual"
-      },
-      export_xcargs: "-allowProvisioningUpdates"
+        signingStyle: "manual",
+        provisioningProfiles: {
+          "gdsc.MyPack": "match AppStore gdsc.MyPack"
+        }
+      }
     )
 
     upload_to_testflight
+    
     slack(
         message: "Testflight 배포에 성공했습니다!",
         slack_url: ENV['SLACK_URL']
