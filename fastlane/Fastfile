@@ -26,11 +26,11 @@ platform :ios do
 
     gym(
       clean: true,
-      xcodebuild_command: xcodebuild -allowProvisioningUpdates,
       export_options: {
         method: "app-store",
         signingStyle: "manual"
-      }
+      },
+      export_xcargs: "-allowProvisioningUpdates"
     )
 
     upload_to_testflight
