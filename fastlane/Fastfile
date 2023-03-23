@@ -5,7 +5,7 @@ platform :ios do
   desc "Push a new beta build to TestFlight"
 
   lane :beta do
-    xcversion(version: "14.2")
+    xcodes(version: "14.2")
 
     setup_ci if ENV['CI']
     
