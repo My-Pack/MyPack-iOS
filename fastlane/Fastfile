@@ -27,6 +27,10 @@ platform :ios do
 
     gym(
       clean: true,
+      signingStyle: "manual",
+      provisioningProfiles: {
+        "gdsc.MyPack": "match AppStore gdsc.MyPack"
+      },
       export_options: {
         method: "app-store",
         signingStyle: "manual"
