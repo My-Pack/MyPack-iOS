@@ -5,6 +5,8 @@ platform :ios do
   desc "Push a new beta build to TestFlight"
 
   lane :beta do
+    xcversion(version: "14.2")
+
     setup_ci if ENV['CI']
     
     app_store_connect_api_key(
