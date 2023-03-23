@@ -16,29 +16,29 @@ final class MyPackUITests: XCTestCase {
     func testExample() throws {
         let app = XCUIApplication()
         app.launch()
-        
+
         // text
         let title = app.staticTexts["Log In"]
         XCTAssertTrue(title.exists, "Log In label not found")
-        
+
         // textfield
         let usernameField = app.textFields["Username"]
         XCTAssertTrue(usernameField.exists)
-        
+
         usernameField.tap()
         usernameField.typeText("mypack")
-        
+
         // securetextfield
         let passwordSecureTestField = app.secureTextFields["Password"]
         XCTAssertTrue(passwordSecureTestField.exists)
         passwordSecureTestField.tap()
         passwordSecureTestField.typeText("password")
-        
+
         // button
         let button = app.buttons["Continue"]
         XCTAssertTrue(button.exists)
         button.tap()
-        
+
         // 성공 후 text
         let accountLabel = app.staticTexts["Welcome, MyPack!"]
         XCTAssertTrue(accountLabel.exists)
