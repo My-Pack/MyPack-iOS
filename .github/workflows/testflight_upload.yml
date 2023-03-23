@@ -27,9 +27,6 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
         
-    - name: Install WWDR Certificate
-      run: fastlane run import_certificate certificate_url:"https://www.apple.com/certificateauthority/AppleWWDRCA.cer"
-
     - run: fastlane beta
       env:
         FASTLANE_API_KEY: ${{ secrets.FASTLANE_KEY }}
