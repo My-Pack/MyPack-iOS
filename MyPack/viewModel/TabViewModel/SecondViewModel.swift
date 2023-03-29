@@ -11,7 +11,7 @@ import UIKit
 class SecondViewModel {
     let title: String
     let message: String
-    
+
     init() {
         self.title = "Second"
         self.message = "This is the second tab."

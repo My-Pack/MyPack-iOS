@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class SecondViewController: UIViewController {
-
     private let viewModel: SecondViewModel
 
     init(viewModel: SecondViewModel) {
@@ -17,7 +16,8 @@ class SecondViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init?(coder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -38,4 +38,3 @@ class SecondViewController: UIViewController {
         // 뷰가 사라질 때마다 필요한 작업 수행
     }
 }
-

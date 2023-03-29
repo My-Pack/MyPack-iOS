@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A3CDDEA29D3AAF600BCF348 /* mainTabBarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDE929D3AAF600BCF348 /* mainTabBarVM.swift */; };
-		2A3CDDEC29D3AB7700BCF348 /* mainTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDEB29D3AB7700BCF348 /* mainTabBarView.swift */; };
-		2A3CDDEE29D3AC6700BCF348 /* mainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDED29D3AC6700BCF348 /* mainModel.swift */; };
+		2A3CDDEA29D3AAF600BCF348 /* MainTabBarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDE929D3AAF600BCF348 /* MainTabBarVM.swift */; };
+		2A3CDDEC29D3AB7700BCF348 /* MainTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDEB29D3AB7700BCF348 /* MainTabBarView.swift */; };
+		2A3CDDEE29D3AC6700BCF348 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDED29D3AC6700BCF348 /* MainModel.swift */; };
 		2A3CDDF129D3AE4500BCF348 /* FirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDF029D3AE4500BCF348 /* FirstViewModel.swift */; };
 		2A3CDDF329D3AE6C00BCF348 /* SecondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDF229D3AE6C00BCF348 /* SecondViewModel.swift */; };
 		2A3CDDF529D3AE8900BCF348 /* ThirdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDF429D3AE8900BCF348 /* ThirdViewModel.swift */; };
@@ -47,9 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2A3CDDE929D3AAF600BCF348 /* mainTabBarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainTabBarVM.swift; sourceTree = "<group>"; };
-		2A3CDDEB29D3AB7700BCF348 /* mainTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainTabBarView.swift; sourceTree = "<group>"; };
-		2A3CDDED29D3AC6700BCF348 /* mainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainModel.swift; sourceTree = "<group>"; };
+		2A3CDDE929D3AAF600BCF348 /* MainTabBarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVM.swift; sourceTree = "<group>"; };
+		2A3CDDEB29D3AB7700BCF348 /* MainTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarView.swift; sourceTree = "<group>"; };
+		2A3CDDED29D3AC6700BCF348 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		2A3CDDF029D3AE4500BCF348 /* FirstViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewModel.swift; sourceTree = "<group>"; };
 		2A3CDDF229D3AE6C00BCF348 /* SecondViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewModel.swift; sourceTree = "<group>"; };
 		2A3CDDF429D3AE8900BCF348 /* ThirdViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewModel.swift; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				2A3CDDEF29D3AE2F00BCF348 /* TabViewModel */,
-				2A3CDDE929D3AAF600BCF348 /* mainTabBarVM.swift */,
+				2A3CDDE929D3AAF600BCF348 /* MainTabBarVM.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -111,7 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				2A3CDDF629D3AF9E00BCF348 /* TabView */,
-				2A3CDDEB29D3AB7700BCF348 /* mainTabBarView.swift */,
+				2A3CDDEB29D3AB7700BCF348 /* MainTabBarView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -119,7 +119,7 @@
 		2A3CDDE829D3AAA600BCF348 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				2A3CDDED29D3AC6700BCF348 /* mainModel.swift */,
+				2A3CDDED29D3AC6700BCF348 /* MainModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -381,14 +381,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A3CDDF329D3AE6C00BCF348 /* SecondViewModel.swift in Sources */,
-				2A3CDDEE29D3AC6700BCF348 /* mainModel.swift in Sources */,
+				2A3CDDEE29D3AC6700BCF348 /* MainModel.swift in Sources */,
 				2A3CDDF529D3AE8900BCF348 /* ThirdViewModel.swift in Sources */,
-				2A3CDDEA29D3AAF600BCF348 /* mainTabBarVM.swift in Sources */,
+				2A3CDDEA29D3AAF600BCF348 /* MainTabBarVM.swift in Sources */,
 				2A3CDDF829D3AFB400BCF348 /* FirstViewController.swift in Sources */,
 				43CEE77829C2D69500AC7B28 /* AppDelegate.swift in Sources */,
 				2A3CDDF129D3AE4500BCF348 /* FirstViewModel.swift in Sources */,
 				43CEE77A29C2D69500AC7B28 /* SceneDelegate.swift in Sources */,
-				2A3CDDEC29D3AB7700BCF348 /* mainTabBarView.swift in Sources */,
+				2A3CDDEC29D3AB7700BCF348 /* MainTabBarView.swift in Sources */,
 				2A3CDDFC29D3B04F00BCF348 /* ThirdViewController.swift in Sources */,
 				2A3CDDFA29D3B01F00BCF348 /* SecondViewContorller.swift in Sources */,
 			);
@@ -570,9 +570,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 13;
-				DEVELOPMENT_TEAM = X843D4L2C2;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = X843D4L2C2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyPack/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MyPack;
@@ -591,6 +593,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gdsc.MyPack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MyPackTeamProfile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -603,9 +606,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 13;
-				DEVELOPMENT_TEAM = X843D4L2C2;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = X843D4L2C2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyPack/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MyPack;
@@ -624,6 +629,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gdsc.MyPack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MyPackTeamProfile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

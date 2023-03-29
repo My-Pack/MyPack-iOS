@@ -11,11 +11,9 @@ import UIKit
 class FirstViewModel {
     let title: String
     let message: String
-    
+
     init() {
         self.title = "First"
         self.message = "This is the first tab."
     }
-    
 }
-

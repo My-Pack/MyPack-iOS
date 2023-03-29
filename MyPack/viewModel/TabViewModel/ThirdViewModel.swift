@@ -11,10 +11,9 @@ import UIKit
 class ThirdViewModel {
     let title: String
     let message: String
-    
+
     init() {
         self.title = "Third"
         self.message = "This is the third tab."
     }
 }
-
