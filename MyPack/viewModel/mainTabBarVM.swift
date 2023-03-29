@@ -16,6 +16,7 @@ class mainTabBarViewModel {
         mainTab(identifier: "second", title: "Second"),
         mainTab(identifier: "third", title: "Third")
     ]
+    
     // 각 탭의 뷰모델
     private lazy var firstViewModel = FirstViewModel()
     private lazy var secondViewModel = SecondViewModel()
