@@ -20,12 +20,11 @@ class MainTabBarViewModel {
     private lazy var secondViewModel = SecondViewModel()
     private lazy var thirdViewModel = ThirdViewModel()
 
-    private var loggedInListener: ((UserModel) -> Void)?
-
+    var loggedInListener: ((UserModel) -> Void)?
     var user: UserModel?
 
     init() {
-        self.loggedInListener = { userData in
+        self.loggedInListener = { [self] userData in
             self.user = userData
         }
         EventManager.shared.addObserver(for: "loggedIn", listener: loggedInListener!)

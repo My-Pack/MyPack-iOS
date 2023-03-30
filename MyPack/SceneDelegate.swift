@@ -9,17 +9,19 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
+    var loginCoordinator: LoginCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo _: UISceneSession, options _: UIScene.ConnectionOptions) {
         // UIWindowScene에서 window 인스턴스 생성
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
 
-        // mainTabBarViewController 인스턴스 생성
-        let maintabBarVC = MainTabBarViewController()
+        let navigationController = UINavigationController()
+        loginCoordinator = LoginCoordinator(navigationController: navigationController)
 
-        // 탭바 루트 뷰컨트롤러로 설정
-        window?.rootViewController = maintabBarVC
+        loginCoordinator?.start()
+
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 

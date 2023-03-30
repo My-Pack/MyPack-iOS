@@ -17,7 +17,9 @@ class EventManager {
     func addObserver<T>(for event: String, listener: @escaping (T) -> Void) {
         let typeErasedListener: (Any) -> Void = { value in
             if let value = value as? T {
-                listener(value)
+                DispatchQueue.main.async {
+                    listener(value)
+                }
             } else {
                 assertionFailure("Incorrect data type received for event: \(event)")
             }
@@ -34,8 +36,10 @@ class EventManager {
     }
 
     func post<T>(event: String, data: T) {
-        eventListeners[event]?.forEach { listener in
-            listener(data)
+        DispatchQueue.global(qos: .default).async {
+            self.eventListeners[event]?.forEach { listener in
+                listener(data)
+            }
         }
     }
 }

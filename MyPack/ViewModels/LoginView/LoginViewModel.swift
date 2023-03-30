@@ -12,8 +12,14 @@ protocol LogvinViewModelProvider {
 }
 
 class LoginViewModel: LogvinViewModelProvider {
+    var loginCoordinator: LoginCoordinator?
+
+    init(loginCoordinator: LoginCoordinator? = nil) {
+        self.loginCoordinator = loginCoordinator
+    }
+
     func login() {
         let userData = UserModel(name: "jito")
-        EventManager.shared.post(event: "loggedIn", data: userData)
+        loginCoordinator?.showMain(user: userData)
     }
 }

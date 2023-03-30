@@ -9,12 +9,21 @@ import Foundation
 import UIKit
 
 class MainTabBarViewController: UITabBarController {
-    var coordinator: MainCoordinator?
-    private let viewModel = MainTabBarViewModel()
+    private let viewModel: MainTabBarViewModel
+
+    init(viewModel: MainTabBarViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .white
         // 각 탭에 대한 뷰컨트롤러 생성 및 설정
         let firstVC = FirstViewController(viewModel: viewModel.viewModel(for: viewModel.identifier(at: 0)) as! FirstViewModel)
         firstVC.tabBarItem = UITabBarItem(title: viewModel.title(at: 0), image: UIImage(systemName: "1.circle"), tag: 0)
