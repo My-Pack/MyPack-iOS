@@ -20,15 +20,9 @@ class MainTabBarViewModel {
     private lazy var secondViewModel = SecondViewModel()
     private lazy var thirdViewModel = ThirdViewModel()
 
-    var loggedInListener: ((UserModel) -> Void)?
     var user: UserModel?
 
-    init() {
-        self.loggedInListener = { [self] userData in
-            self.user = userData
-        }
-        EventManager.shared.addObserver(for: "loggedIn", listener: loggedInListener!)
-    }
+    init() {}
 
     // 각 탭의 식별자
     func identifier(at index: Int) -> String {
@@ -44,6 +38,7 @@ class MainTabBarViewModel {
     func viewModel(for identifier: String) -> Any {
         switch identifier {
         case "first":
+            firstViewModel.user = user
             return firstViewModel
         case "second":
             return secondViewModel

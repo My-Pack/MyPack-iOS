@@ -11,6 +11,7 @@ import UIKit
 class FirstViewModel {
     let title: String
     let message: String
+    var user: UserModel?
 
     init() {
         self.title = "First"
