@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class MainTabBarViewController: UITabBarController {
-    // 탭바 뷰모델
+    var coordinator: MainCoordinator?
     private let viewModel = MainTabBarViewModel()
 
     override func viewDidLoad() {

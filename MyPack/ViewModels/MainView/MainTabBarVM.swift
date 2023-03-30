@@ -10,19 +10,25 @@ import UIKit
 
 class MainTabBarViewModel {
     // 각 탭의 모델 데이터
-    private let tabs: [MainTab] = [
-        MainTab(identifier: "first", title: "First"),
-        MainTab(identifier: "second", title: "Second"),
-        MainTab(identifier: "third", title: "Third")
+    private let tabs: [MainTabBarModel] = [
+        MainTabBarModel(identifier: "first", title: "First"),
+        MainTabBarModel(identifier: "second", title: "Second"),
+        MainTabBarModel(identifier: "third", title: "Third")
     ]
     // 각 탭의 뷰모델
     private lazy var firstViewModel = FirstViewModel()
     private lazy var secondViewModel = SecondViewModel()
     private lazy var thirdViewModel = ThirdViewModel()
 
-    // 탭의 개수
-    var numberOfTabs: Int {
-        return tabs.count
+    private var loggedInListener: ((UserModel) -> Void)?
+
+    var user: UserModel?
+
+    init() {
+        self.loggedInListener = { userData in
+            self.user = userData
+        }
+        EventManager.shared.addObserver(for: "loggedIn", listener: loggedInListener!)
     }
 
     // 각 탭의 식별자
@@ -47,5 +53,9 @@ class MainTabBarViewModel {
         default:
             fatalError("Invalid identifier")
         }
+    }
+
+    deinit {
+        EventManager.shared.removeObserver(for: "loggedIn")
     }
 }

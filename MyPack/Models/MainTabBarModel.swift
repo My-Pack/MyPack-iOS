@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 // MainTab
-struct MainTab {
+struct MainTabBarModel {
     let identifier: String
     let title: String
 }
