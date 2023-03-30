@@ -48,8 +48,4 @@ class MainTabBarViewModel {
             fatalError("Invalid identifier")
         }
     }
-
-    deinit {
-        EventManager.shared.removeObserver(for: "loggedIn")
-    }
 }

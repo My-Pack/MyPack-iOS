@@ -18,9 +18,9 @@ class LoginViewModel: LogvinViewModelProvider {
 
     init(loginCoordinator: LoginCoordinator? = nil) {
         self.loginCoordinator = loginCoordinator
-
-        self.loggedInListener = { userData in
-            loginCoordinator?.showMain(user: userData)
+        self.loggedInListener = { [weak self] userData in
+            print("log")
+            self?.loginCoordinator?.showMain(user: userData)
         }
         EventManager.shared.addObserver(for: "loggedIn", listener: loggedInListener!)
     }
