@@ -13,7 +13,6 @@ import UIKit
 class FirstViewController: UIViewController {
     private let viewModel: FirstViewModel
     private var disposableBag = Set<AnyCancellable>()
-    private var user: UserModel?
     private var text: UITextView = .init(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
 
     init(viewModel: FirstViewModel) {
@@ -33,7 +32,7 @@ extension FirstViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setBindings()
-        setUI()
+        addUI()
     }
 }
 
@@ -41,9 +40,9 @@ extension FirstViewController {
 
 private extension FirstViewController {
     func setBindings() {
-        viewModel.$user.sink { user in
-            self.user = user
-            print("user: \(String(describing: user?.name))")
+        viewModel.$userName.sink { userName in
+            print("user: \(userName)")
+            self.updateUser(userName: userName)
         }.store(in: &disposableBag)
     }
 }
@@ -51,8 +50,11 @@ private extension FirstViewController {
 // MARK: - UI 관련
 
 private extension FirstViewController {
-    func setUI() {
-        text.text = user?.name
+    func addUI() {
         view.addSubview(text)
+    }
+
+    func updateUser(userName: String) {
+        text.text = userName
     }
 }
