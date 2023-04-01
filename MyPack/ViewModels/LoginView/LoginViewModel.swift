@@ -6,29 +6,26 @@
 //
 
 import Foundation
+import MyPackNetwork
 
-protocol LogvinViewModelProvider {
-    func login()
-}
-
-class LoginViewModel: LogvinViewModelProvider {
-    var loginCoordinator: LoginCoordinator?
-
-    var loggedInListener: ((UserModel) -> Void)?
+class LoginViewModel {
+    private let api = APIClient()
+    weak var loginCoordinator: LoginCoordinator?
 
     init(loginCoordinator: LoginCoordinator? = nil) {
         self.loginCoordinator = loginCoordinator
-        self.loggedInListener = { [weak self] userData in
-            print("log")
-            self?.loginCoordinator?.showMain(user: userData)
-        }
-        EventManager.shared.addObserver(for: "loggedIn", listener: loggedInListener!)
     }
 
     func login() {
         // 비동기 api 호출
-        let user = UserModel(name: "jito")
-        // 이벤트 발행
-        EventManager.shared.post(event: "loggedIn", data: user)
+        api.fetchData { [self] result in
+            switch result {
+            case let .success(data):
+                print("Data fetched: \(data)")
+                loginCoordinator?.didLoginSuccessfully(userModel: UserModel(name: data))
+            case let .failure(error):
+                print("Error: \(error)")
+            }
+        }
     }
 }

@@ -5,13 +5,13 @@
 //  Created by 김하은 on 2023/03/29.
 //
 
-import Foundation
+import Combine
 import UIKit
 
-class FirstViewModel {
+class FirstViewModel: TabViewModelProtocol {
     let title: String
     let message: String
-    var user: UserModel?
+    @Published var user: UserModel?
 
     init() {
         self.title = "First"

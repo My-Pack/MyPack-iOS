@@ -5,28 +5,41 @@
 //  Created by 김하은 on 2023/03/29.
 //
 
-import Foundation
+import Combine
 import UIKit
 
+enum Tab: String {
+    case first
+    case second
+    case third
+
+    var title: String {
+        switch self {
+        case .first:
+            return "First"
+        case .second:
+            return "Second"
+        case .third:
+            return "Third"
+        }
+    }
+}
+
 class MainTabBarViewModel {
-    // 각 탭의 모델 데이터
-    private let tabs: [MainTabBarModel] = [
-        MainTabBarModel(identifier: "first", title: "First"),
-        MainTabBarModel(identifier: "second", title: "Second"),
-        MainTabBarModel(identifier: "third", title: "Third")
-    ]
+    private let tabs: [Tab] = [.first, .second, .third]
+
     // 각 탭의 뷰모델
     private lazy var firstViewModel = FirstViewModel()
     private lazy var secondViewModel = SecondViewModel()
     private lazy var thirdViewModel = ThirdViewModel()
 
-    var user: UserModel?
+    @Published var user: UserModel?
 
     init() {}
 
     // 각 탭의 식별자
     func identifier(at index: Int) -> String {
-        return tabs[index].identifier
+        return tabs[index].rawValue
     }
 
     // 각 탭의 타이틀
@@ -35,17 +48,19 @@ class MainTabBarViewModel {
     }
 
     // 각 탭의 뷰모델 반환
-    func viewModel(for identifier: String) -> Any {
-        switch identifier {
-        case "first":
+    func viewModel(for identifier: String) -> TabViewModelProtocol {
+        guard let tab = Tab(rawValue: identifier) else {
+            fatalError("Invalid identifier")
+        }
+
+        switch tab {
+        case .first:
             firstViewModel.user = user
             return firstViewModel
-        case "second":
+        case .second:
             return secondViewModel
-        case "third":
+        case .third:
             return thirdViewModel
-        default:
-            fatalError("Invalid identifier")
         }
     }
 }

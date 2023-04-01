@@ -7,7 +7,12 @@
 
 import UIKit
 
-class LoginCoordinator: Coordinator {
+protocol LoginCoordinator: Coordinator {
+    func didLoginSuccessfully(userModel: UserModel)
+    func didFailLogin(withError error: Error)
+}
+
+class LoginCoordinatorImpl: LoginCoordinator {
     var navigationController: UINavigationController?
 
     init(navigationController: UINavigationController?) {
@@ -20,10 +25,14 @@ class LoginCoordinator: Coordinator {
         navigationController?.pushViewController(loginViewController, animated: false)
     }
 
-    func showMain(user: UserModel) {
+    func didLoginSuccessfully(userModel: UserModel) {
         let viewModel = MainTabBarViewModel()
-        viewModel.user = user
+        viewModel.user = userModel
         let mainTabBarViewController = MainTabBarViewController(viewModel: viewModel)
         navigationController?.pushViewController(mainTabBarViewController, animated: true)
+    }
+
+    func didFailLogin(withError error: Error) {
+        print("Login failed with error: \(error)")
     }
 }

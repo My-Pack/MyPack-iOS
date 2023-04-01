@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SecondViewModel {
+class SecondViewModel: TabViewModelProtocol {
     let title: String
     let message: String
 

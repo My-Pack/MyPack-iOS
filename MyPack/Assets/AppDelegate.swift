@@ -11,6 +11,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        if #available(iOS 13.0, *) {
+            return true
+        }
+
         let navigationController = UINavigationController()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController

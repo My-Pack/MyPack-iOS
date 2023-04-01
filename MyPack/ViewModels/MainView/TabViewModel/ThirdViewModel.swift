@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ThirdViewModel {
+class ThirdViewModel: TabViewModelProtocol {
     let title: String
     let message: String
 
