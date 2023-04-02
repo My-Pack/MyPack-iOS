@@ -26,11 +26,11 @@
 		4399C5F729D8867500794E69 /* MainTabBarViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399C5F629D8867500794E69 /* MainTabBarViewModelTests.swift */; };
 		4399C60129D889CD00794E69 /* LoginServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399C60029D889CD00794E69 /* LoginServiceProtocol.swift */; };
 		4399C60529D889F000794E69 /* LoginServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399C60429D889F000794E69 /* LoginServiceImpl.swift */; };
-		4399C60729D88A2500794E69 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399C60629D88A2500794E69 /* LoginViewModel.swift */; };
 		4399C61629D88DF500794E69 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399C61529D88DF500794E69 /* Tab.swift */; };
 		4399C61A29D8913E00794E69 /* LoginCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399C61929D8913E00794E69 /* LoginCoordinatorProtocol.swift */; };
 		4399C61E29D8918900794E69 /* MainTabCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399C61D29D8918900794E69 /* MainTabCoordinatorProtocol.swift */; };
 		4399C62029D8919A00794E69 /* MainTabCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399C61F29D8919A00794E69 /* MainTabCoordinatorImpl.swift */; };
+		4399C62229D9AE5900794E69 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399C62129D9AE5900794E69 /* LoginViewModel.swift */; };
 		439E952129D51B6D00F104EF /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E952029D51B6D00F104EF /* EventManager.swift */; };
 		439E952B29D51EB100F104EF /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E952A29D51EB100F104EF /* UserModel.swift */; };
 		439E952F29D5275F00F104EF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E952E29D5275F00F104EF /* LoginViewController.swift */; };
@@ -101,11 +101,11 @@
 		4399C5F629D8867500794E69 /* MainTabBarViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModelTests.swift; sourceTree = "<group>"; };
 		4399C60029D889CD00794E69 /* LoginServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceProtocol.swift; sourceTree = "<group>"; };
 		4399C60429D889F000794E69 /* LoginServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceImpl.swift; sourceTree = "<group>"; };
-		4399C60629D88A2500794E69 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = ../../../../../.Trash/LoginViewModel.swift; sourceTree = "<group>"; };
 		4399C61529D88DF500794E69 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		4399C61929D8913E00794E69 /* LoginCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		4399C61D29D8918900794E69 /* MainTabCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		4399C61F29D8919A00794E69 /* MainTabCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabCoordinatorImpl.swift; sourceTree = "<group>"; };
+		4399C62129D9AE5900794E69 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		439E952029D51B6D00F104EF /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		439E952A29D51EB100F104EF /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		439E952E29D5275F00F104EF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 		4399C5FA29D8893000794E69 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				4399C60629D88A2500794E69 /* LoginViewModel.swift */,
+				4399C62129D9AE5900794E69 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -725,6 +725,7 @@
 				439E953E29D568B500F104EF /* LoginCoordinatorImpl.swift in Sources */,
 				439E952129D51B6D00F104EF /* EventManager.swift in Sources */,
 				2A3CDDF129D3AE4500BCF348 /* FirstViewModel.swift in Sources */,
+				4399C62229D9AE5900794E69 /* LoginViewModel.swift in Sources */,
 				439E952B29D51EB100F104EF /* UserModel.swift in Sources */,
 				439E953C29D568AA00F104EF /* Coordinator.swift in Sources */,
 				43CEE77A29C2D69500AC7B28 /* SceneDelegate.swift in Sources */,
@@ -735,7 +736,6 @@
 				2A3CDDFC29D3B04F00BCF348 /* ThirdViewController.swift in Sources */,
 				2A3CDDFA29D3B01F00BCF348 /* SecondViewContorller.swift in Sources */,
 				4399C62029D8919A00794E69 /* MainTabCoordinatorImpl.swift in Sources */,
-				4399C60729D88A2500794E69 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
