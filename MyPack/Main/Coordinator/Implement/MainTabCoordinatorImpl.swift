@@ -14,11 +14,11 @@ class MainTabBarCoordinatorImpl: MainTabBarCoordinator {
         self.navigationController = navigationController
     }
 
-    func start(userModel: UserModel) {
+    func start(userName: String) {
         let viewModel = MainTabBarViewModel()
         let mainTabBarViewController = MainTabBarViewController(viewModel: viewModel)
 
-        let firstViewModel = FirstViewModel(userModel: userModel)
+        let firstViewModel = FirstViewModel(userName: userName)
         let firstViewController = FirstViewController(viewModel: firstViewModel)
         firstViewController.tabBarItem = UITabBarItem(title: viewModel.title(at: 0), image: UIImage(systemName: "1.circle"), tag: 0)
 

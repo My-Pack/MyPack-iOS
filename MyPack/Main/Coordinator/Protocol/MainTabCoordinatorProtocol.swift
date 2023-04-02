@@ -8,5 +8,5 @@
 import Foundation
 
 protocol MainTabBarCoordinator: Coordinator {
-    func start(userModel: UserModel)
+    func start(userName: String)
 }

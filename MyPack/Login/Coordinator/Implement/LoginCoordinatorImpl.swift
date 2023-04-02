@@ -21,8 +21,9 @@ class LoginCoordinatorImpl: LoginCoordinatorProtocol {
         navigationController?.pushViewController(loginViewController, animated: false)
     }
 
-    func didLoginSuccessfully(userModel: UserModel) {
+    @MainActor
+    func didLoginSuccessfully(userName: String) {
         let mainTabBarCoordinator = MainTabBarCoordinatorImpl(navigationController: navigationController)
-        mainTabBarCoordinator.start(userModel: userModel)
+        mainTabBarCoordinator.start(userName: userName)
     }
 }

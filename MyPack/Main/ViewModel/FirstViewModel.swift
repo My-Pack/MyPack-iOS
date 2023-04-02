@@ -13,13 +13,13 @@ class FirstViewModel {
     let message: String
     @Published var userName: String = ""
 
-    init(userModel: UserModel) {
+    init(userName: String) {
         self.title = "First"
         self.message = "This is the first tab."
-        setUser(userModel: userModel)
+        setUser(userName: userName)
     }
 
-    func setUser(userModel: UserModel) {
-        userName = userModel.name
+    func setUser(userName: String) {
+        self.userName = userName
     }
 }

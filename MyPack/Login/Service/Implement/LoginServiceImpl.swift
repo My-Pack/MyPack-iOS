@@ -6,10 +6,24 @@
 //
 
 import Foundation
+import MyPackNetwork
 
 class LoginServiceImpl: LoginServiceProtocol {
-    func login(completion: @escaping (Result<UserModel, Error>) -> Void) {
-        let user = UserModel(name: "Test User")
-        completion(.success(user))
+    let api = APIClient()
+
+    func login() async throws -> UserModel? {
+        do {
+            let data = try await api.fetchData()
+            return data.toUserModel()
+        } catch {
+            print("Error: \(error.localizedDescription)")
+            return nil
+        }
+    }
+}
+
+extension UserDto {
+    func toUserModel() -> UserModel {
+        return UserModel(name: name)
     }
 }

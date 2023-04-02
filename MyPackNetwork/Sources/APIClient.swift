@@ -10,11 +10,16 @@ import Foundation
 public class APIClient {
     public init() {}
 
-    public func fetchData(completion: @escaping (Result<String, APIError>) -> Void) {
-        // 여기에 네트워킹 코드를 작성하세요.
-        // 예: URLSession을 사용한 HTTP 요청, JSON 디코딩 등
+    public func fetchData() async throws -> UserDto {
+//        guard let url = URL(string: "https://api.example.com/data") else {
+//            throw NSError(domain: "Invalid URL", code: -1, userInfo: nil)
+//        }
+//
+//        let (_, response) = try await URLSession.shared.data(from: url)
+//        guard let httpResponse = response as? HTTPURLResponse, (200 ... 299).contains(httpResponse.statusCode) else {
+//            throw NSError(domain: "Bad response", code: -1, userInfo: nil)
+//        }
 
-        // 결과를 반환합니다.
-        completion(.success("성공"))
+        return UserDto(name: "jito")
     }
 }

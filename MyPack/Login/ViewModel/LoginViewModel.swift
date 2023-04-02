@@ -16,14 +16,20 @@ class LoginViewModel {
         self.loginService = loginService
     }
 
+    private func fetchUserName() async -> String? {
+        do {
+            let userModel = try await loginService.login()
+            return userModel?.name
+        } catch {
+            print("Error: \(error.localizedDescription)")
+            return nil
+        }
+    }
+
     func login() {
-        loginService.login { [self] result in
-            switch result {
-            case let .success(data):
-                print("Data fetched: \(data)")
-                loginCoordinator?.didLoginSuccessfully(userModel: data)
-            case let .failure(error):
-                print("Error: \(error)")
+        Task {
+            if let userName = await fetchUserName() {
+                await loginCoordinator?.didLoginSuccessfully(userName: userName)
             }
         }
     }

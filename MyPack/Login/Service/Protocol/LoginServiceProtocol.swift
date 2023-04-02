@@ -8,5 +8,5 @@
 import Foundation
 
 protocol LoginServiceProtocol {
-    func login(completion: @escaping (Result<UserModel, Error>) -> Void)
+    func login() async throws -> UserModel?
 }

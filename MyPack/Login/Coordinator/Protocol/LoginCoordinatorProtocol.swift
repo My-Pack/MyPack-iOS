@@ -9,5 +9,7 @@ import Foundation
 
 protocol LoginCoordinatorProtocol: Coordinator {
     func start()
-    func didLoginSuccessfully(userModel: UserModel)
+
+    @MainActor
+    func didLoginSuccessfully(userName: String)
 }

@@ -31,6 +31,7 @@
 		4399C61E29D8918900794E69 /* MainTabCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399C61D29D8918900794E69 /* MainTabCoordinatorProtocol.swift */; };
 		4399C62029D8919A00794E69 /* MainTabCoordinatorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399C61F29D8919A00794E69 /* MainTabCoordinatorImpl.swift */; };
 		4399C62229D9AE5900794E69 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399C62129D9AE5900794E69 /* LoginViewModel.swift */; };
+		4399C62429D9BCC200794E69 /* UserDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399C62329D9BCC200794E69 /* UserDto.swift */; };
 		439E952129D51B6D00F104EF /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E952029D51B6D00F104EF /* EventManager.swift */; };
 		439E952B29D51EB100F104EF /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E952A29D51EB100F104EF /* UserModel.swift */; };
 		439E952F29D5275F00F104EF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E952E29D5275F00F104EF /* LoginViewController.swift */; };
@@ -106,6 +107,7 @@
 		4399C61D29D8918900794E69 /* MainTabCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		4399C61F29D8919A00794E69 /* MainTabCoordinatorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabCoordinatorImpl.swift; sourceTree = "<group>"; };
 		4399C62129D9AE5900794E69 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		4399C62329D9BCC200794E69 /* UserDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDto.swift; sourceTree = "<group>"; };
 		439E952029D51B6D00F104EF /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		439E952A29D51EB100F104EF /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		439E952E29D5275F00F104EF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			children = (
 				4399C5F029D84B0400794E69 /* APIClient.swift */,
 				4399C5F229D84B1B00794E69 /* APIError.swift */,
+				4399C62329D9BCC200794E69 /* UserDto.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -705,6 +708,7 @@
 			files = (
 				4399C5F129D84B0400794E69 /* APIClient.swift in Sources */,
 				4399C5F329D84B1B00794E69 /* APIError.swift in Sources */,
+				4399C62429D9BCC200794E69 /* UserDto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
