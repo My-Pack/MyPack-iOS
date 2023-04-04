@@ -10,6 +10,7 @@ import UIKit
 
 class FirstViewController: UIViewController {
     private let viewModel: FirstViewModel
+    private let text: UITextView = .init(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
 
     init(viewModel: FirstViewModel) {
         self.viewModel = viewModel
@@ -23,18 +24,9 @@ class FirstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 뷰 로드 시 필요한 초기화 작업 수행
-    }
 
-    // 뷰가 나타날 때마다 호출되는 메서드
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // 뷰가 나타날 때마다 필요한 작업 수행
-    }
-
-    // 뷰가 사라질 때마다 호출되는 메서드
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        // 뷰가 사라질 때마다 필요한 작업 수행
+        text.backgroundColor = .gray
+        text.text = viewModel.user?.name
+        view.addSubview(text)
     }
 }

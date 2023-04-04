@@ -10,14 +10,11 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    let maintabBarController = MainTabBarViewController()
-
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // 탭바 뷰컨트롤러를 윈도우의 루트 뷰컨트롤러로 설정
+        let navigationController = UINavigationController()
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = maintabBarController
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-
         return true
     }
 

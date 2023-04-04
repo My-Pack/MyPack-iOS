@@ -8,7 +8,8 @@
 import Foundation
 import UIKit
 
-struct MainTab {
+// MainTab
+struct MainTabBarModel {
     let identifier: String
     let title: String
 }
