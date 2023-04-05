@@ -61,6 +61,17 @@
                ReferencedContainer = "container:MyPack.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4399C5D729D84A9300794E69"
+               BuildableName = "MyPackNetworkTests.xctest"
+               BlueprintName = "MyPackNetworkTests"
+               ReferencedContainer = "container:MyPack.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
