@@ -11,7 +11,7 @@ class LoginViewModel {
     private let loginService: LoginServiceProtocol
     weak var loginCoordinator: LoginCoordinatorProtocol?
 
-    init(loginService: LoginServiceProtocol, loginCoordinator: LoginCoordinatorImpl) {
+    init(loginService: LoginServiceProtocol, loginCoordinator: LoginCoordinatorProtocol) {
         self.loginCoordinator = loginCoordinator
         self.loginService = loginService
     }
