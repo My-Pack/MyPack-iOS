@@ -8,4 +8,53 @@
 import Foundation
 import UIKit
 
-class CardDeck: UIView {}
+class CardDeck: UIView {
+    var cardDeck: [Card] = [
+        Card(isInteraction: false, color: .red),
+        Card(isInteraction: false, color: .blue),
+        Card(isInteraction: true, color: .orange)
+    ]
+
+    init() {
+        super.init(frame: CGRect.zero)
+        self.backgroundColor = .clear
+        self.isUserInteractionEnabled = true
+        setPosition()
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = .white
+        self.isUserInteractionEnabled = true
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    func setPosition() {
+        let rotationAngle = CGFloat(-5 * Double.pi / 180.0)
+        cardDeck.first?.transform = CGAffineTransform(rotationAngle: rotationAngle)
+        cardDeck.last?.layer.zPosition = 1000
+        for i in cardDeck {
+            i.delegate = self
+            addSubview(i)
+            i.snp.makeConstraints { deck in
+                deck.width.equalTo(200)
+                deck.height.equalTo(300)
+                deck.centerX.equalTo(self)
+                deck.centerY.equalTo(self)
+            }
+        }
+    }
+}
+
+extension CardDeck: CardDelegate {
+    func cardDidFlip(_ card: Card) {
+        card.layer.zPosition = 0
+        card.isUserInteractionEnabled = false
+        cardDeck[1].isUserInteractionEnabled = true
+        cardDeck[1].layer.zPosition = 1000
+        cardDeck.swapAt(1, 2)
+    }
+}

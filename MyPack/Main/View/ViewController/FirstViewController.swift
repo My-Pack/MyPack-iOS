@@ -14,7 +14,8 @@ import UIKit
 class FirstViewController: UIViewController {
     private let viewModel: FirstViewModel
     private var disposableBag = Set<AnyCancellable>()
-    private var card: Card = .init()
+    private var cardDeck: CardDeck = .init()
+//    private var card: Card = .init(isInteraction: true)
 
     init(viewModel: FirstViewModel) {
         self.viewModel = viewModel
@@ -55,15 +56,23 @@ private extension FirstViewController {
 
 private extension FirstViewController {
     func addUI() {
-        view.addSubview(card)
+//        view.addSubview(card)
+        view.addSubview(cardDeck)
     }
 
     func setLayout() {
-        card.snp.makeConstraints { card in
-            card.width.equalTo(200)
-            card.height.equalTo(300)
-            card.centerX.equalTo(view)
-            card.centerY.equalTo(view)
+//        card.snp.makeConstraints { card in
+//            card.width.equalTo(200)
+//            card.height.equalTo(300)
+//            card.centerX.equalTo(view)
+//            card.centerY.equalTo(view)
+//        }
+
+        cardDeck.snp.makeConstraints { deck in
+            deck.width.equalTo(UIScreen.main.bounds.width)
+            deck.height.equalTo(UIScreen.main.bounds.height)
+            deck.centerX.equalTo(view)
+            deck.centerY.equalTo(view)
         }
     }
 

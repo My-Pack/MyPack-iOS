@@ -9,24 +9,36 @@ import Foundation
 import MyPackAnimation
 import UIKit
 
+///
+/// 애니메이션 관련된 코드는 모두 모듈화 하기
+///
+///
+protocol CardDelegate: AnyObject {
+    func cardDidFlip(_ card: Card)
+}
+
+// MARK: - 생성자
+
 class Card: UIView {
+    weak var delegate: CardDelegate?
     private let cardAnimator: CardAnimator = .init()
     private var startLocation: CGPoint = .zero
     private var startRotate: CGPoint = .zero
     private let gradientLayer = CAGradientLayer()
-
     private var disappearPoint = CGPoint(x: 60, y: UIScreen.main.bounds.height - 60)
+    private var flipFirstPoint = CGPoint(x: UIScreen.main.bounds.width / 2 + 200, y: UIScreen.main.bounds.height / 2)
+    private var flipSecondPoint = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
 
-    init() {
+    init(isInteraction: Bool = true, color: UIColor = .clear) {
         super.init(frame: CGRect.zero)
-        self.backgroundColor = .clear
+        self.backgroundColor = color
         layer.cornerRadius = 10
         layer.shadowColor = UIColor.white.cgColor
         layer.shadowRadius = 16
         layer.shadowOpacity = 0.35
-        setupGradientLayer()
+        // setupGradientLayer()
 
-        self.isUserInteractionEnabled = true
+        self.isUserInteractionEnabled = isInteraction
     }
 
     override init(frame: CGRect) {
@@ -37,6 +49,15 @@ class Card: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+}
+
+// MARK: - override
+
+extension Card {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = bounds
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with _: UIEvent?) {
@@ -55,7 +76,7 @@ class Card: UIView {
             let directionX = currentLocation.x - startRotate.x
             let directionY = currentLocation.y - startRotate.y
 
-            let tiltAngle: CGFloat = 3 // 기울임 각도 (라디안)
+            let tiltAngle: CGFloat = 3
             var transform = CATransform3DIdentity
             transform.m34 = -1 / 500
             transform = CATransform3DRotate(transform, -tiltAngle * directionY / superview.bounds.height, 1, 0, 0)
@@ -75,35 +96,17 @@ class Card: UIView {
     }
 
     override func touchesEnded(_: Set<UITouch>, with _: UIEvent?) {
-        disappearAtPoint(point: disappearPoint)
+        checkAnimation()
     }
 
     override func touchesCancelled(_: Set<UITouch>, with _: UIEvent?) {
-        disappearAtPoint(point: disappearPoint)
+        checkAnimation()
     }
+}
 
-    private func moveToCenter() {
-        if let superview = superview {
-            cardAnimator.moveToCenter(view: self, superview: superview, duration: 0.5)
-        }
-    }
+// MARK: - functions
 
-    private func setupGradientLayer() {
-        gradientLayer.frame = bounds
-        gradientLayer.colors = [UIColor.red.cgColor, UIColor.blue.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-        gradientLayer.cornerRadius = 10
-        layer.insertSublayer(gradientLayer, at: 0)
-
-        animateGradient()
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        gradientLayer.frame = bounds
-    }
-
+extension Card {
     func animateGradient() {
         let gradient1: [CGColor] = [UIColor.green.cgColor, UIColor.yellow.cgColor]
         let gradient2: [CGColor] = [UIColor.yellow.cgColor, UIColor.orange.cgColor]
@@ -125,11 +128,33 @@ class Card: UIView {
         gradientLayer.add(animation, forKey: "animateGradient")
     }
 
-    func disappearAtPoint(point: CGPoint) {
-        if cardAnimator.isTargetPosition(view: self, position: disappearPoint) {
-            cardAnimator.disappearAtPoint(view: self, point: point, duration: 0.35)
-        } else {
+    func checkAnimation() {
+        switch cardAnimator.isTargetPosition(view: self) {
+        case .disappear:
+            cardAnimator.disappearAtPoint(view: self, point: disappearPoint, duration: 0.35)
+        case .flip:
+            cardAnimator.flipAtPoint(view: self, firstPoint: flipFirstPoint, secondPoint: flipSecondPoint, duration: 0.2) { [self] in
+                delegate?.cardDidFlip(self)
+            }
+        case nil:
             moveToCenter()
         }
+    }
+
+    private func moveToCenter() {
+        if let superview = superview {
+            cardAnimator.moveToCenter(view: self, superview: superview, duration: 0.5)
+        }
+    }
+
+    private func setupGradientLayer() {
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [UIColor.red.cgColor, UIColor.blue.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        gradientLayer.cornerRadius = 10
+        layer.insertSublayer(gradientLayer, at: 0)
+
+        animateGradient()
     }
 }
