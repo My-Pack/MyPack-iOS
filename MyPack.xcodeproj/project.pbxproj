@@ -16,6 +16,10 @@
 		2A3CDDF829D3AFB400BCF348 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDF729D3AFB400BCF348 /* FirstViewController.swift */; };
 		2A3CDDFA29D3B01F00BCF348 /* SecondViewContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDF929D3B01F00BCF348 /* SecondViewContorller.swift */; };
 		2A3CDDFC29D3B04F00BCF348 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDFB29D3B04F00BCF348 /* ThirdViewController.swift */; };
+		2AEF7B0D29E51F9C00CA5A93 /* BoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF7B0C29E51F9C00CA5A93 /* BoxViewModel.swift */; };
+		2AEF7B1129E5245700CA5A93 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF7B1029E5245700CA5A93 /* ImageView.swift */; };
+		2AEF7B1829E529F800CA5A93 /* LogoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF7B1729E529F800CA5A93 /* LogoLabel.swift */; };
+		2AEF7B1F29E5534400CA5A93 /* BMJUA.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2AEF7B1E29E5534400CA5A93 /* BMJUA.otf */; };
 		4306BB5329C9A00900C2971E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4306BB5229C9A00900C2971E /* SnapKit */; };
 		434691AE29C2FB840053AF5A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 434691AD29C2FB840053AF5A /* .swiftlint.yml */; };
 		434691B129C2FC950053AF5A /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 434691B029C2FC950053AF5A /* .swiftformat */; };
@@ -94,6 +98,10 @@
 		2A3CDDF729D3AFB400BCF348 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		2A3CDDF929D3B01F00BCF348 /* SecondViewContorller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewContorller.swift; sourceTree = "<group>"; };
 		2A3CDDFB29D3B04F00BCF348 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		2AEF7B0C29E51F9C00CA5A93 /* BoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxViewModel.swift; sourceTree = "<group>"; };
+		2AEF7B1029E5245700CA5A93 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		2AEF7B1729E529F800CA5A93 /* LogoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoLabel.swift; sourceTree = "<group>"; };
+		2AEF7B1E29E5534400CA5A93 /* BMJUA.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BMJUA.otf; path = ../../../../Downloads/BMJUA.otf; sourceTree = "<group>"; };
 		434691AD29C2FB840053AF5A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		434691B029C2FC950053AF5A /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		4399C5D129D84A9300794E69 /* MyPackNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyPackNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +168,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2AEF7B1D29E552A200CA5A93 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				2AEF7B1E29E5534400CA5A93 /* BMJUA.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		4399C5D229D84A9300794E69 /* MyPackNetwork */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +217,7 @@
 		4399C5FA29D8893000794E69 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2AEF7B0C29E51F9C00CA5A93 /* BoxViewModel.swift */,
 				4399C62129D9AE5900794E69 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
@@ -245,6 +262,8 @@
 			isa = PBXGroup;
 			children = (
 				439E953329D52E0400F104EF /* LoginButton.swift */,
+				2AEF7B1029E5245700CA5A93 /* ImageView.swift */,
+				2AEF7B1729E529F800CA5A93 /* LogoLabel.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -458,6 +477,7 @@
 		43CEE77629C2D69500AC7B28 /* MyPack */ = {
 			isa = PBXGroup;
 			children = (
+				2AEF7B1D29E552A200CA5A93 /* Font */,
 				43CEE78529C2D69500AC7B28 /* Info.plist */,
 				43AC201F29D8393300570927 /* Assets */,
 				4399C60929D88C9E00794E69 /* Main */,
@@ -643,6 +663,7 @@
 				434691B129C2FC950053AF5A /* .swiftformat in Resources */,
 				434691AE29C2FB840053AF5A /* .swiftlint.yml in Resources */,
 				43CEE78129C2D69500AC7B28 /* Assets.xcassets in Resources */,
+				2AEF7B1F29E5534400CA5A93 /* BMJUA.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +738,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				439E953429D52E0400F104EF /* LoginButton.swift in Sources */,
+				2AEF7B1129E5245700CA5A93 /* ImageView.swift in Sources */,
 				2A3CDDF329D3AE6C00BCF348 /* SecondViewModel.swift in Sources */,
 				2A3CDDEE29D3AC6700BCF348 /* MainTabBarModel.swift in Sources */,
 				2A3CDDF529D3AE8900BCF348 /* ThirdViewModel.swift in Sources */,
@@ -725,12 +747,14 @@
 				4399C61629D88DF500794E69 /* Tab.swift in Sources */,
 				2A3CDDEA29D3AAF600BCF348 /* MainTabBarViewModel.swift in Sources */,
 				2A3CDDF829D3AFB400BCF348 /* FirstViewController.swift in Sources */,
+				2AEF7B1829E529F800CA5A93 /* LogoLabel.swift in Sources */,
 				43CEE77829C2D69500AC7B28 /* AppDelegate.swift in Sources */,
 				439E953E29D568B500F104EF /* LoginCoordinatorImpl.swift in Sources */,
 				439E952129D51B6D00F104EF /* EventManager.swift in Sources */,
 				2A3CDDF129D3AE4500BCF348 /* FirstViewModel.swift in Sources */,
 				4399C62229D9AE5900794E69 /* LoginViewModel.swift in Sources */,
 				439E952B29D51EB100F104EF /* UserModel.swift in Sources */,
+				2AEF7B0D29E51F9C00CA5A93 /* BoxViewModel.swift in Sources */,
 				439E953C29D568AA00F104EF /* Coordinator.swift in Sources */,
 				43CEE77A29C2D69500AC7B28 /* SceneDelegate.swift in Sources */,
 				439E952F29D5275F00F104EF /* LoginViewController.swift in Sources */,
