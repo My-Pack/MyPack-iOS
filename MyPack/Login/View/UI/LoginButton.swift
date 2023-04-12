@@ -18,10 +18,6 @@ class LoginButton: UIButton {
         }
     }
 
-    func setImage(_ image: UIImage, for state: UIControl.State) {
-        setImage(image, for: state)
-    }
-
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")

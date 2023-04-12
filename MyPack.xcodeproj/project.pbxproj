@@ -19,7 +19,6 @@
 		2AEF7B0D29E51F9C00CA5A93 /* BoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF7B0C29E51F9C00CA5A93 /* BoxViewModel.swift */; };
 		2AEF7B1129E5245700CA5A93 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF7B1029E5245700CA5A93 /* ImageView.swift */; };
 		2AEF7B1829E529F800CA5A93 /* LogoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF7B1729E529F800CA5A93 /* LogoLabel.swift */; };
-		2AEF7B1F29E5534400CA5A93 /* BMJUA.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2AEF7B1E29E5534400CA5A93 /* BMJUA.otf */; };
 		4306BB5329C9A00900C2971E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4306BB5229C9A00900C2971E /* SnapKit */; };
 		434691AE29C2FB840053AF5A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 434691AD29C2FB840053AF5A /* .swiftlint.yml */; };
 		434691B129C2FC950053AF5A /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 434691B029C2FC950053AF5A /* .swiftformat */; };
@@ -101,7 +100,6 @@
 		2AEF7B0C29E51F9C00CA5A93 /* BoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxViewModel.swift; sourceTree = "<group>"; };
 		2AEF7B1029E5245700CA5A93 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		2AEF7B1729E529F800CA5A93 /* LogoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoLabel.swift; sourceTree = "<group>"; };
-		2AEF7B1E29E5534400CA5A93 /* BMJUA.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BMJUA.otf; path = ../../../../Downloads/BMJUA.otf; sourceTree = "<group>"; };
 		434691AD29C2FB840053AF5A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		434691B029C2FC950053AF5A /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		4399C5D129D84A9300794E69 /* MyPackNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyPackNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,14 +166,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2AEF7B1D29E552A200CA5A93 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				2AEF7B1E29E5534400CA5A93 /* BMJUA.otf */,
-			);
-			path = Font;
-			sourceTree = "<group>";
-		};
 		4399C5D229D84A9300794E69 /* MyPackNetwork */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,7 +467,6 @@
 		43CEE77629C2D69500AC7B28 /* MyPack */ = {
 			isa = PBXGroup;
 			children = (
-				2AEF7B1D29E552A200CA5A93 /* Font */,
 				43CEE78529C2D69500AC7B28 /* Info.plist */,
 				43AC201F29D8393300570927 /* Assets */,
 				4399C60929D88C9E00794E69 /* Main */,
@@ -663,7 +652,6 @@
 				434691B129C2FC950053AF5A /* .swiftformat in Resources */,
 				434691AE29C2FB840053AF5A /* .swiftlint.yml in Resources */,
 				43CEE78129C2D69500AC7B28 /* Assets.xcassets in Resources */,
-				2AEF7B1F29E5534400CA5A93 /* BMJUA.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
