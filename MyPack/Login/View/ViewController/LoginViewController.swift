@@ -11,12 +11,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
     var loginViewModel: LoginViewModel
-    var boxViewModel: BoxViewModel = .init()
 
-    private lazy var boxView: UIView = {
-        let view = UIView(frame: CGRect(origin: .zero, size: boxViewModel.size))
-        view.backgroundColor = boxViewModel.backgroundColor
-        view.layer.cornerRadius = boxViewModel.cornerRadius
+    private lazy var boxView: BoxView = {
+        let view = BoxView(frame: CGRect(x: 16, y: 148, width: 362, height: 540), radius: 10, color: UIColor.white)
         return view
     }()
 
@@ -76,17 +73,11 @@ extension LoginViewController {
 
 extension LoginViewController {
     func addUI() {
-        // 맨 앞으로 보내기
+        view.addSubview(boxView)
         view.addSubview(logoView)
-        view.bringSubviewToFront(logoView)
         view.addSubview(logoShadowView)
-        view.bringSubviewToFront(logoShadowView)
         view.addSubview(logoLabel)
-        view.bringSubviewToFront(logoLabel)
         view.addSubview(googleloginButton)
         view.addSubview(appleloginButton)
-        view.addSubview(boxView)
-        boxView.center = view.center
-        view.sendSubviewToBack(boxView)
     }
 }
