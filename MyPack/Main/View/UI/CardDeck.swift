@@ -31,7 +31,11 @@ class CardDeck: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+}
 
+// MARK: - Functions
+
+extension CardDeck {
     func setPosition() {
         let rotationAngle = CGFloat(-5 * Double.pi / 180.0)
         cardDeck.first?.transform = CGAffineTransform(rotationAngle: rotationAngle)
@@ -48,6 +52,8 @@ class CardDeck: UIView {
         }
     }
 }
+
+// MARK: - CardDelegate
 
 extension CardDeck: CardDelegate {
     func cardDidFlip(_ card: Card) {
