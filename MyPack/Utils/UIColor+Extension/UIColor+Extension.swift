@@ -24,6 +24,24 @@ extension UIColor {
         )
     }
 
+    convenience init(red: Int, green: Int, blue: Int, a: Int = 0xFF) {
+        self.init(
+            red: CGFloat(red) / 255.0,
+            green: CGFloat(green) / 255.0,
+            blue: CGFloat(blue) / 255.0,
+            alpha: CGFloat(a) / 255.0
+        )
+    }
+
+    convenience init(argb: Int) {
+        self.init(
+            red: (argb >> 16) & 0xFF,
+            green: (argb >> 8) & 0xFF,
+            blue: argb & 0xFF,
+            a: (argb >> 24) & 0xFF
+        )
+    }
+
     static func random() -> UIColor {
         let red = CGFloat(arc4random_uniform(256)) / 255.0
         let green = CGFloat(arc4random_uniform(256)) / 255.0
