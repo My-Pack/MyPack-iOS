@@ -11,7 +11,7 @@ class LoginButton: UIButton {
     init(title: String, frame: CGRect, action: UIAction?) {
         super.init(frame: frame)
         setTitle(title, for: .normal)
-        self.backgroundColor = .blue
+        self.backgroundColor = .clear
 
         if let action {
             addAction(action, for: .touchUpInside)

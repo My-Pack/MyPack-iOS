@@ -16,6 +16,9 @@
 		2A3CDDF829D3AFB400BCF348 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDF729D3AFB400BCF348 /* FirstViewController.swift */; };
 		2A3CDDFA29D3B01F00BCF348 /* SecondViewContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDF929D3B01F00BCF348 /* SecondViewContorller.swift */; };
 		2A3CDDFC29D3B04F00BCF348 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDFB29D3B04F00BCF348 /* ThirdViewController.swift */; };
+		2AEF7B0D29E51F9C00CA5A93 /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF7B0C29E51F9C00CA5A93 /* BoxView.swift */; };
+		2AEF7B1129E5245700CA5A93 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF7B1029E5245700CA5A93 /* ImageView.swift */; };
+		2AEF7B1829E529F800CA5A93 /* LogoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF7B1729E529F800CA5A93 /* LogoLabel.swift */; };
 		4306BB5329C9A00900C2971E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4306BB5229C9A00900C2971E /* SnapKit */; };
 		431236CC29DEE955003FAB5D /* CardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431236CB29DEE955003FAB5D /* CardDeck.swift */; };
 		434691AE29C2FB840053AF5A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 434691AD29C2FB840053AF5A /* .swiftlint.yml */; };
@@ -109,6 +112,9 @@
 		2A3CDDF929D3B01F00BCF348 /* SecondViewContorller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewContorller.swift; sourceTree = "<group>"; };
 		2A3CDDFB29D3B04F00BCF348 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		431236CB29DEE955003FAB5D /* CardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeck.swift; sourceTree = "<group>"; };
+		2AEF7B0C29E51F9C00CA5A93 /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
+		2AEF7B1029E5245700CA5A93 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		2AEF7B1729E529F800CA5A93 /* LogoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoLabel.swift; sourceTree = "<group>"; };
 		434691AD29C2FB840053AF5A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		434691B029C2FC950053AF5A /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		4399C5D129D84A9300794E69 /* MyPackNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyPackNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,7 +277,10 @@
 		4399C5FF29D8898F00794E69 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2AEF7B0C29E51F9C00CA5A93 /* BoxView.swift */,
 				439E953329D52E0400F104EF /* LoginButton.swift */,
+				2AEF7B1029E5245700CA5A93 /* ImageView.swift */,
+				2AEF7B1729E529F800CA5A93 /* LogoLabel.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -811,6 +820,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				439E953429D52E0400F104EF /* LoginButton.swift in Sources */,
+				2AEF7B1129E5245700CA5A93 /* ImageView.swift in Sources */,
 				2A3CDDF329D3AE6C00BCF348 /* SecondViewModel.swift in Sources */,
 				43DCDBC529DE4A4900FFE1F9 /* Card.swift in Sources */,
 				431236CC29DEE955003FAB5D /* CardDeck.swift in Sources */,
@@ -821,12 +831,14 @@
 				4399C61629D88DF500794E69 /* Tab.swift in Sources */,
 				2A3CDDEA29D3AAF600BCF348 /* MainTabBarViewModel.swift in Sources */,
 				2A3CDDF829D3AFB400BCF348 /* FirstViewController.swift in Sources */,
+				2AEF7B1829E529F800CA5A93 /* LogoLabel.swift in Sources */,
 				43CEE77829C2D69500AC7B28 /* AppDelegate.swift in Sources */,
 				439E953E29D568B500F104EF /* LoginCoordinatorImpl.swift in Sources */,
 				439E952129D51B6D00F104EF /* EventManager.swift in Sources */,
 				2A3CDDF129D3AE4500BCF348 /* FirstViewModel.swift in Sources */,
 				4399C62229D9AE5900794E69 /* LoginViewModel.swift in Sources */,
 				439E952B29D51EB100F104EF /* UserModel.swift in Sources */,
+				2AEF7B0D29E51F9C00CA5A93 /* BoxView.swift in Sources */,
 				439E953C29D568AA00F104EF /* Coordinator.swift in Sources */,
 				43CEE77A29C2D69500AC7B28 /* SceneDelegate.swift in Sources */,
 				439E952F29D5275F00F104EF /* LoginViewController.swift in Sources */,
