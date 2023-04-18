@@ -15,12 +15,14 @@ import UIKit
 ///
 protocol CardDelegate: AnyObject {
     func cardDidFlip(_ card: Card)
+    func cardDidDisappear(_ card: Card)
 }
 
 // MARK: - 생성자
 
 class Card: UIView {
     weak var delegate: CardDelegate?
+    private var color: UIColor?
     private let cardAnimator: CardAnimator = .init()
     private var startLocation: CGPoint = .zero
     private var startRotate: CGPoint = .zero
@@ -30,6 +32,7 @@ class Card: UIView {
 
     init(isInteraction: Bool = true, color: UIColor = .clear) {
         super.init(frame: CGRect.zero)
+        self.color = color
         self.backgroundColor = color
         layer.cornerRadius = 10
         layer.shadowColor = UIColor.white.cgColor
@@ -103,7 +106,9 @@ extension Card {
     private func checkAnimation() {
         switch cardAnimator.isTargetPosition(view: self) {
         case .disappear:
-            cardAnimator.disappearAtPoint(view: self, point: disappearPoint, duration: 0.35)
+            cardAnimator.disappearAtPoint(view: self, point: disappearPoint, duration: 0.35) { [self] in
+                delegate?.cardDidDisappear(self)
+            }
         case .flip:
             cardAnimator.flipAtPoint(view: self, firstPoint: flipFirstPoint, secondPoint: flipSecondPoint, duration: 0.2) { [self] in
                 delegate?.cardDidFlip(self)

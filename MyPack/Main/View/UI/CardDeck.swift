@@ -63,4 +63,23 @@ extension CardDeck: CardDelegate {
         cardDeck[1].layer.zPosition = 1000
         cardDeck.swapAt(1, 2)
     }
+
+    func cardDidDisappear(_: Card) {
+        cardDeck.remove(at: cardDeck.firstIndex(where: { $0.isUserInteractionEnabled })!)
+        cardDeck.last?.isUserInteractionEnabled = true
+        cardDeck.last?.layer.zPosition = 1000
+
+        let nextCard = Card(isInteraction: false, color: .brown)
+        addSubview(nextCard)
+
+        nextCard.delegate = self
+        nextCard.layer.zPosition = 0
+        cardDeck.insert(nextCard, at: 1)
+        nextCard.snp.makeConstraints { card in
+            card.width.equalTo(200)
+            card.height.equalTo(300)
+            card.centerX.equalTo(self)
+            card.centerY.equalTo(self)
+        }
+    }
 }

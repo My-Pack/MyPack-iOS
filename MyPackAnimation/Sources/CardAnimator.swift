@@ -39,7 +39,7 @@ public class CardAnimator {
         return nil
     }
 
-    public func disappearAtPoint(view: UIView, point: CGPoint, duration: TimeInterval) {
+    public func disappearAtPoint(view: UIView, point: CGPoint, duration: TimeInterval, closure: @escaping () -> Void) {
         UIView.animate(withDuration: duration, animations: {
             view.center = point
         }, completion: { _ in
@@ -48,6 +48,7 @@ public class CardAnimator {
                 view.alpha = 0
             }, completion: { _ in
                 view.removeFromSuperview()
+                closure()
             })
         })
     }
