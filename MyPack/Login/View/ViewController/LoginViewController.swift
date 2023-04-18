@@ -5,6 +5,7 @@
 //  Created by jito on 2023/03/30.
 //
 
+import GoogleSignIn
 import UIKit
 
 // MARK: - 뷰컨트롤러 생성자
@@ -13,7 +14,10 @@ class LoginViewController: UIViewController {
     var loginViewModel: LoginViewModel
     private lazy var loginButton: LoginButton = {
         let button = LoginButton(title: "Login", frame: CGRect(x: 100, y: 50, width: 100, height: 100), action: UIAction(title: "title") { [weak self] _ in
-            self?.loginViewModel.login()
+//            self?.loginViewModel.login()
+            GIDSignIn.sharedInstance.signIn(withPresenting: self!) { result, _ in
+                print(result?.user.idToken?.tokenString)
+            }
         })
         return button
     }()
