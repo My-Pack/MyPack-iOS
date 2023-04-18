@@ -43,9 +43,9 @@ extension UIColor {
     }
 
     static func random() -> UIColor {
-        let red = CGFloat(arc4random_uniform(256)) / 255.0
-        let green = CGFloat(arc4random_uniform(256)) / 255.0
-        let blue = CGFloat(arc4random_uniform(256)) / 255.0
+        let red = CGFloat(Double.random(in: 0 ..< 256)) / 255.0
+        let green = CGFloat(Double.random(in: 0 ..< 256)) / 255.0
+        let blue = CGFloat(Double.random(in: 0 ..< 256)) / 255.0
 
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
