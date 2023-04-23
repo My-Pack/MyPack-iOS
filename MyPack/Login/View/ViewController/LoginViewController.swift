@@ -14,9 +14,10 @@ class LoginViewController: UIViewController {
     var loginViewModel: LoginViewModel
     private lazy var loginButton: LoginButton = {
         let button = LoginButton(title: "Login", frame: CGRect(x: 100, y: 50, width: 100, height: 100), action: UIAction(title: "title") { [weak self] _ in
-//            self?.loginViewModel.login()
             GIDSignIn.sharedInstance.signIn(withPresenting: self!) { result, _ in
-                print(result?.user.idToken?.tokenString)
+                guard result != nil else { fatalError("Google Signin result is null") }
+                guard result!.user.idToken != nil else { fatalError("idToken is null") }
+                self?.loginViewModel.login(token: result!.user.idToken!.tokenString)
             }
         })
         return button
