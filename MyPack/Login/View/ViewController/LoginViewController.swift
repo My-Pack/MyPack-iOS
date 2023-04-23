@@ -12,7 +12,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     var loginViewModel: LoginViewModel
-  
+
     private lazy var boxView: BoxView = {
         let view = BoxView(frame: CGRect(x: 16, y: 148, width: 362, height: 540), radius: 10, color: UIColor.white)
         return view
@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
 
     private lazy var appleloginButton: LoginButton = {
         let button = LoginButton(title: "Apple Login", frame: CGRect(x: 39, y: 605, width: 316, height: 60), action: UIAction(title: "title") { [weak self] _ in
-            self?.loginViewModel.login()
+//            self?.loginViewModel.login()
         })
         button.setImage(UIImage(named: "applelogo"), for: .normal)
         return button
