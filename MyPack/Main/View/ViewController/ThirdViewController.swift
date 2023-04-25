@@ -16,14 +16,16 @@ class ThirdViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    private lazy var backgroundView: ImageView = {
-        let view = ImageView(image: UIImage(named: "backgroundImage.jpeg")!, frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 197))
+    private lazy var backgroundView: UIButton = {
+        let backgroundBtn = UIButton()
+        backgroundBtn.setImage(UIImage(named: "backgroundImage.jpeg"), for: .normal)
+        backgroundBtn.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 197)
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = view.bounds
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 197)
         gradientLayer.colors = [UIColor.clear.cgColor, UIColor.white.cgColor]
         gradientLayer.locations = [0.0, 1.0]
-        view.layer.addSublayer(gradientLayer)
-        return view
+        backgroundBtn.layer.addSublayer(gradientLayer)
+        return backgroundBtn
     }()
 
     private lazy var gradientCircleView: UIView = {
@@ -40,15 +42,37 @@ class ThirdViewController: UIViewController {
         return circle
     }()
 
-    private lazy var profileView: ImageView = {
-        let view = ImageView(image: UIImage(named: "userprofile.png")!, frame: CGRect(x: 142, y: 112, width: 110, height: 110))
-        return view
+    private lazy var profileView: UIButton = {
+        let profileBtn = UIButton()
+        profileBtn.setImage(UIImage(named: "userprofile.png"), for: .normal)
+        profileBtn.frame = CGRect(x: 142, y: 112, width: 110, height: 110)
+        return profileBtn
+    }()
+
+    private lazy var followerLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 280, y: 180, width: 120, height: 30))
+        label.text = "팔로워 100"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.sizeToFit()
+        return label
+    }()
+
+    private lazy var followingLabel: UILabel = {
+        let followinglabel = UILabel(frame: CGRect(x: 280, y: 200, width: 120, height: 30))
+        followinglabel.text = "팔로잉 100"
+        followinglabel.font = UIFont.systemFont(ofSize: 14)
+        followinglabel.sizeToFit()
+        return followinglabel
     }()
 
     private lazy var tab1Button: UIButton = {
         let button = UIButton()
-        button.frame = CGRect(x: 22, y: 238, width: 161, height: 25)
-        button.backgroundColor = UIColor.red
+        button.setTitle("My Card", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.frame = CGRect(x: 22, y: 80, width: 161, height: 25)
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor.black.cgColor
+        button.backgroundColor = UIColor.gray
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(tab1ButtonTapped), for: .touchUpInside)
         return button
@@ -56,8 +80,12 @@ class ThirdViewController: UIViewController {
 
     private lazy var tab2Button: UIButton = {
         let button = UIButton()
-        button.frame = CGRect(x: 210, y: 238, width: 161, height: 25)
-        button.backgroundColor = UIColor.blue
+        button.setTitle("My Pack", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.frame = CGRect(x: 210, y: 80, width: 161, height: 25)
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor.black.cgColor
+        button.backgroundColor = UIColor.white
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(tab2ButtonTapped), for: .touchUpInside)
         return button
@@ -65,27 +93,68 @@ class ThirdViewController: UIViewController {
 
     private lazy var myCardView: UIView = {
         let view = UIView()
-        view.frame(forAlignmentRect: CGRect(x: 0, y: 340, width: UIScreen.main.bounds.size.width, height: 100))
-        view.backgroundColor = UIColor.red
+        view.frame = CGRect(x: 0, y: 130, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+        view.addSubview(myCard1)
+        view.addSubview(myCard2)
         return view
+    }()
+
+    private lazy var myCard1: UIButton = {
+        let myCard1Btn = UIButton()
+        myCard1Btn.setImage(UIImage(named: "myCard.jpeg"), for: .normal)
+        myCard1Btn.frame = CGRect(x: 8, y: 0, width: 185, height: 276)
+        myCard1Btn.layer.cornerRadius = 10
+        myCard1Btn.clipsToBounds = true
+        return myCard1Btn
+    }()
+
+    private lazy var myCard2: UIButton = {
+        let myCard2Btn = UIButton()
+        myCard2Btn.setImage(UIImage(named: "myCard.jpeg"), for: .normal)
+        myCard2Btn.frame = CGRect(x: 200, y: 0, width: 185, height: 276)
+        myCard2Btn.layer.cornerRadius = 10
+        myCard2Btn.clipsToBounds = true
+        return myCard2Btn
     }()
 
     private lazy var myPackView: UIView = {
         let view = UIView()
-        view.frame(forAlignmentRect: CGRect(x: 0, y: 340, width: UIScreen.main.bounds.size.width, height: 100))
-        view.backgroundColor = UIColor.blue
+        view.frame = CGRect(x: 0, y: 130, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+//        view.backgroundColor = UIColor.blue
+        view.addSubview(myPack1)
+        view.addSubview(myPack2)
         return view
+    }()
+
+    private lazy var myPack1: UIButton = {
+        let myCard1Btn = UIButton()
+        myCard1Btn.setImage(UIImage(named: "myPack.jpeg"), for: .normal)
+        myCard1Btn.frame = CGRect(x: 8, y: 0, width: 185, height: 276)
+        myCard1Btn.layer.cornerRadius = 10
+        myCard1Btn.clipsToBounds = true
+        return myCard1Btn
+    }()
+
+    private lazy var myPack2: UIButton = {
+        let myCard2Btn = UIButton()
+        myCard2Btn.setImage(UIImage(named: "myPack.jpeg"), for: .normal)
+        myCard2Btn.frame = CGRect(x: 200, y: 0, width: 185, height: 276)
+        myCard2Btn.layer.cornerRadius = 10
+        myCard2Btn.clipsToBounds = true
+        return myCard2Btn
     }()
 
     private var scrollView: UIScrollView {
         let scrollView = UIScrollView(frame: CGRect(x: 0, y: 178, width: view.frame.width, height: view.frame.height - 50))
-        scrollView.contentSize = CGSize(width: view.frame.width * 2, height: view.frame.height - 50)
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.size.width, height: view.frame.height * 2)
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
 
         // 각 탭에 해당하는 뷰를 스크롤 뷰에 추가합니다.
         scrollView.addSubview(myCardView)
         scrollView.addSubview(myPackView)
+        scrollView.addSubview(tab1Button)
+        scrollView.addSubview(tab2Button)
 
         return scrollView
     }
@@ -102,6 +171,9 @@ extension ThirdViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addUI()
+        myCardView.isHidden = false
+        myPackView.isHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 }
 
@@ -113,32 +185,21 @@ private extension ThirdViewController {
         view.addSubview(backgroundView)
         view.addSubview(gradientCircleView)
         view.addSubview(profileView)
-        view.addSubview(tab1Button)
-        view.addSubview(tab2Button)
+        view.addSubview(followerLabel)
+        view.addSubview(followingLabel)
     }
 
-//    func scroll() {
-//        // 스크롤 뷰를 구성합니다.
-//        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 50, width: view.frame.width, height: view.frame.height - 50))
-//        scrollView.contentSize = CGSize(width: view.frame.width * 2, height: view.frame.height - 50)
-//        scrollView.isPagingEnabled = true
-//        scrollView.showsHorizontalScrollIndicator = false
-//
-//        // 각 탭에 해당하는 뷰를 스크롤 뷰에 추가합니다.
-//        scrollView.addSubview(myCardView)
-//        scrollView.addSubview(myPackView)
-//    }
-
     @objc func tab1ButtonTapped() {
-        tabBarController?.selectedIndex = 0
-        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        myCardView.isHidden = false
+        myPackView.isHidden = true
+        tab1Button.backgroundColor = UIColor.gray
+        tab2Button.backgroundColor = UIColor.white
     }
 
     @objc func tab2ButtonTapped() {
-        tabBarController?.selectedIndex = 1
-        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        myCardView.isHidden = true
+        myPackView.isHidden = false
+        tab1Button.backgroundColor = UIColor.white
+        tab2Button.backgroundColor = UIColor.gray
     }
-//    func updateUserProfile(userName: String) {
-//        text.text = userName
-//    }
 }
