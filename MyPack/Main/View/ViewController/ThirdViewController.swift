@@ -120,28 +120,27 @@ class ThirdViewController: UIViewController {
     private lazy var myPackView: UIView = {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 130, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
-//        view.backgroundColor = UIColor.blue
         view.addSubview(myPack1)
         view.addSubview(myPack2)
         return view
     }()
 
     private lazy var myPack1: UIButton = {
-        let myCard1Btn = UIButton()
-        myCard1Btn.setImage(UIImage(named: "myPack.jpeg"), for: .normal)
-        myCard1Btn.frame = CGRect(x: 8, y: 0, width: 185, height: 276)
-        myCard1Btn.layer.cornerRadius = 10
-        myCard1Btn.clipsToBounds = true
-        return myCard1Btn
+        let myPack1Btn = UIButton()
+        myPack1Btn.setImage(UIImage(named: "myPack.jpeg"), for: .normal)
+        myPack1Btn.frame = CGRect(x: 8, y: 0, width: 185, height: 276)
+        myPack1Btn.layer.cornerRadius = 10
+        myPack1Btn.clipsToBounds = true
+        return myPack1Btn
     }()
 
     private lazy var myPack2: UIButton = {
-        let myCard2Btn = UIButton()
-        myCard2Btn.setImage(UIImage(named: "myPack.jpeg"), for: .normal)
-        myCard2Btn.frame = CGRect(x: 200, y: 0, width: 185, height: 276)
-        myCard2Btn.layer.cornerRadius = 10
-        myCard2Btn.clipsToBounds = true
-        return myCard2Btn
+        let myPack2Btn = UIButton()
+        myPack2Btn.setImage(UIImage(named: "myPack.jpeg"), for: .normal)
+        myPack2Btn.frame = CGRect(x: 200, y: 0, width: 185, height: 276)
+        myPack2Btn.layer.cornerRadius = 10
+        myPack2Btn.clipsToBounds = true
+        return myPack2Btn
     }()
 
     private var scrollView: UIScrollView {
