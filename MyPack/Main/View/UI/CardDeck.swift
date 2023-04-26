@@ -69,7 +69,7 @@ extension CardDeck: CardDelegate {
         cardDeck.last?.isUserInteractionEnabled = true
         cardDeck.last?.layer.zPosition = 1000
 
-        let nextCard = Card(isInteraction: false, color: .brown)
+        let nextCard = Card(isInteraction: false, color: UIColor.random())
         addSubview(nextCard)
 
         nextCard.delegate = self
