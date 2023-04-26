@@ -20,6 +20,7 @@
 		2AEF7B1129E5245700CA5A93 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF7B1029E5245700CA5A93 /* ImageView.swift */; };
 		2AEF7B1829E529F800CA5A93 /* LogoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF7B1729E529F800CA5A93 /* LogoLabel.swift */; };
 		4306BB5329C9A00900C2971E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4306BB5229C9A00900C2971E /* SnapKit */; };
+		431236CC29DEE955003FAB5D /* CardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431236CB29DEE955003FAB5D /* CardDeck.swift */; };
 		434691AE29C2FB840053AF5A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 434691AD29C2FB840053AF5A /* .swiftlint.yml */; };
 		434691B129C2FC950053AF5A /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 434691B029C2FC950053AF5A /* .swiftformat */; };
 		4399C5E429D84A9300794E69 /* MyPackNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4399C5D129D84A9300794E69 /* MyPackNetwork.framework */; };
@@ -47,6 +48,11 @@
 		43CEE78F29C2D69500AC7B28 /* MyPackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CEE78E29C2D69500AC7B28 /* MyPackTests.swift */; };
 		43CEE79929C2D69500AC7B28 /* MyPackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CEE79829C2D69500AC7B28 /* MyPackUITests.swift */; };
 		43CEE79B29C2D69500AC7B28 /* MyPackUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CEE79A29C2D69500AC7B28 /* MyPackUITestsLaunchTests.swift */; };
+		43DCDBC529DE4A4900FFE1F9 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCDBC429DE4A4900FFE1F9 /* Card.swift */; };
+		43DCDBC829DE8A8400FFE1F9 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCDBC729DE8A8400FFE1F9 /* UIColor+Extension.swift */; };
+		43DCDBD429DEAFD800FFE1F9 /* MyPackAnimation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43DCDBCE29DEAFD700FFE1F9 /* MyPackAnimation.framework */; };
+		43DCDBD529DEAFD800FFE1F9 /* MyPackAnimation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 43DCDBCE29DEAFD700FFE1F9 /* MyPackAnimation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		43DCDBDB29DEB06B00FFE1F9 /* CardAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DCDBDA29DEB06B00FFE1F9 /* CardAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +77,13 @@
 			remoteGlobalIDString = 43CEE77329C2D69500AC7B28;
 			remoteInfo = MyPack;
 		};
+		43DCDBD229DEAFD800FFE1F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43CEE76C29C2D69500AC7B28 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 43DCDBCD29DEAFD700FFE1F9;
+			remoteInfo = MyPackAnimation;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,6 +93,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				43DCDBD529DEAFD800FFE1F9 /* MyPackAnimation.framework in Embed Frameworks */,
 				4399C5E529D84A9300794E69 /* MyPackNetwork.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -97,6 +111,7 @@
 		2A3CDDF729D3AFB400BCF348 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		2A3CDDF929D3B01F00BCF348 /* SecondViewContorller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewContorller.swift; sourceTree = "<group>"; };
 		2A3CDDFB29D3B04F00BCF348 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		431236CB29DEE955003FAB5D /* CardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeck.swift; sourceTree = "<group>"; };
 		2AEF7B0C29E51F9C00CA5A93 /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
 		2AEF7B1029E5245700CA5A93 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		2AEF7B1729E529F800CA5A93 /* LogoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoLabel.swift; sourceTree = "<group>"; };
@@ -130,6 +145,10 @@
 		43CEE79429C2D69500AC7B28 /* MyPackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPackUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CEE79829C2D69500AC7B28 /* MyPackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPackUITests.swift; sourceTree = "<group>"; };
 		43CEE79A29C2D69500AC7B28 /* MyPackUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPackUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		43DCDBC429DE4A4900FFE1F9 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		43DCDBC729DE8A8400FFE1F9 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		43DCDBCE29DEAFD700FFE1F9 /* MyPackAnimation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyPackAnimation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43DCDBDA29DEB06B00FFE1F9 /* CardAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43DCDBD429DEAFD800FFE1F9 /* MyPackAnimation.framework in Frameworks */,
 				4399C5E429D84A9300794E69 /* MyPackNetwork.framework in Frameworks */,
 				4306BB5329C9A00900C2971E /* SnapKit in Frameworks */,
 			);
@@ -157,6 +177,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		43CEE79129C2D69500AC7B28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43DCDBCB29DEAFD700FFE1F9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -347,6 +374,8 @@
 		4399C61029D88CE100794E69 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				43DCDBC429DE4A4900FFE1F9 /* Card.swift */,
+				431236CB29DEE955003FAB5D /* CardDeck.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -408,6 +437,7 @@
 		439E951729D5112200F104EF /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				43DCDBC629DE8A6600FFE1F9 /* UIColor+Extension */,
 				439E953A29D5689900F104EF /* Coordinator */,
 				439E951829D5112F00F104EF /* EventBus */,
 			);
@@ -433,8 +463,6 @@
 		43AC201F29D8393300570927 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				43CEE77729C2D69500AC7B28 /* AppDelegate.swift */,
-				43CEE77929C2D69500AC7B28 /* SceneDelegate.swift */,
 				43CEE78029C2D69500AC7B28 /* Assets.xcassets */,
 			);
 			path = Assets;
@@ -447,6 +475,7 @@
 				434691AD29C2FB840053AF5A /* .swiftlint.yml */,
 				43CEE77629C2D69500AC7B28 /* MyPack */,
 				4399C5D229D84A9300794E69 /* MyPackNetwork */,
+				43DCDBCF29DEAFD800FFE1F9 /* MyPackAnimation */,
 				43CEE78D29C2D69500AC7B28 /* MyPackTests */,
 				43CEE79729C2D69500AC7B28 /* MyPackUITests */,
 				43CEE77529C2D69500AC7B28 /* Products */,
@@ -460,6 +489,7 @@
 				43CEE78A29C2D69500AC7B28 /* MyPackTests.xctest */,
 				43CEE79429C2D69500AC7B28 /* MyPackUITests.xctest */,
 				4399C5D129D84A9300794E69 /* MyPackNetwork.framework */,
+				43DCDBCE29DEAFD700FFE1F9 /* MyPackAnimation.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -467,6 +497,8 @@
 		43CEE77629C2D69500AC7B28 /* MyPack */ = {
 			isa = PBXGroup;
 			children = (
+				43CEE77729C2D69500AC7B28 /* AppDelegate.swift */,
+				43CEE77929C2D69500AC7B28 /* SceneDelegate.swift */,
 				43CEE78529C2D69500AC7B28 /* Info.plist */,
 				43AC201F29D8393300570927 /* Assets */,
 				4399C60929D88C9E00794E69 /* Main */,
@@ -494,10 +526,41 @@
 			path = MyPackUITests;
 			sourceTree = "<group>";
 		};
+		43DCDBC629DE8A6600FFE1F9 /* UIColor+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				43DCDBC729DE8A8400FFE1F9 /* UIColor+Extension.swift */,
+			);
+			path = "UIColor+Extension";
+			sourceTree = "<group>";
+		};
+		43DCDBCF29DEAFD800FFE1F9 /* MyPackAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				43DCDBD929DEAFE800FFE1F9 /* Sources */,
+			);
+			path = MyPackAnimation;
+			sourceTree = "<group>";
+		};
+		43DCDBD929DEAFE800FFE1F9 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				43DCDBDA29DEB06B00FFE1F9 /* CardAnimator.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
 		4399C5CC29D84A9200794E69 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43DCDBC929DEAFD700FFE1F9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -541,6 +604,7 @@
 			dependencies = (
 				432BFF3429C9A8C6000AF069 /* PBXTargetDependency */,
 				4399C5E329D84A9300794E69 /* PBXTargetDependency */,
+				43DCDBD329DEAFD800FFE1F9 /* PBXTargetDependency */,
 			);
 			name = MyPack;
 			packageProductDependencies = (
@@ -586,6 +650,24 @@
 			productReference = 43CEE79429C2D69500AC7B28 /* MyPackUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		43DCDBCD29DEAFD700FFE1F9 /* MyPackAnimation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43DCDBD629DEAFD800FFE1F9 /* Build configuration list for PBXNativeTarget "MyPackAnimation" */;
+			buildPhases = (
+				43DCDBC929DEAFD700FFE1F9 /* Headers */,
+				43DCDBCA29DEAFD700FFE1F9 /* Sources */,
+				43DCDBCB29DEAFD700FFE1F9 /* Frameworks */,
+				43DCDBCC29DEAFD700FFE1F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyPackAnimation;
+			productName = MyPackAnimation;
+			productReference = 43DCDBCE29DEAFD700FFE1F9 /* MyPackAnimation.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -611,6 +693,10 @@
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 43CEE77329C2D69500AC7B28;
 					};
+					43DCDBCD29DEAFD700FFE1F9 = {
+						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
+					};
 				};
 			};
 			buildConfigurationList = 43CEE76F29C2D69500AC7B28 /* Build configuration list for PBXProject "MyPack" */;
@@ -633,6 +719,7 @@
 				43CEE78929C2D69500AC7B28 /* MyPackTests */,
 				43CEE79329C2D69500AC7B28 /* MyPackUITests */,
 				4399C5D029D84A9200794E69 /* MyPackNetwork */,
+				43DCDBCD29DEAFD700FFE1F9 /* MyPackAnimation */,
 			);
 		};
 /* End PBXProject section */
@@ -663,6 +750,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		43CEE79229C2D69500AC7B28 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43DCDBCC29DEAFD700FFE1F9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -728,6 +822,8 @@
 				439E953429D52E0400F104EF /* LoginButton.swift in Sources */,
 				2AEF7B1129E5245700CA5A93 /* ImageView.swift in Sources */,
 				2A3CDDF329D3AE6C00BCF348 /* SecondViewModel.swift in Sources */,
+				43DCDBC529DE4A4900FFE1F9 /* Card.swift in Sources */,
+				431236CC29DEE955003FAB5D /* CardDeck.swift in Sources */,
 				2A3CDDEE29D3AC6700BCF348 /* MainTabBarModel.swift in Sources */,
 				2A3CDDF529D3AE8900BCF348 /* ThirdViewModel.swift in Sources */,
 				4399C61A29D8913E00794E69 /* LoginCoordinatorProtocol.swift in Sources */,
@@ -750,6 +846,7 @@
 				2A3CDDEC29D3AB7700BCF348 /* MainTabBarViewController.swift in Sources */,
 				4399C60129D889CD00794E69 /* LoginServiceProtocol.swift in Sources */,
 				2A3CDDFC29D3B04F00BCF348 /* ThirdViewController.swift in Sources */,
+				43DCDBC829DE8A8400FFE1F9 /* UIColor+Extension.swift in Sources */,
 				2A3CDDFA29D3B01F00BCF348 /* SecondViewContorller.swift in Sources */,
 				4399C62029D8919A00794E69 /* MainTabCoordinatorImpl.swift in Sources */,
 			);
@@ -770,6 +867,14 @@
 			files = (
 				43CEE79929C2D69500AC7B28 /* MyPackUITests.swift in Sources */,
 				43CEE79B29C2D69500AC7B28 /* MyPackUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43DCDBCA29DEAFD700FFE1F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43DCDBDB29DEB06B00FFE1F9 /* CardAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -794,6 +899,11 @@
 			isa = PBXTargetDependency;
 			target = 43CEE77329C2D69500AC7B28 /* MyPack */;
 			targetProxy = 43CEE79529C2D69500AC7B28 /* PBXContainerItemProxy */;
+		};
+		43DCDBD329DEAFD800FFE1F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 43DCDBCD29DEAFD700FFE1F9 /* MyPackAnimation */;
+			targetProxy = 43DCDBD229DEAFD800FFE1F9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1131,6 +1241,73 @@
 			};
 			name = Release;
 		};
+		43DCDBD729DEAFD800FFE1F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gdsc.MyPackAnimation;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		43DCDBD829DEAFD800FFE1F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gdsc.MyPackAnimation;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1175,6 +1352,15 @@
 			buildConfigurations = (
 				43CEE7A529C2D69500AC7B28 /* Debug */,
 				43CEE7A629C2D69500AC7B28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43DCDBD629DEAFD800FFE1F9 /* Build configuration list for PBXNativeTarget "MyPackAnimation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43DCDBD729DEAFD800FFE1F9 /* Debug */,
+				43DCDBD829DEAFD800FFE1F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

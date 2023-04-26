@@ -6,6 +6,7 @@
 //
 
 import Combine
+import SnapKit
 import UIKit
 
 // MARK: - 뷰컨트롤러 생성자
@@ -13,11 +14,14 @@ import UIKit
 class FirstViewController: UIViewController {
     private let viewModel: FirstViewModel
     private var disposableBag = Set<AnyCancellable>()
-    private var text: UITextView = .init(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+    private var cardDeck: CardDeck = .init()
+//    private var card: Card = .init(isInteraction: true)
 
     init(viewModel: FirstViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+
+        view.backgroundColor = UIColor(rgb: 0x222222)
     }
 
     @available(*, unavailable)
@@ -33,6 +37,7 @@ extension FirstViewController {
         super.viewDidLoad()
         setBindings()
         addUI()
+        setLayout()
     }
 }
 
@@ -51,10 +56,27 @@ private extension FirstViewController {
 
 private extension FirstViewController {
     func addUI() {
-        view.addSubview(text)
+//        view.addSubview(card)
+        view.addSubview(cardDeck)
     }
 
-    func updateUser(userName: String) {
-        text.text = userName
+    func setLayout() {
+//        card.snp.makeConstraints { card in
+//            card.width.equalTo(200)
+//            card.height.equalTo(300)
+//            card.centerX.equalTo(view)
+//            card.centerY.equalTo(view)
+//        }
+
+        cardDeck.snp.makeConstraints { deck in
+            deck.width.equalTo(UIScreen.main.bounds.width)
+            deck.height.equalTo(UIScreen.main.bounds.height)
+            deck.centerX.equalTo(view)
+            deck.centerY.equalTo(view)
+        }
+    }
+
+    func updateUser(userName _: String) {
+        // user data UI에 업데이트하기
     }
 }
