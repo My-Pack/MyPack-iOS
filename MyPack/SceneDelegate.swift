@@ -5,6 +5,7 @@
 //  Created by jito on 2023/03/16.
 //
 
+import GoogleSignIn
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -16,9 +17,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
 
+        let config = GIDConfiguration(clientID: "359063232439-c70rvi9jpapuurtmohl8ila077omosk9.apps.googleusercontent.com")
+        GIDSignIn.sharedInstance.configuration = config
+
         let navigationController = UINavigationController()
         loginCoordinator = LoginCoordinatorImpl(navigationController: navigationController)
-        loginCoordinator?.didLoginSuccessfully(userName: "jito")
+        loginCoordinator?.start()
 
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

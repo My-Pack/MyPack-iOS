@@ -17,9 +17,9 @@ class LoginViewModel {
         self.loginService = loginService
     }
 
-    private func fetchUserName() async -> String? {
+    private func fetchUserName(token: String) async -> String? {
         do {
-            let userModel = try await loginService.login()
+            let userModel = try await loginService.login(token: token)
             return userModel?.name
         } catch {
             print("Error: \(error.localizedDescription)")
@@ -27,9 +27,9 @@ class LoginViewModel {
         }
     }
 
-    func login() {
+    func login(token: String) {
         Task {
-            if let userName = await fetchUserName() {
+            if let userName = await fetchUserName(token: token) {
                 await loginCoordinator?.didLoginSuccessfully(userName: userName)
             }
         }
