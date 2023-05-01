@@ -15,7 +15,6 @@ class FirstViewController: UIViewController {
     private let viewModel: FirstViewModel
     private var disposableBag = Set<AnyCancellable>()
     private var cardDeck: CardDeck = .init()
-//    private var card: Card = .init(isInteraction: true)
 
     init(viewModel: FirstViewModel) {
         self.viewModel = viewModel

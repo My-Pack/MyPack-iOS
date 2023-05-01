@@ -44,8 +44,8 @@ extension CardDeck {
             i.delegate = self
             addSubview(i)
             i.snp.makeConstraints { deck in
-                deck.width.equalTo(200)
-                deck.height.equalTo(300)
+                deck.width.equalTo(250)
+                deck.height.equalTo(350)
                 deck.centerX.equalTo(self)
                 deck.centerY.equalTo(self)
             }
@@ -76,8 +76,8 @@ extension CardDeck: CardDelegate {
         nextCard.layer.zPosition = 0
         cardDeck.insert(nextCard, at: 1)
         nextCard.snp.makeConstraints { card in
-            card.width.equalTo(200)
-            card.height.equalTo(300)
+            card.width.equalTo(250)
+            card.height.equalTo(350)
             card.centerX.equalTo(self)
             card.centerY.equalTo(self)
         }

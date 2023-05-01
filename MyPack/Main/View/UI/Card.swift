@@ -20,7 +20,7 @@ protocol CardDelegate: AnyObject {
 
 // MARK: - 생성자
 
-class Card: UIView {
+class Card: UIImageView {
     weak var delegate: CardDelegate?
     private var color: UIColor?
     private let cardAnimator: CardAnimator = .init()
@@ -30,16 +30,21 @@ class Card: UIView {
     private var flipFirstPoint = CGPoint(x: UIScreen.main.bounds.width / 2 + 200, y: UIScreen.main.bounds.height / 2)
     private var flipSecondPoint = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
 
+    private var gradientStartPosition: CGFloat = 0.0
+
     init(isInteraction: Bool = true, color: UIColor = .clear) {
         super.init(frame: CGRect.zero)
         self.color = color
         self.backgroundColor = color
+        clipsToBounds = true
         layer.cornerRadius = 10
         layer.shadowColor = UIColor.white.cgColor
         layer.shadowRadius = 16
         layer.shadowOpacity = 0.35
 
         self.isUserInteractionEnabled = isInteraction
+
+        image = applyRainbowHolographicEffect(to: UIImage(named: "newjeans")!)
     }
 
     override init(frame: CGRect) {
@@ -122,5 +127,56 @@ extension Card {
         if let superview = superview {
             cardAnimator.moveToCenter(view: self, superview: superview, duration: 0.5)
         }
+    }
+
+    func applyRainbowHolographicEffect(to image: UIImage) -> UIImage? {
+        guard let inputCGImage = image.cgImage else { return nil }
+
+        let inputImage = CIImage(cgImage: inputCGImage)
+        let context = CIContext(options: nil)
+
+        // 무지개 그라데이션을 생성하는 두 개의 CIFilter를 만듭니다.
+        let gradientFilter1 = createGradientFilter(startPoint: gradientStartPosition, endPoint: gradientStartPosition + inputImage.extent.width)
+        let gradientFilter2 = createGradientFilter(startPoint: gradientStartPosition - inputImage.extent.width, endPoint: gradientStartPosition)
+
+        // 두 개의 그라데이션 필터를 결합합니다.
+        let combinedGradientFilter = CIFilter(name: "CIAdditionCompositing")
+        combinedGradientFilter?.setValue(gradientFilter1?.outputImage, forKey: kCIInputImageKey)
+        combinedGradientFilter?.setValue(gradientFilter2?.outputImage, forKey: kCIInputBackgroundImageKey)
+
+        // 빛이 반사되는 원형 그라데이션을 생성하는 CIFilter를 만듭니다.
+        let reflectionFilter = CIFilter(name: "CIRadialGradient")
+        let reflectionCenter = CIVector(x: inputImage.extent.width / 2, y: inputImage.extent.height / 2)
+        reflectionFilter?.setValue(reflectionCenter, forKey: "inputCenter")
+        reflectionFilter?.setValue(0, forKey: "inputRadius0")
+        reflectionFilter?.setValue(inputImage.extent.width / 2, forKey: "inputRadius1")
+        reflectionFilter?.setValue(CIColor(red: 1, green: 1, blue: 1, alpha: 0.5), forKey: "inputColor0")
+        reflectionFilter?.setValue(CIColor(red: 1, green: 1, blue: 1, alpha: 0), forKey: "inputColor1")
+
+        // 무지개 그라데이션과 빛 반사 그라데이션을 결합합니다.
+        let combinedRainbowAndReflectionFilter = CIFilter(name: "CIScreenBlendMode")
+        combinedRainbowAndReflectionFilter?.setValue(combinedGradientFilter?.outputImage, forKey: kCIInputImageKey)
+        combinedRainbowAndReflectionFilter?.setValue(reflectionFilter?.outputImage, forKey: kCIInputBackgroundImageKey)
+
+        // 홀로그램 효과를 입히기 위해 결합된 그라데이션과 원본 이미지를 결합하는 CIFilter를 만듭니다.
+        let blendFilter = CIFilter(name: "CIScreenBlendMode")
+        blendFilter?.setValue(inputImage, forKey: kCIInputImageKey)
+        blendFilter?.setValue(combinedRainbowAndReflectionFilter?.outputImage?.cropped(to: inputImage.extent), forKey: kCIInputBackgroundImageKey)
+
+        if let outputImage = blendFilter?.outputImage,
+           let cgImage = context.createCGImage(outputImage, from: inputImage.extent) {
+            return UIImage(cgImage: cgImage)
+        }
+
+        return nil
+    }
+
+    func createGradientFilter(startPoint: CGFloat, endPoint: CGFloat) -> CIFilter? {
+        let gradientFilter = CIFilter(name: "CILinearGradient")
+        gradientFilter?.setValue(CIVector(x: startPoint, y: 0), forKey: "inputPoint0")
+        gradientFilter?.setValue(CIVector(x: endPoint, y: 0), forKey: "inputPoint1")
+        gradientFilter?.setValue(CIColor(red: 1, green: 0, blue: 0, alpha: 0.5), forKey: "inputColor0")
+        gradientFilter?.setValue(CIColor(red: 0, green: 0, blue: 1, alpha: 0.5), forKey: "inputColor1")
+        return gradientFilter
     }
 }
