@@ -164,7 +164,8 @@ extension Card {
         blendFilter?.setValue(combinedRainbowAndReflectionFilter?.outputImage?.cropped(to: inputImage.extent), forKey: kCIInputBackgroundImageKey)
 
         if let outputImage = blendFilter?.outputImage,
-           let cgImage = context.createCGImage(outputImage, from: inputImage.extent) {
+           let cgImage = context.createCGImage(outputImage, from: inputImage.extent)
+        {
             return UIImage(cgImage: cgImage)
         }
 
