@@ -6,6 +6,7 @@
 //
 
 import Combine
+import MyPackAnimation
 import SnapKit
 import UIKit
 
@@ -15,7 +16,7 @@ class FirstViewController: UIViewController {
     private let viewModel: FirstViewModel
     private var disposableBag = Set<AnyCancellable>()
     private var cardDeck: CardDeck = .init()
-//    private var card: Card = .init(isInteraction: true)
+    private var emitterAnimator: EmitterAnimator?
 
     init(viewModel: FirstViewModel) {
         self.viewModel = viewModel
@@ -38,6 +39,7 @@ extension FirstViewController {
         setBindings()
         addUI()
         setLayout()
+        setUpEmitterLayer()
     }
 }
 
@@ -78,5 +80,11 @@ private extension FirstViewController {
 
     func updateUser(userName _: String) {
         // user data UI에 업데이트하기
+    }
+
+    func setUpEmitterLayer() {
+        emitterAnimator = EmitterAnimator(view: cardDeck.cardDeck[2], viewController: self)
+        let tapGestureRecognizer = UITapGestureRecognizer(target: emitterAnimator, action: #selector(EmitterAnimator.imageViewTapped))
+        cardDeck.cardDeck[2].addGestureRecognizer(tapGestureRecognizer)
     }
 }
