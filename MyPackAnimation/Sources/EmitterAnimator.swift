@@ -11,9 +11,9 @@ public class EmitterAnimator {
     private var emitterLayer: CAEmitterLayer!
     private var view: UIView
     private var viewController: UIViewController
-    private var image: UIImage?
+    private var image: [UIImage?]!
 
-    public init(view: UIView, viewController: UIViewController, image: UIImage?) {
+    public init(view: UIView, viewController: UIViewController, image: [UIImage?]) {
         self.view = view
         self.viewController = viewController
         self.image = image
@@ -22,7 +22,9 @@ public class EmitterAnimator {
     @objc public func imageViewTapped(_ sender: UITapGestureRecognizer) {
         if let _ = sender.view {
             createEmitterLayer()
-            animateEmitterLayer()
+
+            let emitterCells = image.map { createEmitterCell(image: $0!) }
+            emitterLayer.emitterCells = emitterCells
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                 self.emitterLayer.birthRate = 0
@@ -39,22 +41,18 @@ public class EmitterAnimator {
         viewController.view.layer.addSublayer(emitterLayer)
     }
 
-    private func animateEmitterLayer() {
-        if image == nil {
-            return
-        }
-
+    private func createEmitterCell(image: UIImage) -> CAEmitterCell {
         let emitterCell = CAEmitterCell()
-        emitterCell.contents = image?.cgImage
+        emitterCell.contents = image.cgImage
         // 얼마나 유지될거냐 (number of seconds an object lives) 이거 짧게 주면 중간에 사라질수도
         emitterCell.lifetime = 3
         // 1초에 몇개 생성할거냐. (number of objects created per second)
-        emitterCell.birthRate = 250
+        emitterCell.birthRate = 100
 
         // 크기
-        emitterCell.scale = 0.03
+        emitterCell.scale = 0.025
         // particle 마다 달라질 수 있는 scale 의 범위
-        emitterCell.scaleRange = 0.05
+        emitterCell.scaleRange = 0.03
 
         // 얼마나 빠른 속도로 회전할것인가. 0이면 회전 효과 없음
         emitterCell.spin = 5
@@ -75,7 +73,8 @@ public class EmitterAnimator {
         // gravity 효과.
         // 양수면 중력이 적용되는 것처럼 보이고, 음수면 중력이 없어져서 날아가는 것 처럼 보임.
         // velocity 와 yAcceleration의 조합이 distance 를 결정
-        emitterCell.yAcceleration = 1200
-        emitterLayer.emitterCells = [emitterCell]
+        emitterCell.yAcceleration = 1000
+
+        return emitterCell
     }
 }

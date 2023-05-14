@@ -76,7 +76,8 @@ private extension FirstViewController {
 
     func setUpEmitterLayer() {
         for i in cardDeck.cardDeck {
-            let emitterAnimator = EmitterAnimator(view: i, viewController: self, image: UIImage(named: i.effect!.image))
+            let images = i.effect?.map { UIImage(named: $0.image) } ?? []
+            let emitterAnimator = EmitterAnimator(view: i, viewController: self, image: images)
             let tapGestureRecognizer = UITapGestureRecognizer(target: emitterAnimator, action: #selector(EmitterAnimator.imageViewTapped))
             i.addGestureRecognizer(tapGestureRecognizer)
             emitterAnimators.append(emitterAnimator)
