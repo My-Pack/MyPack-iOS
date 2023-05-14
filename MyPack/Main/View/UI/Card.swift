@@ -18,10 +18,16 @@ protocol CardDelegate: AnyObject {
     func cardDidDisappear(_ card: Card)
 }
 
+struct CardEffect {
+    var image: String
+    var color: UIColor
+}
+
 // MARK: - 생성자
 
 class Card: UIView {
     weak var delegate: CardDelegate?
+    var effect: CardEffect?
     private var color: UIColor?
     private let cardAnimator: CardAnimator = .init()
     private var startLocation: CGPoint = .zero
@@ -30,10 +36,15 @@ class Card: UIView {
     private var flipFirstPoint = CGPoint(x: UIScreen.main.bounds.width / 2 + 200, y: UIScreen.main.bounds.height / 2)
     private var flipSecondPoint = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
 
-    init(isInteraction: Bool = true, color: UIColor = .clear) {
+    init(isInteraction: Bool = true, color: UIColor = .clear, effect: CardEffect = CardEffect(image: "none", color: UIColor.gray)) {
         super.init(frame: CGRect.zero)
         self.color = color
         self.backgroundColor = color
+        self.effect = effect
+
+        layer.borderWidth = 5
+        layer.borderColor = effect.color.cgColor
+
         layer.cornerRadius = 10
         layer.shadowColor = UIColor.white.cgColor
         layer.shadowRadius = 16

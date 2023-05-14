@@ -11,24 +11,28 @@ public class EmitterAnimator {
     private var emitterLayer: CAEmitterLayer!
     private var view: UIView
     private var viewController: UIViewController
+    private var image: UIImage?
 
-    public init(view: UIView, viewController: UIViewController) {
+    public init(view: UIView, viewController: UIViewController, image: UIImage?) {
         self.view = view
         self.viewController = viewController
+        self.image = image
     }
 
-    @objc public func imageViewTapped() {
-        createEmitterLayer()
-        animateEmitterLayer()
+    @objc public func imageViewTapped(_ sender: UITapGestureRecognizer) {
+        if let _ = sender.view {
+            createEmitterLayer()
+            animateEmitterLayer()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            self.emitterLayer.birthRate = 0
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                self.emitterLayer.birthRate = 0
+            }
         }
     }
 
     private func createEmitterLayer() {
         emitterLayer = CAEmitterLayer()
-        emitterLayer.emitterPosition = view.center
+        emitterLayer.emitterPosition = CGPoint(x: view.center.x, y: view.center.y - 50)
         emitterLayer.emitterSize = CGSize(width: 0.0, height: 0.0)
         emitterLayer.emitterShape = .point
         emitterLayer.renderMode = .unordered
@@ -36,15 +40,19 @@ public class EmitterAnimator {
     }
 
     private func animateEmitterLayer() {
+        if image == nil {
+            return
+        }
+
         let emitterCell = CAEmitterCell()
-        emitterCell.contents = UIImage(named: "heart")?.cgImage
+        emitterCell.contents = image?.cgImage
         // 얼마나 유지될거냐 (number of seconds an object lives) 이거 짧게 주면 중간에 사라질수도
         emitterCell.lifetime = 3
         // 1초에 몇개 생성할거냐. (number of objects created per second)
-        emitterCell.birthRate = 200
+        emitterCell.birthRate = 250
 
         // 크기
-        emitterCell.scale = 0.05
+        emitterCell.scale = 0.03
         // particle 마다 달라질 수 있는 scale 의 범위
         emitterCell.scaleRange = 0.05
 
@@ -59,7 +67,7 @@ public class EmitterAnimator {
 
         // 수치가 높을 수록 particle 이 빠르게, 더 멀리 방출되는 효과.
         // yAcceleration에 의해 영향 받음
-        emitterCell.velocity = 700
+        emitterCell.velocity = 600
         // velocity 값의 범위를 뜻함.
         // 만약 기본 velocity가 700이고, velocityRange 가 50 이면,
         // 각 particle은 650-750 사이의 velocity 값을 갖게 됨

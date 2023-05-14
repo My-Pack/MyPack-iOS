@@ -16,7 +16,7 @@ class FirstViewController: UIViewController {
     private let viewModel: FirstViewModel
     private var disposableBag = Set<AnyCancellable>()
     private var cardDeck: CardDeck = .init()
-    private var emitterAnimator: EmitterAnimator?
+    private var emitterAnimators = [EmitterAnimator]()
 
     init(viewModel: FirstViewModel) {
         self.viewModel = viewModel
@@ -58,18 +58,10 @@ private extension FirstViewController {
 
 private extension FirstViewController {
     func addUI() {
-//        view.addSubview(card)
         view.addSubview(cardDeck)
     }
 
     func setLayout() {
-//        card.snp.makeConstraints { card in
-//            card.width.equalTo(200)
-//            card.height.equalTo(300)
-//            card.centerX.equalTo(view)
-//            card.centerY.equalTo(view)
-//        }
-
         cardDeck.snp.makeConstraints { deck in
             deck.width.equalTo(UIScreen.main.bounds.width)
             deck.height.equalTo(UIScreen.main.bounds.height)
@@ -83,8 +75,11 @@ private extension FirstViewController {
     }
 
     func setUpEmitterLayer() {
-        emitterAnimator = EmitterAnimator(view: cardDeck.cardDeck[2], viewController: self)
-        let tapGestureRecognizer = UITapGestureRecognizer(target: emitterAnimator, action: #selector(EmitterAnimator.imageViewTapped))
-        cardDeck.cardDeck[2].addGestureRecognizer(tapGestureRecognizer)
+        for i in cardDeck.cardDeck {
+            let emitterAnimator = EmitterAnimator(view: i, viewController: self, image: UIImage(named: i.effect!.image))
+            let tapGestureRecognizer = UITapGestureRecognizer(target: emitterAnimator, action: #selector(EmitterAnimator.imageViewTapped))
+            i.addGestureRecognizer(tapGestureRecognizer)
+            emitterAnimators.append(emitterAnimator)
+        }
     }
 }
