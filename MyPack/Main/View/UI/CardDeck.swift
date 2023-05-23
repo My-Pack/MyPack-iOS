@@ -10,9 +10,10 @@ import UIKit
 
 class CardDeck: UIView {
     var cardDeck: [Card] = [
-        Card(isInteraction: false, color: .red),
-        Card(isInteraction: false, color: .blue),
-        Card(isInteraction: true, color: .orange)
+        Card(isInteraction: false, color: .white),
+        Card(isInteraction: false, color: .white, effect: [CardEffect(image: "heart", color: UIColor(rgb: 0xF699CD))]),
+        Card(isInteraction: true, color: .white, effect: [CardEffect(image: "star_gold", color: UIColor(rgb: 0xE5B80B)),
+                                                          CardEffect(image: "heart_gold", color: UIColor(rgb: 0xE5B80B))])
     ]
 
     init() {
@@ -69,7 +70,7 @@ extension CardDeck: CardDelegate {
         cardDeck.last?.isUserInteractionEnabled = true
         cardDeck.last?.layer.zPosition = 1000
 
-        let nextCard = Card(isInteraction: false, color: UIColor.random())
+        let nextCard = Card(isInteraction: false, color: UIColor.white)
         addSubview(nextCard)
 
         nextCard.delegate = self
