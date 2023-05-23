@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol LoginCoordinatorProtocol: Coordinator {
+protocol LoginCoordinator: Coordinator {
     func start()
 
     @MainActor

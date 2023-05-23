@@ -16,10 +16,12 @@ class FirstViewController: UIViewController {
     private let viewModel: FirstViewModel
     private var disposableBag = Set<AnyCancellable>()
     private var cardDeck: CardDeck = .init()
+    private var searchBtn: SearchBtn
     private var emitterAnimators = [EmitterAnimator]()
 
     init(viewModel: FirstViewModel) {
         self.viewModel = viewModel
+        self.searchBtn = SearchBtn(viewModel: self.viewModel)
         super.init(nibName: nil, bundle: nil)
 
         view.backgroundColor = UIColor(rgb: 0x222222)
@@ -59,6 +61,7 @@ private extension FirstViewController {
 private extension FirstViewController {
     func addUI() {
         view.addSubview(cardDeck)
+        view.addSubview(searchBtn)
     }
 
     func setLayout() {
@@ -67,6 +70,12 @@ private extension FirstViewController {
             deck.height.equalTo(UIScreen.main.bounds.height)
             deck.centerX.equalTo(view)
             deck.centerY.equalTo(view)
+        }
+        searchBtn.snp.makeConstraints { btn in
+            btn.width.equalTo(30)
+            btn.height.equalTo(30)
+            btn.top.equalTo(view.safeAreaLayoutGuide)
+            btn.trailing.equalTo(-16)
         }
     }
 

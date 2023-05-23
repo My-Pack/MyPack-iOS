@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 class LoginViewModel {
-    private let loginService: LoginServiceProtocol
-    weak var loginCoordinator: LoginCoordinatorProtocol?
+    private let loginService: LoginService
+    weak var loginCoordinator: LoginCoordinator?
 
-    init(loginService: LoginServiceProtocol, loginCoordinator: LoginCoordinatorProtocol) {
+    init(loginService: LoginService, loginCoordinator: LoginCoordinator) {
         self.loginCoordinator = loginCoordinator
         self.loginService = loginService
     }

@@ -9,4 +9,5 @@ import Foundation
 
 protocol MainTabBarCoordinator: Coordinator {
     func start(userName: String)
+    func toSearchView()
 }
