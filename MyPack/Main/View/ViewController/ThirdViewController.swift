@@ -30,7 +30,7 @@ class ThirdViewController: UIViewController {
 
     private lazy var gradientCircleView: UIView = {
         let circle = UIView()
-        circle.frame = CGRect(x: 137, y: 107, width: 120, height: 120)
+        circle.frame = CGRect(x: 50, y: 107, width: 120, height: 120)
         circle.layer.cornerRadius = circle.frame.height / 2
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = circle.bounds
@@ -45,12 +45,12 @@ class ThirdViewController: UIViewController {
     private lazy var profileView: UIButton = {
         let profileBtn = UIButton()
         profileBtn.setImage(UIImage(named: "userprofile.png"), for: .normal)
-        profileBtn.frame = CGRect(x: 142, y: 112, width: 110, height: 110)
+        profileBtn.frame = CGRect(x: 55, y: 112, width: 110, height: 110)
         return profileBtn
     }()
 
     private lazy var followerLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 280, y: 180, width: 120, height: 30))
+        let label = UILabel(frame: CGRect(x: 204, y: 134, width: 120, height: 30))
         label.text = "팔로워 100"
         label.font = UIFont.systemFont(ofSize: 14)
         label.sizeToFit()
@@ -58,11 +58,24 @@ class ThirdViewController: UIViewController {
     }()
 
     private lazy var followingLabel: UILabel = {
-        let followinglabel = UILabel(frame: CGRect(x: 280, y: 200, width: 120, height: 30))
+        let followinglabel = UILabel(frame: CGRect(x: 204, y: 152, width: 120, height: 30))
         followinglabel.text = "팔로잉 100"
         followinglabel.font = UIFont.systemFont(ofSize: 14)
         followinglabel.sizeToFit()
         return followinglabel
+    }()
+
+    private lazy var editButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("프로필 편집", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.frame = CGRect(x: 198, y: 177, width: 161, height: 25)
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor.black.cgColor
+        button.backgroundColor = UIColor.white
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+        return button
     }()
 
     private lazy var tab1Button: UIButton = {
@@ -96,6 +109,8 @@ class ThirdViewController: UIViewController {
         view.frame = CGRect(x: 0, y: 130, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
         view.addSubview(myCard1)
         view.addSubview(myCard2)
+        view.addSubview(myCard3)
+        view.addSubview(myCard4)
         return view
     }()
 
@@ -117,11 +132,31 @@ class ThirdViewController: UIViewController {
         return myCard2Btn
     }()
 
+    private lazy var myCard3: UIButton = {
+        let myCard3Btn = UIButton()
+        myCard3Btn.setImage(UIImage(named: "myCard.jpeg"), for: .normal)
+        myCard3Btn.frame = CGRect(x: 8, y: myCard1.frame.maxY + 10, width: 185, height: 276)
+        myCard3Btn.layer.cornerRadius = 10
+        myCard3Btn.clipsToBounds = true
+        return myCard3Btn
+    }()
+
+    private lazy var myCard4: UIButton = {
+        let myCard4Btn = UIButton()
+        myCard4Btn.setImage(UIImage(named: "myCard.jpeg"), for: .normal)
+        myCard4Btn.frame = CGRect(x: 200, y: myCard2.frame.maxY + 10, width: 185, height: 276)
+        myCard4Btn.layer.cornerRadius = 10
+        myCard4Btn.clipsToBounds = true
+        return myCard4Btn
+    }()
+
     private lazy var myPackView: UIView = {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 130, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
         view.addSubview(myPack1)
         view.addSubview(myPack2)
+        view.addSubview(myPack3)
+        view.addSubview(myPack4)
         return view
     }()
 
@@ -141,6 +176,24 @@ class ThirdViewController: UIViewController {
         myPack2Btn.layer.cornerRadius = 10
         myPack2Btn.clipsToBounds = true
         return myPack2Btn
+    }()
+
+    private lazy var myPack3: UIButton = {
+        let myPack3Btn = UIButton()
+        myPack3Btn.setImage(UIImage(named: "myPack.jpeg"), for: .normal)
+        myPack3Btn.frame = CGRect(x: 8, y: myPack1.frame.maxY + 10, width: 185, height: 276)
+        myPack3Btn.layer.cornerRadius = 10
+        myPack3Btn.clipsToBounds = true
+        return myPack3Btn
+    }()
+
+    private lazy var myPack4: UIButton = {
+        let myPack4Btn = UIButton()
+        myPack4Btn.setImage(UIImage(named: "myPack.jpeg"), for: .normal)
+        myPack4Btn.frame = CGRect(x: 200, y: myPack2.frame.maxY + 10, width: 185, height: 276)
+        myPack4Btn.layer.cornerRadius = 10
+        myPack4Btn.clipsToBounds = true
+        return myPack4Btn
     }()
 
     private var scrollView: UIScrollView {
@@ -186,6 +239,27 @@ private extension ThirdViewController {
         view.addSubview(profileView)
         view.addSubview(followerLabel)
         view.addSubview(followingLabel)
+        view.addSubview(editButton)
+    }
+
+    @objc func editButtonTapped() {
+        print("click")
+        let viewModel = BottomSheetViewModel()
+        let bottomSheetView = BottomSheetViewController(viewModel: viewModel)
+
+        bottomSheetView.setParentView(view)
+
+        view.addSubview(bottomSheetView)
+
+        let screenHeight = UIScreen.main.bounds.height
+        let bottomSheetHeight: CGFloat = 300
+        let startY = screenHeight - bottomSheetHeight
+
+        bottomSheetView.frame = CGRect(x: 0, y: screenHeight, width: view.bounds.width, height: bottomSheetHeight)
+
+        UIView.animate(withDuration: 0.3) {
+            bottomSheetView.frame = CGRect(x: 0, y: startY, width: self.view.bounds.width, height: bottomSheetHeight)
+        }
     }
 
     @objc func tab1ButtonTapped() {
