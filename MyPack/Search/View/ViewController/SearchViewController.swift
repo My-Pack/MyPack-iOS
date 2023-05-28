@@ -10,7 +10,10 @@ import UIKit
 // MARK: - 뷰컨트롤러 생성자
 
 class SearchViewController: UIViewController {
-    init() {
+    private var viewModel: SearchViewModel
+
+    init(viewModel: SearchViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
 
