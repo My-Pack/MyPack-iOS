@@ -35,7 +35,6 @@ class MainTabBarCoordinatorImpl: MainTabBarCoordinator {
     }
 
     func toSearchView() {
-        print("1")
         let searchViewCoordinator = SearchViewCoordinatorImpl(navigationController: navigationController)
         searchViewCoordinator.start()
     }

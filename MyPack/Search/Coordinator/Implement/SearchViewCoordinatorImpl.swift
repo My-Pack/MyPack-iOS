@@ -15,7 +15,9 @@ class SearchViewCoordinatorImpl: SearchViewCoordinator {
     }
 
     func start() {
-        let searchViewController = SearchViewController()
-        navigationController?.pushViewController(searchViewController, animated: true)
+        let searchViewCoordinator = SearchViewCoordinatorImpl(navigationController: navigationController)
+        let viewModel = SearchViewModel(searchViewCoordinator: searchViewCoordinator)
+        let searchViewController = SearchViewController(viewModel: viewModel)
+        navigationController?.pushViewController(searchViewController, animated: false)
     }
 }

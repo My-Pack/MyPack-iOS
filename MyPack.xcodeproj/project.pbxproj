@@ -23,7 +23,11 @@
 		431236CC29DEE955003FAB5D /* CardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431236CB29DEE955003FAB5D /* CardDeck.swift */; };
 		434691AE29C2FB840053AF5A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 434691AD29C2FB840053AF5A /* .swiftlint.yml */; };
 		434691B129C2FC950053AF5A /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 434691B029C2FC950053AF5A /* .swiftformat */; };
+		434CB0DC2A1CAC510091EE76 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434CB0DB2A1CAC510091EE76 /* UITextField+Extension.swift */; };
+		434CB0DE2A1CB3B90091EE76 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434CB0DD2A1CB3B90091EE76 /* SearchViewModel.swift */; };
+		434CB0E02A1CB5DA0091EE76 /* BackBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434CB0DF2A1CB5DA0091EE76 /* BackBtn.swift */; };
 		43686F1829F56614006764EE /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43686F1729F56614006764EE /* LoginAPI.swift */; };
+		437BF0992A23495900878D89 /* MakeCardContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437BF0982A23495900878D89 /* MakeCardContainer.swift */; };
 		4399C5E429D84A9300794E69 /* MyPackNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4399C5D129D84A9300794E69 /* MyPackNetwork.framework */; };
 		4399C5E529D84A9300794E69 /* MyPackNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4399C5D129D84A9300794E69 /* MyPackNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4399C5F129D84B0400794E69 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399C5F029D84B0400794E69 /* APIClient.swift */; };
@@ -125,7 +129,11 @@
 		431236CB29DEE955003FAB5D /* CardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeck.swift; sourceTree = "<group>"; };
 		434691AD29C2FB840053AF5A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		434691B029C2FC950053AF5A /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
+		434CB0DB2A1CAC510091EE76 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		434CB0DD2A1CB3B90091EE76 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		434CB0DF2A1CB5DA0091EE76 /* BackBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBtn.swift; sourceTree = "<group>"; };
 		43686F1729F56614006764EE /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		437BF0982A23495900878D89 /* MakeCardContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCardContainer.swift; sourceTree = "<group>"; };
 		4399C5D129D84A9300794E69 /* MyPackNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyPackNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4399C5F029D84B0400794E69 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		4399C5F229D84B1B00794E69 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -402,6 +410,7 @@
 				43DCDBC429DE4A4900FFE1F9 /* Card.swift */,
 				431236CB29DEE955003FAB5D /* CardDeck.swift */,
 				439ABEC52A1C942B00974B8C /* SearchBtn.swift */,
+				437BF0982A23495900878D89 /* MakeCardContainer.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -491,6 +500,7 @@
 		439ABEB82A1C915A00974B8C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				434CB0DD2A1CB3B90091EE76 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -498,6 +508,7 @@
 		439ABEB92A1C916500974B8C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				434CB0DF2A1CB5DA0091EE76 /* BackBtn.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -548,6 +559,7 @@
 				43DCDBC629DE8A6600FFE1F9 /* UIColor+Extension */,
 				439E953A29D5689900F104EF /* Coordinator */,
 				439E951829D5112F00F104EF /* EventBus */,
+				434CB0DB2A1CAC510091EE76 /* UITextField+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -951,6 +963,7 @@
 				43DCDBC529DE4A4900FFE1F9 /* Card.swift in Sources */,
 				431236CC29DEE955003FAB5D /* CardDeck.swift in Sources */,
 				2A3CDDEE29D3AC6700BCF348 /* MainTabBarModel.swift in Sources */,
+				434CB0DE2A1CB3B90091EE76 /* SearchViewModel.swift in Sources */,
 				2A3CDDF529D3AE8900BCF348 /* ThirdViewModel.swift in Sources */,
 				439ABEBC2A1C917A00974B8C /* SearchViewController.swift in Sources */,
 				4399C61A29D8913E00794E69 /* LoginCoordinator.swift in Sources */,
@@ -961,6 +974,7 @@
 				439ABEC22A1C92B400974B8C /* SearchViewCoordinator.swift in Sources */,
 				2A3CDDF829D3AFB400BCF348 /* FirstViewController.swift in Sources */,
 				2AEF7B1829E529F800CA5A93 /* LogoLabel.swift in Sources */,
+				437BF0992A23495900878D89 /* MakeCardContainer.swift in Sources */,
 				43CEE77829C2D69500AC7B28 /* AppDelegate.swift in Sources */,
 				439E953E29D568B500F104EF /* LoginCoordinatorImpl.swift in Sources */,
 				439E952129D51B6D00F104EF /* EventManager.swift in Sources */,
@@ -973,8 +987,10 @@
 				43CEE77A29C2D69500AC7B28 /* SceneDelegate.swift in Sources */,
 				439E952F29D5275F00F104EF /* LoginViewController.swift in Sources */,
 				4399C61E29D8918900794E69 /* MainTabCoordinator.swift in Sources */,
+				434CB0E02A1CB5DA0091EE76 /* BackBtn.swift in Sources */,
 				2A3CDDEC29D3AB7700BCF348 /* MainTabBarViewController.swift in Sources */,
 				4399C60129D889CD00794E69 /* LoginService.swift in Sources */,
+				434CB0DC2A1CAC510091EE76 /* UITextField+Extension.swift in Sources */,
 				2A3CDDFC29D3B04F00BCF348 /* ThirdViewController.swift in Sources */,
 				43DCDBC829DE8A8400FFE1F9 /* UIColor+Extension.swift in Sources */,
 				2A3CDDFA29D3B01F00BCF348 /* SecondViewContorller.swift in Sources */,
