@@ -30,5 +30,7 @@
 			</array>
 		</dict>
 	</dict>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>이 앱에서 사진 라이브러리에 접근하려면 권한이 필요합니다.</string>
 </dict>
 </plist>

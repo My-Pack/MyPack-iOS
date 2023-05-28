@@ -8,6 +8,7 @@
 import UIKit
 
 class MainTabBarViewModel {
+    weak var mainTabCoordinator: MainTabBarCoordinator?
     private let tabs: [Tab] = [.first, .second, .third]
 
     func getTabsCount() -> Int {

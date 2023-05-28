@@ -5,15 +5,24 @@
 //  Created by 김하은 on 2023/03/29.
 //
 
-import Foundation
 import UIKit
 
 class SecondViewModel {
     let title: String
     let message: String
+    @Published var pickedImage: UIImage?
+    @Published var isPicked: Bool = false
 
     init() {
         self.title = "Second"
         self.message = "This is the second tab."
+    }
+
+    func setPickedImage(img: UIImage) {
+        pickedImage = img
+    }
+
+    func setIsPicked(bool: Bool) {
+        isPicked = bool
     }
 }

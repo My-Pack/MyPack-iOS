@@ -16,6 +16,7 @@ class MainTabBarCoordinatorImpl: MainTabBarCoordinator {
 
     func start(userName: String) {
         let viewModel = MainTabBarViewModel()
+        viewModel.mainTabCoordinator = self
         let mainTabBarViewController = MainTabBarViewController(viewModel: viewModel)
 
         let firstViewModel = FirstViewModel(userName: userName, mainTabBarCoordinator: self)
@@ -24,7 +25,7 @@ class MainTabBarCoordinatorImpl: MainTabBarCoordinator {
 
         let secondViewModel = SecondViewModel()
         let secondViewController = SecondViewController(viewModel: secondViewModel)
-        secondViewController.tabBarItem = UITabBarItem(title: viewModel.title(at: 1), image: UIImage(systemName: "2.circle"), tag: 1)
+        secondViewController.tabBarItem = UITabBarItem(title: viewModel.title(at: 1), image: UIImage(systemName: "plus.circle"), tag: 1)
 
         let thirdViewModel = ThirdViewModel()
         let thirdViewController = ThirdViewController(viewModel: thirdViewModel)
@@ -37,5 +38,9 @@ class MainTabBarCoordinatorImpl: MainTabBarCoordinator {
     func toSearchView() {
         let searchViewCoordinator = SearchViewCoordinatorImpl(navigationController: navigationController)
         searchViewCoordinator.start()
+    }
+
+    func toSecondView(vc: UIViewController) {
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
