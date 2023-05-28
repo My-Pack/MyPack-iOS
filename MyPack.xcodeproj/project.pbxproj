@@ -27,7 +27,6 @@
 		434CB0DE2A1CB3B90091EE76 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434CB0DD2A1CB3B90091EE76 /* SearchViewModel.swift */; };
 		434CB0E02A1CB5DA0091EE76 /* BackBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434CB0DF2A1CB5DA0091EE76 /* BackBtn.swift */; };
 		43686F1829F56614006764EE /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43686F1729F56614006764EE /* LoginAPI.swift */; };
-		437BF0992A23495900878D89 /* MakeCardContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437BF0982A23495900878D89 /* MakeCardContainer.swift */; };
 		4399C5E429D84A9300794E69 /* MyPackNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4399C5D129D84A9300794E69 /* MyPackNetwork.framework */; };
 		4399C5E529D84A9300794E69 /* MyPackNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4399C5D129D84A9300794E69 /* MyPackNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4399C5F129D84B0400794E69 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399C5F029D84B0400794E69 /* APIClient.swift */; };
@@ -133,7 +132,6 @@
 		434CB0DD2A1CB3B90091EE76 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		434CB0DF2A1CB5DA0091EE76 /* BackBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBtn.swift; sourceTree = "<group>"; };
 		43686F1729F56614006764EE /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
-		437BF0982A23495900878D89 /* MakeCardContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCardContainer.swift; sourceTree = "<group>"; };
 		4399C5D129D84A9300794E69 /* MyPackNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyPackNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4399C5F029D84B0400794E69 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		4399C5F229D84B1B00794E69 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -410,7 +408,6 @@
 				43DCDBC429DE4A4900FFE1F9 /* Card.swift */,
 				431236CB29DEE955003FAB5D /* CardDeck.swift */,
 				439ABEC52A1C942B00974B8C /* SearchBtn.swift */,
-				437BF0982A23495900878D89 /* MakeCardContainer.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -974,7 +971,6 @@
 				439ABEC22A1C92B400974B8C /* SearchViewCoordinator.swift in Sources */,
 				2A3CDDF829D3AFB400BCF348 /* FirstViewController.swift in Sources */,
 				2AEF7B1829E529F800CA5A93 /* LogoLabel.swift in Sources */,
-				437BF0992A23495900878D89 /* MakeCardContainer.swift in Sources */,
 				43CEE77829C2D69500AC7B28 /* AppDelegate.swift in Sources */,
 				439E953E29D568B500F104EF /* LoginCoordinatorImpl.swift in Sources */,
 				439E952129D51B6D00F104EF /* EventManager.swift in Sources */,
