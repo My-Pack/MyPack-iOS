@@ -77,17 +77,31 @@ class SecondViewController: UIViewController {
     let containerView: UIView = {
         let view = UIView()
         view.isHidden = true
+        view.isUserInteractionEnabled = true
         return view
     }()
 
-    let selectedImage: UIImageView = {
+    lazy var selectedImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.borderWidth = 5
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.cornerRadius = 16
         imageView.clipsToBounds = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backFlipView))
+        imageView.addGestureRecognizer(tapGesture)
+        imageView.isUserInteractionEnabled = true
         return imageView
+    }()
+
+    lazy var backView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 16
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(frontFlipView))
+        view.addGestureRecognizer(tapGesture)
+        view.isUserInteractionEnabled = true
+        return view
     }()
 
     init(viewModel: SecondViewModel) {
@@ -130,7 +144,7 @@ private extension SecondViewController {
             }
         }.store(in: &disposableBag)
 
-        viewModel.$cardStyle.sink { color in
+        viewModel.$cardStyle.sink { [self] color in
             self.selectedImage.layer.borderColor = color.cgColor
             self.containerView.layer.shadowColor = color.cgColor
             self.containerView.layer.shadowRadius = 16
@@ -148,6 +162,7 @@ extension SecondViewController {
         view.addSubview(backBtn)
         view.addSubview(styleScrollView)
         view.addSubview(containerView)
+        containerView.addSubview(backView)
         containerView.addSubview(selectedImage)
     }
 
@@ -168,19 +183,27 @@ extension SecondViewController {
             label.top.equalTo(view.safeAreaLayoutGuide)
             label.trailing.equalTo(-16)
         }
+        containerView.snp.makeConstraints { view in
+            view.width.equalTo(280)
+            view.height.equalTo(400)
+            view.center.equalTo(self.view)
+        }
         selectedImage.snp.makeConstraints { img in
             img.width.equalTo(280)
             img.height.equalTo(400)
-            img.center.equalTo(self.view)
+            img.center.equalToSuperview()
+        }
+        backView.snp.makeConstraints { view in
+            view.width.equalTo(280)
+            view.height.equalTo(400)
+            view.center.equalToSuperview()
         }
         backBtn.snp.makeConstraints { btn in
             btn.top.equalTo(view.safeAreaLayoutGuide)
             btn.leading.equalTo(16)
         }
     }
-}
 
-extension SecondViewController {
     func scrollSetting() {
         let stackView = UIStackView(arrangedSubviews: styles)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -204,6 +227,18 @@ extension SecondViewController {
                 style.width.equalTo(styleSize)
             }
         }
+    }
+}
+
+// MARK: - @Objc
+
+extension SecondViewController {
+    @objc func backFlipView() {
+        UIView.transition(from: selectedImage, to: backView, duration: 0.5, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
+    }
+
+    @objc func frontFlipView() {
+        UIView.transition(from: backView, to: selectedImage, duration: 0.5, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
     }
 }
 
