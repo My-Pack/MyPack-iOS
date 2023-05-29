@@ -10,7 +10,7 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-    var loginCoordinator: LoginCoordinatorProtocol?
+    var loginCoordinator: LoginCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo _: UISceneSession, options _: UIScene.ConnectionOptions) {
         // UIWindowScene에서 window 인스턴스 생성
@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         GIDSignIn.sharedInstance.configuration = config
 
         let navigationController = UINavigationController()
+        navigationController.isNavigationBarHidden = true
         loginCoordinator = LoginCoordinatorImpl(navigationController: navigationController)
         loginCoordinator?.didLoginSuccessfully(userName: "jito")
 

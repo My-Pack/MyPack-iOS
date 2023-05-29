@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol LoginServiceProtocol {
+protocol LoginService {
     func login(token: String) async throws -> UserModel?
 }

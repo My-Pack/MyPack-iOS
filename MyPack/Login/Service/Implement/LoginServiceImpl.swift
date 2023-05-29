@@ -8,7 +8,7 @@
 import Foundation
 import MyPackNetwork
 
-class LoginServiceImpl: LoginServiceProtocol {
+class LoginServiceImpl: LoginService {
     let api = LoginAPI()
 
     func login(token: String) async throws -> UserModel? {
