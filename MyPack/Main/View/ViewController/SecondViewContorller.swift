@@ -15,12 +15,44 @@ import UIKit
 class SecondViewController: UIViewController {
     private let viewModel: SecondViewModel
     private var disposableBag = Set<AnyCancellable>()
+    private let styleSize: CGFloat = 46
+
+    lazy var styles: [UIButton] = {
+        var styles: [UIButton] = []
+        styles.append(contentsOf: [
+            StyleButton(color: UIColor(rgb: 0xC501E2), viewModel: viewModel),
+            StyleButton(color: UIColor(rgb: 0x2EF8A0), viewModel: viewModel),
+            StyleButton(color: UIColor(rgb: 0xE7C500), viewModel: viewModel),
+            StyleButton(color: UIColor(rgb: 0xF82D97), viewModel: viewModel),
+            StyleButton(color: UIColor(rgb: 0xE830CE), viewModel: viewModel)
+        ])
+        return styles
+    }()
+
+    let styleScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
+        scrollView.isHidden = true
+        return scrollView
+    }()
 
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Make it!"
         label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         return label
+    }()
+
+    lazy var backBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+        btn.tintColor = .white
+        btn.addAction(UIAction(handler: { _ in
+            self.navigationController?.popViewController(animated: true)
+        }), for: .touchUpInside)
+        return btn
     }()
 
     lazy var plusBtn: UIButton = {
@@ -42,12 +74,19 @@ class SecondViewController: UIViewController {
         return btn
     }()
 
-    let seletedImage: UIImageView = {
+    let containerView: UIView = {
+        let view = UIView()
+        view.isHidden = true
+        return view
+    }()
+
+    let selectedImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.borderWidth = 5
-        imageView.layer.borderColor = UIColor.systemGray.cgColor
+        imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.cornerRadius = 16
+        imageView.clipsToBounds = true
         return imageView
     }()
 
@@ -71,6 +110,7 @@ extension SecondViewController {
         setBindings()
         addUI()
         setLayout()
+        scrollSetting()
     }
 }
 
@@ -79,11 +119,22 @@ extension SecondViewController {
 private extension SecondViewController {
     func setBindings() {
         viewModel.$pickedImage.sink { img in
-            self.seletedImage.image = img
+            self.selectedImage.image = img
         }.store(in: &disposableBag)
 
         viewModel.$isPicked.sink { picked in
-            if picked { self.plusBtn.isHidden = true }
+            if picked {
+                self.plusBtn.isHidden = true
+                self.containerView.isHidden = false
+                self.styleScrollView.isHidden = false
+            }
+        }.store(in: &disposableBag)
+
+        viewModel.$cardStyle.sink { color in
+            self.selectedImage.layer.borderColor = color.cgColor
+            self.containerView.layer.shadowColor = color.cgColor
+            self.containerView.layer.shadowRadius = 16
+            self.containerView.layer.shadowOpacity = 0.6
         }.store(in: &disposableBag)
     }
 }
@@ -94,10 +145,20 @@ extension SecondViewController {
     func addUI() {
         view.addSubview(plusBtn)
         view.addSubview(titleLabel)
-        view.addSubview(seletedImage)
+        view.addSubview(backBtn)
+        view.addSubview(styleScrollView)
+        view.addSubview(containerView)
+        containerView.addSubview(selectedImage)
     }
 
     func setLayout() {
+        styleScrollView.snp.makeConstraints { scroll in
+            scroll.centerX.equalTo(self.view)
+            scroll.leading.equalTo(0)
+            scroll.trailing.equalTo(0)
+            scroll.bottom.equalTo(self.view).offset(-100)
+            scroll.height.equalTo(styleSize)
+        }
         plusBtn.snp.makeConstraints { btn in
             btn.width.equalTo(280)
             btn.height.equalTo(400)
@@ -105,12 +166,43 @@ extension SecondViewController {
         }
         titleLabel.snp.makeConstraints { label in
             label.top.equalTo(view.safeAreaLayoutGuide)
-            label.leading.equalTo(16)
+            label.trailing.equalTo(-16)
         }
-        seletedImage.snp.makeConstraints { img in
+        selectedImage.snp.makeConstraints { img in
             img.width.equalTo(280)
             img.height.equalTo(400)
             img.center.equalTo(self.view)
+        }
+        backBtn.snp.makeConstraints { btn in
+            btn.top.equalTo(view.safeAreaLayoutGuide)
+            btn.leading.equalTo(16)
+        }
+    }
+}
+
+extension SecondViewController {
+    func scrollSetting() {
+        let stackView = UIStackView(arrangedSubviews: styles)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.spacing = 30
+        stackView.distribution = .fillEqually
+
+        styleScrollView.addSubview(stackView)
+
+        let guide = styleScrollView.contentLayoutGuide
+        stackView.snp.makeConstraints { view in
+            view.leading.equalTo(guide)
+            view.trailing.equalTo(guide)
+            view.top.equalTo(guide)
+            view.bottom.equalTo(guide)
+            view.height.equalTo(styleSize)
+        }
+
+        for style in styles {
+            style.snp.makeConstraints { style in
+                style.width.equalTo(styleSize)
+            }
         }
     }
 }

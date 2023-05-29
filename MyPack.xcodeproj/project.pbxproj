@@ -27,6 +27,7 @@
 		434CB0DE2A1CB3B90091EE76 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434CB0DD2A1CB3B90091EE76 /* SearchViewModel.swift */; };
 		434CB0E02A1CB5DA0091EE76 /* BackBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434CB0DF2A1CB5DA0091EE76 /* BackBtn.swift */; };
 		43686F1829F56614006764EE /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43686F1729F56614006764EE /* LoginAPI.swift */; };
+		436D7B0C2A24CA880073E054 /* StyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D7B0B2A24CA880073E054 /* StyleButton.swift */; };
 		437BF09C2A23A6A300878D89 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437BF09B2A23A6A300878D89 /* UIImage+Extension.swift */; };
 		4399C5E429D84A9300794E69 /* MyPackNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4399C5D129D84A9300794E69 /* MyPackNetwork.framework */; };
 		4399C5E529D84A9300794E69 /* MyPackNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4399C5D129D84A9300794E69 /* MyPackNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -133,6 +134,7 @@
 		434CB0DD2A1CB3B90091EE76 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		434CB0DF2A1CB5DA0091EE76 /* BackBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBtn.swift; sourceTree = "<group>"; };
 		43686F1729F56614006764EE /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		436D7B0B2A24CA880073E054 /* StyleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleButton.swift; sourceTree = "<group>"; };
 		437BF09B2A23A6A300878D89 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		4399C5D129D84A9300794E69 /* MyPackNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyPackNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4399C5F029D84B0400794E69 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				43DCDBC429DE4A4900FFE1F9 /* Card.swift */,
 				431236CB29DEE955003FAB5D /* CardDeck.swift */,
 				439ABEC52A1C942B00974B8C /* SearchBtn.swift */,
+				436D7B0B2A24CA880073E054 /* StyleButton.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -991,6 +994,7 @@
 				4399C60129D889CD00794E69 /* LoginService.swift in Sources */,
 				434CB0DC2A1CAC510091EE76 /* UITextField+Extension.swift in Sources */,
 				2A3CDDFC29D3B04F00BCF348 /* ThirdViewController.swift in Sources */,
+				436D7B0C2A24CA880073E054 /* StyleButton.swift in Sources */,
 				43DCDBC829DE8A8400FFE1F9 /* UIColor+Extension.swift in Sources */,
 				437BF09C2A23A6A300878D89 /* UIImage+Extension.swift in Sources */,
 				2A3CDDFA29D3B01F00BCF348 /* SecondViewContorller.swift in Sources */,

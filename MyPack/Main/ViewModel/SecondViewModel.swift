@@ -12,6 +12,7 @@ class SecondViewModel {
     let message: String
     @Published var pickedImage: UIImage?
     @Published var isPicked: Bool = false
+    @Published var cardStyle: UIColor = .white
 
     init() {
         self.title = "Second"
@@ -24,5 +25,9 @@ class SecondViewModel {
 
     func setIsPicked(bool: Bool) {
         isPicked = bool
+    }
+
+    func setCardStyle(color: UIColor) {
+        cardStyle = color
     }
 }
