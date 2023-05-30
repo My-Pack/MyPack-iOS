@@ -37,7 +37,6 @@ class SearchViewController: UIViewController {
     init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
         self.backBtn = BackBtn(viewModel: viewModel)
-
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .darkGray
     }
