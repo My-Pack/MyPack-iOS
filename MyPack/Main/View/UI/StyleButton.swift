@@ -14,7 +14,7 @@ class StyleButton: UIButton {
         addAction(UIAction { _ in
             viewModel.setCardStyle(color: color)
         }, for: .touchUpInside)
-        layer.borderColor = UIColor.darkGray.cgColor
+        layer.borderColor = UIColor.white.cgColor
         layer.borderWidth = 2
         layer.cornerRadius = 23
     }

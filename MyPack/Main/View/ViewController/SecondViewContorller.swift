@@ -55,6 +55,24 @@ class SecondViewController: UIViewController {
         return btn
     }()
 
+    let cardTitle: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "타이틀을 입력해주세요."
+        textField.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        textField.textColor = .darkGray
+        textField.setPlaceholder(color: .gray)
+        return textField
+    }()
+
+    let cardContent: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "본문을 입력해주세요."
+        textField.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        textField.textColor = .darkGray
+        textField.setPlaceholder(color: .gray)
+        return textField
+    }()
+
     lazy var plusBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage(systemName: "plus.circle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40)), for: .normal)
@@ -97,6 +115,8 @@ class SecondViewController: UIViewController {
     lazy var backView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
+        view.layer.borderWidth = 5
+        view.layer.borderColor = UIColor.white.cgColor
         view.layer.cornerRadius = 16
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(frontFlipView))
         view.addGestureRecognizer(tapGesture)
@@ -146,6 +166,7 @@ private extension SecondViewController {
 
         viewModel.$cardStyle.sink { [self] color in
             self.selectedImage.layer.borderColor = color.cgColor
+            self.backView.layer.borderColor = color.cgColor
             self.containerView.layer.shadowColor = color.cgColor
             self.containerView.layer.shadowRadius = 16
             self.containerView.layer.shadowOpacity = 0.6
@@ -164,6 +185,8 @@ extension SecondViewController {
         view.addSubview(containerView)
         containerView.addSubview(backView)
         containerView.addSubview(selectedImage)
+        backView.addSubview(cardTitle)
+        backView.addSubview(cardContent)
     }
 
     func setLayout() {
@@ -201,6 +224,14 @@ extension SecondViewController {
         backBtn.snp.makeConstraints { btn in
             btn.top.equalTo(view.safeAreaLayoutGuide)
             btn.leading.equalTo(16)
+        }
+        cardTitle.snp.makeConstraints { label in
+            label.top.equalToSuperview().offset(16)
+            label.leading.equalToSuperview().offset(16)
+        }
+        cardContent.snp.makeConstraints { label in
+            label.top.equalTo(cardTitle.snp.bottom).offset(16)
+            label.leading.equalToSuperview().offset(16)
         }
     }
 
@@ -241,6 +272,8 @@ extension SecondViewController {
         UIView.transition(from: backView, to: selectedImage, duration: 0.5, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
     }
 }
+
+// MARK: - PHPickerViewControllerDelegate
 
 extension SecondViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
