@@ -12,24 +12,22 @@ struct LoginRequest: Codable {
     var clientId: String
 }
 
-struct LoginResponse: Codable {
-    var accessToken: String
-    var refreshToken: String
+public struct LoginResponse: Codable {
+    public var accessToken: String
+    public var refreshToken: String
 }
 
 public class LoginAPI {
     public init() {}
 
-    public func fetchData(token: String) async throws -> UserDto {
+    public func fetchData(token: String) async throws -> LoginResponse {
         let loginRequest = LoginRequest(credential: token, clientId: APIClient.shared.clientId)
         let parameters = APIClient.shared.convertToDictionary(loginRequest)
 
         do {
             let data = try await APIClient.shared.post(endPoint: "/auth/google", parameters: parameters)
             let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
-            print("User Response:", loginResponse)
-            let userDto = UserDto(name: "jito")
-            return userDto
+            return loginResponse
         } catch {
             throw error
         }

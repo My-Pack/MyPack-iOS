@@ -19,8 +19,10 @@ class LoginViewModel {
 
     private func fetchUserName(token: String) async -> String? {
         do {
-            let userModel = try await loginService.login(token: token)
-            return userModel?.name
+            let loginToken = try await loginService.login(token: token)
+
+            UserDefaults.standard.set(loginToken?.accessToken, forKey: "UserToken")
+            return "name"
         } catch {
             print("Error: \(error.localizedDescription)")
             return nil

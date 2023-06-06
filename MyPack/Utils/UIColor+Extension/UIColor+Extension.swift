@@ -49,4 +49,15 @@ extension UIColor {
 
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
+
+    var toHexString: String {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+
+        return String(format: "#%02lX%02lX%02lX", lroundf(Float(r) * 255), lroundf(Float(g) * 255), lroundf(Float(b) * 255))
+    }
 }

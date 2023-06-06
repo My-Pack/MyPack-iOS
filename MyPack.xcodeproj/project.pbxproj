@@ -25,6 +25,8 @@
 		430611F82A2F22A000FE6130 /* MyPackCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430611F72A2F22A000FE6130 /* MyPackCardTests.swift */; };
 		430611FA2A2F22B400FE6130 /* CardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430611F92A2F22B400FE6130 /* CardAPI.swift */; };
 		430611FD2A2F231A00FE6130 /* CardDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430611FC2A2F231A00FE6130 /* CardDto.swift */; };
+		430611FF2A2F33E500FE6130 /* CardServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430611FE2A2F33E500FE6130 /* CardServiceImpl.swift */; };
+		430612012A2F33F600FE6130 /* CardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430612002A2F33F600FE6130 /* CardService.swift */; };
 		4306BB5329C9A00900C2971E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4306BB5229C9A00900C2971E /* SnapKit */; };
 		431236CC29DEE955003FAB5D /* CardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431236CB29DEE955003FAB5D /* CardDeck.swift */; };
 		434691AE29C2FB840053AF5A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 434691AD29C2FB840053AF5A /* .swiftlint.yml */; };
@@ -139,6 +141,8 @@
 		430611F72A2F22A000FE6130 /* MyPackCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPackCardTests.swift; sourceTree = "<group>"; };
 		430611F92A2F22B400FE6130 /* CardAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAPI.swift; sourceTree = "<group>"; };
 		430611FC2A2F231A00FE6130 /* CardDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDto.swift; sourceTree = "<group>"; };
+		430611FE2A2F33E500FE6130 /* CardServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardServiceImpl.swift; sourceTree = "<group>"; };
+		430612002A2F33F600FE6130 /* CardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardService.swift; sourceTree = "<group>"; };
 		431236CB29DEE955003FAB5D /* CardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeck.swift; sourceTree = "<group>"; };
 		434691AD29C2FB840053AF5A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		434691B029C2FC950053AF5A /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
@@ -452,6 +456,7 @@
 		4399C61129D88D7C00794E69 /* Implement */ = {
 			isa = PBXGroup;
 			children = (
+				430611FE2A2F33E500FE6130 /* CardServiceImpl.swift */,
 			);
 			path = Implement;
 			sourceTree = "<group>";
@@ -459,6 +464,7 @@
 		4399C61229D88D8200794E69 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				430612002A2F33F600FE6130 /* CardService.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1000,6 +1006,7 @@
 			files = (
 				439E953429D52E0400F104EF /* LoginButton.swift in Sources */,
 				2AEF7B1129E5245700CA5A93 /* ImageView.swift in Sources */,
+				430612012A2F33F600FE6130 /* CardService.swift in Sources */,
 				2A3CDDF329D3AE6C00BCF348 /* SecondViewModel.swift in Sources */,
 				43DCDBC529DE4A4900FFE1F9 /* Card.swift in Sources */,
 				431236CC29DEE955003FAB5D /* CardDeck.swift in Sources */,
@@ -1035,6 +1042,7 @@
 				436D7B0C2A24CA880073E054 /* StyleButton.swift in Sources */,
 				43DCDBC829DE8A8400FFE1F9 /* UIColor+Extension.swift in Sources */,
 				437BF09C2A23A6A300878D89 /* UIImage+Extension.swift in Sources */,
+				430611FF2A2F33E500FE6130 /* CardServiceImpl.swift in Sources */,
 				2A3CDDFA29D3B01F00BCF348 /* SecondViewContorller.swift in Sources */,
 				4399C62029D8919A00794E69 /* MainTabCoordinatorImpl.swift in Sources */,
 			);

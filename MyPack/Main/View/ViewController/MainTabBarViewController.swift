@@ -45,7 +45,7 @@ private extension MainTabBarViewController {
 extension MainTabBarViewController: UITabBarControllerDelegate {
     func tabBarController(_: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController == viewControllers?[1] {
-            let secondViewModel = SecondViewModel()
+            let secondViewModel = SecondViewModel(mainTabBarCoordinator: viewModel.mainTabCoordinator!)
             let secondViewController = SecondViewController(viewModel: secondViewModel)
             viewModel.mainTabCoordinator?.toSecondView(vc: secondViewController)
             return false

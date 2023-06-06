@@ -11,8 +11,8 @@ import MyPackNetwork
 class LoginServiceImpl: LoginService {
     let api = LoginAPI()
 
-    func login(token: String) async throws -> UserModel? {
-        try await api.fetchData(token: token).toUserModel()
+    func login(token: String) async throws -> LoginResponse? {
+        try await api.fetchData(token: token)
     }
 }
 
