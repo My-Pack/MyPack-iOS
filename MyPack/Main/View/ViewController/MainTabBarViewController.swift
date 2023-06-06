@@ -29,6 +29,7 @@ class MainTabBarViewController: UITabBarController {
 extension MainTabBarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        delegate = self
         view.backgroundColor = .white
 
         setBindings()
@@ -39,4 +40,17 @@ extension MainTabBarViewController {
 
 private extension MainTabBarViewController {
     func setBindings() {}
+}
+
+extension MainTabBarViewController: UITabBarControllerDelegate {
+    func tabBarController(_: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if viewController == viewControllers?[1] {
+            let secondViewModel = SecondViewModel()
+            let secondViewController = SecondViewController(viewModel: secondViewModel)
+            viewModel.mainTabCoordinator?.toSecondView(vc: secondViewController)
+            return false
+        }
+
+        return true
+    }
 }
