@@ -15,7 +15,6 @@ public class CardAPI {
         do {
             let data = try await APIClient.shared.post(endPoint: "/cards", parameters: parameters, token: token)
             let cardResponse = try JSONDecoder().decode(CardResponse.self, from: data)
-            print(cardResponse)
             return cardResponse.toDto()
         } catch {
             throw error
@@ -26,7 +25,6 @@ public class CardAPI {
         do {
             let data = try await APIClient.shared.get(endPoint: "/cards")
             let cardListResponse = try JSONDecoder().decode(CardListResponse.self, from: data)
-            print(cardListResponse)
             return cardListResponse.toDto()
         }
     }

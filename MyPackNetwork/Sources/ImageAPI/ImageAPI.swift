@@ -30,7 +30,6 @@ public class ImageAPI {
         do {
             let data = try await APIClient.shared.uploadImage(endPoint: "/images", imageData: image, fileName: fileName)
             let imageResponse = try JSONDecoder().decode(ImageResponse.self, from: data)
-            print("Image Response:", imageResponse)
             return imageResponse.toDto()
         } catch {
             throw error

@@ -51,10 +51,6 @@ class SecondViewModel {
     }
 
     func isValidCardData() -> Bool {
-        print(cardTitle)
-        print(cardContent)
-        print(cardColor)
-        print(cardTheme)
         guard cardTitle.count > 0 else { return false }
         guard cardContent.count > 0 else { return false }
         guard cardColor.count > 0 else { return false }

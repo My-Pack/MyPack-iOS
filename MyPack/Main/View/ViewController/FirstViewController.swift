@@ -15,13 +15,14 @@ import UIKit
 class FirstViewController: UIViewController {
     private let viewModel: FirstViewModel
     private var disposableBag = Set<AnyCancellable>()
-    private var cardDeck: CardDeck = .init()
+    private var cardDeck: CardDeck = .init(cardDeck: [])
     private var searchBtn: SearchBtn
     private var emitterAnimators = [EmitterAnimator]()
 
     init(viewModel: FirstViewModel) {
         self.viewModel = viewModel
         self.searchBtn = SearchBtn(viewModel: self.viewModel)
+        viewModel.getCardList(token: "")
         super.init(nibName: nil, bundle: nil)
 
         view.backgroundColor = UIColor(rgb: 0x222222)
@@ -52,6 +53,10 @@ private extension FirstViewController {
         viewModel.$userName.sink { userName in
             print("user: \(userName)")
             self.updateUser(userName: userName)
+        }.store(in: &disposableBag)
+
+        viewModel.$cardDeck.sink { cardList in
+            self.cardDeck = cardList
         }.store(in: &disposableBag)
     }
 }

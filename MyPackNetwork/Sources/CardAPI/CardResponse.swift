@@ -7,18 +7,18 @@
 
 import Foundation
 
-struct CardResponse: Codable {
-    var id: Int
-    var title: String
-    var content: String
-    var imageUrl: String
-    var color: String
-    var theme: String
-    var likeCount: Int
-    var commentCount: Int
-    var memberName: String
-    var createdAt: String
-    var updatedAt: String
+public struct CardResponse: Codable {
+    public var id: Int
+    public var title: String
+    public var content: String
+    public var imageUrl: String
+    public var color: String
+    public var theme: String
+    public var likeCount: Int
+    public var commentCount: Int
+    public var memberName: String
+    public var createdAt: String
+    public var updatedAt: String
 
     func toDto() -> CardDto {
         return CardDto(

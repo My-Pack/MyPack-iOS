@@ -20,4 +20,9 @@ class CardServiceImpl: CardService {
         let imageData = try await imageApi.uploadImage(image: image, fileName: fileName)
         return imageData.id
     }
+
+    func getCardList(token: String) async throws -> CardListDto {
+        let cardList = try await cardApi.getCardList(token: token)
+        return cardList
+    }
 }

@@ -19,7 +19,8 @@ class MainTabBarCoordinatorImpl: MainTabBarCoordinator {
         viewModel.mainTabCoordinator = self
         let mainTabBarViewController = MainTabBarViewController(viewModel: viewModel)
 
-        let firstViewModel = FirstViewModel(userName: userName, mainTabBarCoordinator: self)
+        let cardService = CardServiceImpl()
+        let firstViewModel = FirstViewModel(userName: userName, mainTabBarCoordinator: self, cardService: cardService)
         let firstViewController = FirstViewController(viewModel: firstViewModel)
         firstViewController.tabBarItem = UITabBarItem(title: viewModel.title(at: 0), image: UIImage(systemName: "1.circle"), tag: 0)
 

@@ -20,7 +20,6 @@ protocol CardDelegate: AnyObject {
 
 struct CardEffect {
     var image: String
-    var color: UIColor
 }
 
 // MARK: - 생성자
@@ -29,6 +28,7 @@ class Card: UIView {
     weak var delegate: CardDelegate?
     var effect: [CardEffect]?
     private var color: UIColor?
+    private var image: UIImage?
     private let cardAnimator: CardAnimator = .init()
     private var startLocation: CGPoint = .zero
     private var startRotate: CGPoint = .zero
@@ -37,17 +37,18 @@ class Card: UIView {
     private var flipSecondPoint = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
     private var icon: UIImageView!
 
-    init(isInteraction: Bool = true, color: UIColor = .clear, effect: [CardEffect] = [CardEffect(image: "none", color: UIColor.gray)]) {
-        super.init(frame: CGRect.zero)
+    init(isInteraction: Bool = true, color: UIColor = .white, effect: [CardEffect] = [CardEffect(image: "none")], image: UIImage) {
+        self.image = image
         self.color = color
-        self.backgroundColor = color
         self.effect = effect
+        super.init(frame: CGRect.zero)
 
+        self.backgroundColor = color
         layer.borderWidth = 3
-        layer.borderColor = effect.first!.color.cgColor
+        layer.borderColor = color.cgColor
 
         layer.cornerRadius = 10
-        layer.shadowColor = UIColor.white.cgColor
+        layer.shadowColor = color.cgColor
         layer.shadowRadius = 16
         layer.shadowOpacity = 0.35
 
@@ -59,6 +60,16 @@ class Card: UIView {
             make.trailing.equalToSuperview().offset(-8)
             make.width.equalTo(20)
             make.height.equalTo(20)
+        }
+
+        let imageView = UIImageView(image: image)
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 16
+        addSubview(imageView)
+        imageView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
         }
 
         self.isUserInteractionEnabled = isInteraction

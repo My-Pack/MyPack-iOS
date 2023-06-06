@@ -8,27 +8,27 @@
 import Foundation
 
 public struct CardListDto {
-    var content: [CardResponse]
-    var number: Int
-    var sort: SortDto
-    var pageable: PageableDto
-    var first: Bool
-    var numberOfElements: Int
-    var last: Bool
-    var empty: Bool
+    public var content: [CardResponse]
+    public var number: Int
+    public var sort: SortDto
+    public var pageable: PageableDto
+    public var first: Bool
+    public var numberOfElements: Int
+    public var last: Bool
+    public var empty: Bool
 }
 
 public struct SortDto {
-    var empty: Bool
-    var sorted: Bool
-    var unsorted: Bool
+    public var empty: Bool
+    public var sorted: Bool
+    public var unsorted: Bool
 }
 
 public struct PageableDto {
-    var offset: Int
-    var sort: SortDto
-    var pageNumber: Int
-    var pageSize: Int
-    var paged: Bool
-    var unpaged: Bool
+    public var offset: Int
+    public var sort: SortDto
+    public var pageNumber: Int
+    public var pageSize: Int
+    public var paged: Bool
+    public var unpaged: Bool
 }

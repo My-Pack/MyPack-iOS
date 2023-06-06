@@ -11,4 +11,5 @@ import UIKit
 protocol CardService {
     func uploadImage(token: String, image: Data, fileName: String) async throws -> Int
     func uploadCard(token: String, cardRequest: CardRequest) async throws -> CardDto
+    func getCardList(token: String) async throws -> CardListDto
 }

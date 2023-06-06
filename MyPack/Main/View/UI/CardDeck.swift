@@ -9,17 +9,16 @@ import Foundation
 import UIKit
 
 class CardDeck: UIView {
-    var cardDeck: [Card] = [
-        Card(isInteraction: false, color: .white),
-        Card(isInteraction: false, color: .white, effect: [CardEffect(image: "heart", color: UIColor(rgb: 0xF699CD))]),
-        Card(isInteraction: true, color: .white, effect: [CardEffect(image: "star_gold", color: UIColor(rgb: 0xE5B80B)),
-                                                          CardEffect(image: "heart_gold", color: UIColor(rgb: 0xE5B80B))])
-    ]
+    var cardDeck: [Card] = []
 
-    init() {
+    init(cardDeck: [Card] = []) {
         super.init(frame: CGRect.zero)
         self.backgroundColor = .clear
         self.isUserInteractionEnabled = true
+
+        if cardDeck.count > 0 {
+            self.cardDeck = cardDeck
+        }
         setPosition()
     }
 
@@ -66,21 +65,21 @@ extension CardDeck: CardDelegate {
     }
 
     func cardDidDisappear(_: Card) {
-        cardDeck.remove(at: cardDeck.firstIndex(where: { $0.isUserInteractionEnabled })!)
-        cardDeck.last?.isUserInteractionEnabled = true
-        cardDeck.last?.layer.zPosition = 1000
-
-        let nextCard = Card(isInteraction: false, color: UIColor.white)
-        addSubview(nextCard)
-
-        nextCard.delegate = self
-        nextCard.layer.zPosition = 0
-        cardDeck.insert(nextCard, at: 1)
-        nextCard.snp.makeConstraints { card in
-            card.width.equalTo(200)
-            card.height.equalTo(300)
-            card.centerX.equalTo(self)
-            card.centerY.equalTo(self)
-        }
+//        cardDeck.remove(at: cardDeck.firstIndex(where: { $0.isUserInteractionEnabled })!)
+//        cardDeck.last?.isUserInteractionEnabled = true
+//        cardDeck.last?.layer.zPosition = 1000
+//
+//        let nextCard = Card(isInteraction: false, color: UIColor.white, image: <#T##UIImage#>)
+//        addSubview(nextCard)
+//
+//        nextCard.delegate = self
+//        nextCard.layer.zPosition = 0
+//        cardDeck.insert(nextCard, at: 1)
+//        nextCard.snp.makeConstraints { card in
+//            card.width.equalTo(200)
+//            card.height.equalTo(300)
+//            card.centerX.equalTo(self)
+//            card.centerY.equalTo(self)
+//        }
     }
 }
