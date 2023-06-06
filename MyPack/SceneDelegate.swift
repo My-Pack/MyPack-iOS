@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = true
         loginCoordinator = LoginCoordinatorImpl(navigationController: navigationController)
-        loginCoordinator?.didLoginSuccessfully(userName: "jito")
+        loginCoordinator?.start()
 
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

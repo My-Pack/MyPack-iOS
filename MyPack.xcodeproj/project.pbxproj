@@ -19,6 +19,12 @@
 		2AEF7B0D29E51F9C00CA5A93 /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF7B0C29E51F9C00CA5A93 /* BoxView.swift */; };
 		2AEF7B1129E5245700CA5A93 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF7B1029E5245700CA5A93 /* ImageView.swift */; };
 		2AEF7B1829E529F800CA5A93 /* LogoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF7B1729E529F800CA5A93 /* LogoLabel.swift */; };
+		430611F22A2F11A800FE6130 /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430611F12A2F11A800FE6130 /* ImageAPI.swift */; };
+		430611F42A2F121D00FE6130 /* ImageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430611F32A2F121D00FE6130 /* ImageDto.swift */; };
+		430611F62A2F147A00FE6130 /* MyPackImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430611F52A2F147A00FE6130 /* MyPackImageTests.swift */; };
+		430611F82A2F22A000FE6130 /* MyPackCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430611F72A2F22A000FE6130 /* MyPackCardTests.swift */; };
+		430611FA2A2F22B400FE6130 /* CardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430611F92A2F22B400FE6130 /* CardAPI.swift */; };
+		430611FD2A2F231A00FE6130 /* CardDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430611FC2A2F231A00FE6130 /* CardDto.swift */; };
 		4306BB5329C9A00900C2971E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4306BB5229C9A00900C2971E /* SnapKit */; };
 		431236CC29DEE955003FAB5D /* CardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431236CB29DEE955003FAB5D /* CardDeck.swift */; };
 		434691AE29C2FB840053AF5A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 434691AD29C2FB840053AF5A /* .swiftlint.yml */; };
@@ -127,6 +133,12 @@
 		2AEF7B0C29E51F9C00CA5A93 /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
 		2AEF7B1029E5245700CA5A93 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		2AEF7B1729E529F800CA5A93 /* LogoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoLabel.swift; sourceTree = "<group>"; };
+		430611F12A2F11A800FE6130 /* ImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPI.swift; sourceTree = "<group>"; };
+		430611F32A2F121D00FE6130 /* ImageDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDto.swift; sourceTree = "<group>"; };
+		430611F52A2F147A00FE6130 /* MyPackImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPackImageTests.swift; sourceTree = "<group>"; };
+		430611F72A2F22A000FE6130 /* MyPackCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPackCardTests.swift; sourceTree = "<group>"; };
+		430611F92A2F22B400FE6130 /* CardAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAPI.swift; sourceTree = "<group>"; };
+		430611FC2A2F231A00FE6130 /* CardDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDto.swift; sourceTree = "<group>"; };
 		431236CB29DEE955003FAB5D /* CardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeck.swift; sourceTree = "<group>"; };
 		434691AD29C2FB840053AF5A /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		434691B029C2FC950053AF5A /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
@@ -219,10 +231,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		430611F02A2F117900FE6130 /* ImageAPI */ = {
+			isa = PBXGroup;
+			children = (
+				430611F12A2F11A800FE6130 /* ImageAPI.swift */,
+				430611F32A2F121D00FE6130 /* ImageDto.swift */,
+			);
+			path = ImageAPI;
+			sourceTree = "<group>";
+		};
+		430611FB2A2F22B900FE6130 /* CardAPI */ = {
+			isa = PBXGroup;
+			children = (
+				430611F92A2F22B400FE6130 /* CardAPI.swift */,
+				430611FC2A2F231A00FE6130 /* CardDto.swift */,
+			);
+			path = CardAPI;
+			sourceTree = "<group>";
+		};
 		43686F1629F565EB006764EE /* LoginAPI */ = {
 			isa = PBXGroup;
 			children = (
 				43686F1729F56614006764EE /* LoginAPI.swift */,
+				4399C62329D9BCC200794E69 /* UserDto.swift */,
 			);
 			path = LoginAPI;
 			sourceTree = "<group>";
@@ -238,10 +269,11 @@
 		4399C5ED29D84ACD00794E69 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				430611FB2A2F22B900FE6130 /* CardAPI */,
+				430611F02A2F117900FE6130 /* ImageAPI */,
 				43686F1629F565EB006764EE /* LoginAPI */,
 				4399C5F029D84B0400794E69 /* APIClient.swift */,
 				4399C5F229D84B1B00794E69 /* APIError.swift */,
-				4399C62329D9BCC200794E69 /* UserDto.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -638,6 +670,8 @@
 			children = (
 				43CEE78E29C2D69500AC7B28 /* MyPackTests.swift */,
 				4399C5F629D8867500794E69 /* MainTabBarViewModelTests.swift */,
+				430611F52A2F147A00FE6130 /* MyPackImageTests.swift */,
+				430611F72A2F22A000FE6130 /* MyPackCardTests.swift */,
 			);
 			path = MyPackTests;
 			sourceTree = "<group>";
@@ -950,9 +984,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				43686F1829F56614006764EE /* LoginAPI.swift in Sources */,
+				430611FD2A2F231A00FE6130 /* CardDto.swift in Sources */,
 				4399C5F129D84B0400794E69 /* APIClient.swift in Sources */,
 				4399C5F329D84B1B00794E69 /* APIError.swift in Sources */,
+				430611FA2A2F22B400FE6130 /* CardAPI.swift in Sources */,
+				430611F22A2F11A800FE6130 /* ImageAPI.swift in Sources */,
 				4399C62429D9BCC200794E69 /* UserDto.swift in Sources */,
+				430611F42A2F121D00FE6130 /* ImageDto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1006,7 +1044,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				430611F62A2F147A00FE6130 /* MyPackImageTests.swift in Sources */,
 				43CEE78F29C2D69500AC7B28 /* MyPackTests.swift in Sources */,
+				430611F82A2F22A000FE6130 /* MyPackCardTests.swift in Sources */,
 				4399C5F729D8867500794E69 /* MainTabBarViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
