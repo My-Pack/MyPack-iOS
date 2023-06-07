@@ -30,7 +30,6 @@ extension MainTabBarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
         setBindings()
     }
 }

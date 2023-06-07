@@ -8,136 +8,100 @@
 import Foundation
 import UIKit
 
-class BottomSheetViewController: UIView {
-    private var viewModel: BottomSheetViewModel
-    private var initialY: CGFloat = 0.0
-
-    var profiles: [ProfileModel] = []
-    private weak var parentView: UIView?
-
-    func setParentView(_ view: UIView) {
-        parentView = view
-    }
-
-    // 리스트 뷰
-    private let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.layer.cornerRadius = 16.0
-        tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        return tableView
+class BottomSheetView: UIView, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    private lazy var separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
     }()
 
-    // ViewModel을 주입받는 초기화 메서드
-    init(viewModel: BottomSheetViewModel) {
-        self.viewModel = viewModel
-        super.init(frame: .zero)
-        setupView()
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-        addGestureRecognizer(panGesture)
+    private lazy var profileButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("프로필 사진 변경", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .darkGray
+        button.addTarget(self, action: #selector(profileButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var backgroundButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("배경 사진 변경", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .darkGray
+        button.addTarget(self, action: #selector(backgroundButtonTapped), for: .touchUpInside)
+        return button
+    }()
+
+    var profileImageSelected: ((UIImage) -> Void)?
+    var backgroundImageSelected: ((UIImage) -> Void)?
+
+    @objc func profileButtonTapped() {
+        print("tap")
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let bottomSheetViewController = windowScene.windows.first?.rootViewController
+        else {
+            return
+        }
+        bottomSheetViewController.present(imagePicker, animated: true, completion: nil)
+    }
+
+    @objc func backgroundButtonTapped() {
+        print("tap")
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let bottomSheetViewController = windowScene.windows.first?.rootViewController
+        else {
+            return
+        }
+        bottomSheetViewController.present(imagePicker, animated: true, completion: nil)
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .darkGray
+        layer.cornerRadius = 10
+        addSubviews()
     }
 
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    private func setupView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-
-        addSubview(tableView)
-
-        tableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        tableView.topAnchor.constraint(equalTo: topAnchor, constant: 10.0).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ProfileCell")
-
-        profiles = fetchProfiles()
-
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-
-        addGestureRecognizer(tapGesture)
-    }
-
-    private func fetchProfiles() -> [ProfileModel] {
-        return []
-    }
-
-    @objc private func handleTap(_: UITapGestureRecognizer) {
-        removeFromSuperview()
-    }
 }
 
-// MARK: - UITableViewDataSource
+extension BottomSheetView {
+    func addSubviews() {
+        addSubview(profileButton)
+        addSubview(separatorView)
+        addSubview(backgroundButton)
 
-extension BottomSheetViewController: UITableViewDataSource {
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return profiles.count + 2
-    }
+        profileButton.translatesAutoresizingMaskIntoConstraints = false
+        separatorView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundButton.translatesAutoresizingMaskIntoConstraints = false
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath)
+        NSLayoutConstraint.activate([
+            profileButton.topAnchor.constraint(equalTo: topAnchor, constant: 30),
+            profileButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            profileButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            profileButton.heightAnchor.constraint(equalToConstant: 30),
 
-        if indexPath.row == 0 {
-            cell.textLabel?.text = "프로필 사진 보기"
-        } else if indexPath.row == 1 {
-            cell.textLabel?.text = "프로필 사진 편집"
-        } else {
-            let profile = profiles[indexPath.row - 2]
-            cell.textLabel?.text = profile.name
-        }
+            separatorView.topAnchor.constraint(equalTo: profileButton.bottomAnchor, constant: 16),
+            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 1),
 
-        return cell
-    }
-}
-
-// MARK: - UITableViewDelegate
-
-extension BottomSheetViewController: UITableViewDelegate {
-    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            print("프로필 사진 보기")
-        } else if indexPath.row == 1 {
-            print("프로필 사진 편집")
-        } else {
-            let selectedProfile = profiles[indexPath.row - 2]
-            print("프로필 선택: \(selectedProfile.name)")
-        }
-
-        removeFromSuperview()
-    }
-}
-
-// MARK: - Pan Gesture Handling
-
-extension BottomSheetViewController {
-    @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        guard let superview = superview else { return }
-
-        let translation = gesture.translation(in: superview)
-
-        switch gesture.state {
-        case .began:
-            initialY = frame.origin.y
-        case .changed:
-            let newY = initialY + translation.y
-            frame.origin.y = max(newY, superview.frame.height - frame.height)
-        case .ended, .cancelled:
-            let velocity = gesture.velocity(in: superview)
-            let shouldClose = velocity.y > 0
-
-            if shouldClose {
-                removeFromSuperview()
-            } else {
-                frame.origin.y = superview.frame.height - frame.height
-            }
-        default:
-            break
-        }
-
-        gesture.setTranslation(.zero, in: superview)
+            backgroundButton.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 16),
+            backgroundButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            backgroundButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            backgroundButton.heightAnchor.constraint(equalToConstant: 30)
+        ])
     }
 }
