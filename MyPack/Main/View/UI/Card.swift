@@ -30,6 +30,7 @@ class Card: UIView {
     var image: UIImage?
     var imageView: UIImageView!
     var backView: UIView = .init()
+    var icon: UIImageView!
     private var color: UIColor?
     private let cardAnimator: CardAnimator = .init()
     private var startLocation: CGPoint = .zero
@@ -37,9 +38,13 @@ class Card: UIView {
     private var disappearPoint = CGPoint(x: 60, y: UIScreen.main.bounds.height - 60)
     private var flipFirstPoint = CGPoint(x: UIScreen.main.bounds.width / 2 + 200, y: UIScreen.main.bounds.height / 2)
     private var flipSecondPoint = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
-    private var icon: UIImageView!
 
-    init(isInteraction: Bool = true, color: UIColor = .white, effect: [CardEffect] = [CardEffect(image: "none")], image: UIImage) {
+    init(
+        isInteraction: Bool = true,
+        color: UIColor = .white,
+        effect: [CardEffect] = [CardEffect(image: "heart")],
+        image: UIImage
+    ) {
         self.image = image
         self.color = color
         self.effect = effect
@@ -75,14 +80,6 @@ class Card: UIView {
 
 extension Card {
     func setUI() {
-        addSubview(icon)
-        icon.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
-            make.trailing.equalToSuperview().offset(-8)
-            make.width.equalTo(20)
-            make.height.equalTo(20)
-        }
-
         addSubview(imageView)
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 16
@@ -107,6 +104,15 @@ extension Card {
             make.center.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalToSuperview()
+        }
+
+        addSubview(icon)
+        icon.isUserInteractionEnabled = true
+        icon.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.trailing.equalToSuperview().offset(-8)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
         }
     }
 }

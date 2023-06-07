@@ -22,9 +22,7 @@ class FirstViewController: UIViewController {
     init(viewModel: FirstViewModel) {
         self.viewModel = viewModel
         self.searchBtn = SearchBtn(viewModel: self.viewModel)
-        viewModel.getCardList(token: "")
         super.init(nibName: nil, bundle: nil)
-
         view.backgroundColor = UIColor(rgb: 0x222222)
     }
 
@@ -39,10 +37,16 @@ class FirstViewController: UIViewController {
 extension FirstViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBindings()
-        addUI()
-        setLayout()
-        setUpEmitterLayer()
+        viewModel.getCardList(token: "") { result in
+            switch result {
+            case .success:
+                self.setBindings()
+                self.addUI()
+                self.setLayout()
+            case let .failure(error):
+                print("Failed to get card list: \(error)")
+            }
+        }
     }
 }
 
@@ -57,6 +61,7 @@ private extension FirstViewController {
 
         viewModel.$cardDeck.sink { cardList in
             self.cardDeck = cardList
+            self.setUpEmitterLayer()
         }.store(in: &disposableBag)
     }
 }
@@ -93,7 +98,7 @@ private extension FirstViewController {
             let images = i.effect?.map { UIImage(named: $0.image) } ?? []
             let emitterAnimator = EmitterAnimator(view: i, viewController: self, image: images)
             let tapGestureRecognizer = UITapGestureRecognizer(target: emitterAnimator, action: #selector(EmitterAnimator.imageViewTapped))
-            i.addGestureRecognizer(tapGestureRecognizer)
+            i.icon.addGestureRecognizer(tapGestureRecognizer)
             emitterAnimators.append(emitterAnimator)
         }
     }

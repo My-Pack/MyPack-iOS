@@ -6,6 +6,7 @@
 //
 
 import Combine
+import MyPackAnimation
 import MyPackNetwork
 import UIKit
 
@@ -43,11 +44,15 @@ class FirstViewModel {
     }
 
     @MainActor
-    func getCardList(token: String) {
+    func getCardList(token: String, completion: @escaping (Result<Void, Error>) -> Void) {
         Task {
-            let cardList = try await self.cardService.getCardList(token: token)
-            try await setCardDeck(cardList: cardList)
-            print(cardDeck)
+            do {
+                let cardList = try await self.cardService.getCardList(token: token)
+                try await setCardDeck(cardList: cardList)
+                completion(.success(()))
+            } catch {
+                completion(.failure(error))
+            }
         }
     }
 

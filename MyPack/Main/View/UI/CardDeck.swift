@@ -42,6 +42,7 @@ extension CardDeck {
         for (index, i) in cardDeck.enumerated() {
             i.delegate = self
             i.layer.zPosition = CGFloat(index * 100)
+            i.layer.shadowOpacity = 0
             addSubview(i)
             i.snp.makeConstraints { deck in
                 deck.width.equalTo(200)
@@ -50,11 +51,13 @@ extension CardDeck {
                 deck.centerY.equalTo(self)
             }
         }
+        cardDeck.last?.layer.shadowOpacity = 1
     }
 
     func setPositionZ() {
         for (index, i) in cardDeck.enumerated() {
             i.layer.zPosition = CGFloat(index * 100)
+            i.layer.shadowOpacity = 0
         }
     }
 }
@@ -63,15 +66,16 @@ extension CardDeck {
 
 extension CardDeck: CardDelegate {
     func cardDidFlip(_ card: Card) {
-        print(cardDeck.map { $0.image })
-        print(cardDeck.map { $0.layer.zPosition })
-        print(cardDeck.map { $0.isUserInteractionEnabled })
         card.layer.zPosition = 0
         card.isUserInteractionEnabled = false
-        cardDeck[cardDeck.count - 2].isUserInteractionEnabled = true
+        card.layer.shadowOpacity = 0
+
         let flipCard = cardDeck.popLast()!
         cardDeck.insert(flipCard, at: 1)
         setPositionZ()
+
+        cardDeck[cardDeck.count - 1].isUserInteractionEnabled = true
+        cardDeck[cardDeck.count - 1].layer.shadowOpacity = 1
     }
 
     func cardDidDisappear(_: Card) {}

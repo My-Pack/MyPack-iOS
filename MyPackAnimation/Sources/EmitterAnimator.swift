@@ -22,7 +22,6 @@ public class EmitterAnimator {
     @objc public func imageViewTapped(_ sender: UITapGestureRecognizer) {
         if let _ = sender.view {
             createEmitterLayer()
-
             let emitterCells = image.map { createEmitterCell(image: $0!) }
             emitterLayer.emitterCells = emitterCells
 
