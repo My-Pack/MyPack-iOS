@@ -27,8 +27,10 @@ struct CardEffect {
 class Card: UIView {
     weak var delegate: CardDelegate?
     var effect: [CardEffect]?
-    private var color: UIColor?
     var image: UIImage?
+    var imageView: UIImageView!
+    var backView: UIView = .init()
+    private var color: UIColor?
     private let cardAnimator: CardAnimator = .init()
     private var startLocation: CGPoint = .zero
     private var startRotate: CGPoint = .zero
@@ -41,6 +43,8 @@ class Card: UIView {
         self.image = image
         self.color = color
         self.effect = effect
+        self.imageView = UIImageView(image: image)
+        self.icon = UIImageView(image: UIImage(named: effect.first!.image))
         super.init(frame: CGRect.zero)
 
         self.backgroundColor = color
@@ -51,28 +55,9 @@ class Card: UIView {
         layer.shadowColor = color.cgColor
         layer.shadowRadius = 16
         layer.shadowOpacity = 0.35
-
-        self.icon = UIImageView(image: UIImage(named: effect.first!.image))
-
-        addSubview(icon)
-        icon.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
-            make.trailing.equalToSuperview().offset(-8)
-            make.width.equalTo(20)
-            make.height.equalTo(20)
-        }
-
-        let imageView = UIImageView(image: image)
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 16
-        addSubview(imageView)
-        imageView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalToSuperview()
-        }
-
         self.isUserInteractionEnabled = isInteraction
+
+        setUI()
     }
 
     override init(frame: CGRect) {
@@ -86,9 +71,79 @@ class Card: UIView {
     }
 }
 
+// MARK: - ui setting
+
+extension Card {
+    func setUI() {
+        addSubview(icon)
+        icon.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.trailing.equalToSuperview().offset(-8)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+        }
+
+        addSubview(imageView)
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 16
+        imageView.isUserInteractionEnabled = true
+        let backFlip = UITapGestureRecognizer(target: self, action: #selector(backFlipView))
+        imageView.addGestureRecognizer(backFlip)
+        imageView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+        }
+
+        addSubview(backView)
+        backView.clipsToBounds = true
+        backView.layer.cornerRadius = 16
+        backView.isUserInteractionEnabled = true
+        backView.backgroundColor = .white
+        let frontFlip = UITapGestureRecognizer(target: self, action: #selector(frontFlipView))
+        backView.addGestureRecognizer(frontFlip)
+        backView.isHidden = true
+        backView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalToSuperview()
+        }
+    }
+}
+
 // MARK: - override
 
 extension Card {
+    @objc func backFlipView() {
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
+                self.snp.updateConstraints { make in
+                    make.width.equalTo(300)
+                    make.height.equalTo(400)
+                }
+                self.layoutIfNeeded()
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
+                UIView.transition(from: self.imageView, to: self.backView, duration: 0.5, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
+            }
+        }, completion: nil)
+    }
+
+    @objc func frontFlipView() {
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
+                self.snp.updateConstraints { make in
+                    make.width.equalTo(200)
+                    make.height.equalTo(300)
+                }
+                self.layoutIfNeeded()
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
+                UIView.transition(from: self.backView, to: self.imageView, duration: 0.5, options: [.transitionFlipFromRight, .showHideTransitionViews], completion: nil)
+            }
+        }, completion: nil)
+    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with _: UIEvent?) {
         if let touch = touches.first {
             startLocation = touch.location(in: superview)
