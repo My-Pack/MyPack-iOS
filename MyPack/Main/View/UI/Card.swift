@@ -28,7 +28,7 @@ class Card: UIView {
     weak var delegate: CardDelegate?
     var effect: [CardEffect]?
     private var color: UIColor?
-    private var image: UIImage?
+    var image: UIImage?
     private let cardAnimator: CardAnimator = .init()
     private var startLocation: CGPoint = .zero
     private var startRotate: CGPoint = .zero

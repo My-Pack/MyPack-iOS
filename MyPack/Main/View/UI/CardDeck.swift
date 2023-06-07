@@ -39,9 +39,9 @@ extension CardDeck {
     func setPosition() {
         let rotationAngle = CGFloat(-5 * Double.pi / 180.0)
         cardDeck.first?.transform = CGAffineTransform(rotationAngle: rotationAngle)
-        cardDeck.last?.layer.zPosition = 1000
-        for i in cardDeck {
+        for (index, i) in cardDeck.enumerated() {
             i.delegate = self
+            i.layer.zPosition = CGFloat(index * 100)
             addSubview(i)
             i.snp.makeConstraints { deck in
                 deck.width.equalTo(200)
@@ -51,35 +51,28 @@ extension CardDeck {
             }
         }
     }
+
+    func setPositionZ() {
+        for (index, i) in cardDeck.enumerated() {
+            i.layer.zPosition = CGFloat(index * 100)
+        }
+    }
 }
 
 // MARK: - CardDelegate
 
 extension CardDeck: CardDelegate {
     func cardDidFlip(_ card: Card) {
+        print(cardDeck.map { $0.image })
+        print(cardDeck.map { $0.layer.zPosition })
+        print(cardDeck.map { $0.isUserInteractionEnabled })
         card.layer.zPosition = 0
         card.isUserInteractionEnabled = false
-        cardDeck[1].isUserInteractionEnabled = true
-        cardDeck[1].layer.zPosition = 1000
-        cardDeck.swapAt(1, 2)
+        cardDeck[cardDeck.count - 2].isUserInteractionEnabled = true
+        let flipCard = cardDeck.popLast()!
+        cardDeck.insert(flipCard, at: 1)
+        setPositionZ()
     }
 
-    func cardDidDisappear(_: Card) {
-//        cardDeck.remove(at: cardDeck.firstIndex(where: { $0.isUserInteractionEnabled })!)
-//        cardDeck.last?.isUserInteractionEnabled = true
-//        cardDeck.last?.layer.zPosition = 1000
-//
-//        let nextCard = Card(isInteraction: false, color: UIColor.white, image: <#T##UIImage#>)
-//        addSubview(nextCard)
-//
-//        nextCard.delegate = self
-//        nextCard.layer.zPosition = 0
-//        cardDeck.insert(nextCard, at: 1)
-//        nextCard.snp.makeConstraints { card in
-//            card.width.equalTo(200)
-//            card.height.equalTo(300)
-//            card.centerX.equalTo(self)
-//            card.centerY.equalTo(self)
-//        }
-    }
+    func cardDidDisappear(_: Card) {}
 }
