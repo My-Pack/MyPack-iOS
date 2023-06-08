@@ -88,6 +88,7 @@ extension Card {
     func setUI() {
         addSubview(imageView)
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 16
         imageView.isUserInteractionEnabled = true
         let backFlip = UITapGestureRecognizer(target: self, action: #selector(backFlipView))

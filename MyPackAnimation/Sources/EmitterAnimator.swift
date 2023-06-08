@@ -49,7 +49,7 @@ public class EmitterAnimator {
         emitterCell.birthRate = 100
 
         // 크기
-        emitterCell.scale = 0.025
+        emitterCell.scale = 0.05
         // particle 마다 달라질 수 있는 scale 의 범위
         emitterCell.scaleRange = 0.03
 
@@ -72,7 +72,7 @@ public class EmitterAnimator {
         // gravity 효과.
         // 양수면 중력이 적용되는 것처럼 보이고, 음수면 중력이 없어져서 날아가는 것 처럼 보임.
         // velocity 와 yAcceleration의 조합이 distance 를 결정
-        emitterCell.yAcceleration = 1000
+        emitterCell.yAcceleration = 800
 
         return emitterCell
     }

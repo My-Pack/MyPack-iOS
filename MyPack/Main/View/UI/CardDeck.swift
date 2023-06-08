@@ -37,8 +37,8 @@ class CardDeck: UIView {
 
 extension CardDeck {
     func setPosition() {
-        let rotationAngle = CGFloat(-5 * Double.pi / 180.0)
-        cardDeck.first?.transform = CGAffineTransform(rotationAngle: rotationAngle)
+//        let rotationAngle = CGFloat(-5 * Double.pi / 180.0)
+//        cardDeck.first?.transform = CGAffineTransform(rotationAngle: rotationAngle)
         for (index, i) in cardDeck.enumerated() {
             i.delegate = self
             i.layer.zPosition = CGFloat(index * 100)
@@ -71,7 +71,7 @@ extension CardDeck: CardDelegate {
         card.layer.shadowOpacity = 0
 
         let flipCard = cardDeck.popLast()!
-        cardDeck.insert(flipCard, at: 1)
+        cardDeck.insert(flipCard, at: 0)
         setPositionZ()
 
         cardDeck[cardDeck.count - 1].isUserInteractionEnabled = true
