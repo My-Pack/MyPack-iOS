@@ -8,7 +8,7 @@
 import UIKit
 
 public struct ImageDto {
-    var id: Int
+    public var id: Int
     var originalName: String
     var storedName: String
     var s3Url: String

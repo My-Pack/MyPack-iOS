@@ -23,7 +23,7 @@ class MainTabBarCoordinatorImpl: MainTabBarCoordinator {
         let firstViewController = FirstViewController(viewModel: firstViewModel)
         firstViewController.tabBarItem = UITabBarItem(title: viewModel.title(at: 0), image: UIImage(systemName: "1.circle"), tag: 0)
 
-        let secondViewModel = SecondViewModel()
+        let secondViewModel = SecondViewModel(mainTabBarCoordinator: self)
         let secondViewController = SecondViewController(viewModel: secondViewModel)
         secondViewController.tabBarItem = UITabBarItem(title: viewModel.title(at: 1), image: UIImage(systemName: "plus.circle"), tag: 1)
 

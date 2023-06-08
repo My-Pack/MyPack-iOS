@@ -6,6 +6,7 @@
 //
 
 import Combine
+import MyPackNetwork
 import PhotosUI
 import SnapKit
 import UIKit
@@ -38,11 +39,31 @@ class SecondViewController: UIViewController {
         return scrollView
     }()
 
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Make it!"
-        label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
-        return label
+    lazy var makeBtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Make it!", for: .normal)
+        btn.addAction(UIAction(handler: { [weak self] _ in
+            guard self?.viewModel.isValidCardData() ?? false else { return }
+            print(UserDefaults.standard.string(forKey: "UserToken") ?? "")
+            Task {
+                do {
+                    let imageId = try await self?.viewModel.uploadImage(
+                        token: UserDefaults.standard.string(forKey: "UserToken") ?? "",
+                        image: (self?.viewModel.pickedImage!)!,
+                        fileName: ""
+                    )
+                    if let imageId = imageId {
+                        let result = try await self?.viewModel.uploadCard(token: UserDefaults.standard.string(forKey: "UserToken") ?? "", imageId: imageId)
+                        print(result as Any)
+                        self?.viewModel.mainTabBarCoordinator?.navigationController?.popViewController(animated: true)
+                    }
+                } catch {
+                    print("Failed to upload card: \(error)")
+                }
+            }
+        }), for: .touchUpInside)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+        return btn
     }()
 
     lazy var backBtn: UIButton = {
@@ -55,21 +76,27 @@ class SecondViewController: UIViewController {
         return btn
     }()
 
-    let cardTitle: UITextField = {
+    lazy var cardTitle: UITextField = {
         let textField = UITextField()
         textField.placeholder = "타이틀을 입력해주세요."
         textField.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         textField.textColor = .darkGray
         textField.setPlaceholder(color: .gray)
+        textField.addAction(UIAction(handler: { _ in
+            self.viewModel.setCardTitle(text: textField.text ?? "")
+        }), for: .editingChanged)
         return textField
     }()
 
-    let cardContent: UITextField = {
+    lazy var cardContent: UITextField = {
         let textField = UITextField()
         textField.placeholder = "본문을 입력해주세요."
         textField.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         textField.textColor = .darkGray
         textField.setPlaceholder(color: .gray)
+        textField.addAction(UIAction(handler: { _ in
+            self.viewModel.setCardContent(text: textField.text ?? "")
+        }), for: .editingChanged)
         return textField
     }()
 
@@ -170,6 +197,16 @@ private extension SecondViewController {
             self.containerView.layer.shadowColor = color.cgColor
             self.containerView.layer.shadowRadius = 16
             self.containerView.layer.shadowOpacity = 0.6
+
+            viewModel.cardColor = color.toHexString
+        }.store(in: &disposableBag)
+
+        viewModel.$cardTitle.sink { title in
+            self.cardTitle.text = title
+        }.store(in: &disposableBag)
+
+        viewModel.$cardContent.sink { content in
+            self.cardContent.text = content
         }.store(in: &disposableBag)
     }
 }
@@ -179,7 +216,7 @@ private extension SecondViewController {
 extension SecondViewController {
     func addUI() {
         view.addSubview(plusBtn)
-        view.addSubview(titleLabel)
+        view.addSubview(makeBtn)
         view.addSubview(backBtn)
         view.addSubview(styleScrollView)
         view.addSubview(containerView)
@@ -202,7 +239,7 @@ extension SecondViewController {
             btn.height.equalTo(400)
             btn.center.equalTo(self.view)
         }
-        titleLabel.snp.makeConstraints { label in
+        makeBtn.snp.makeConstraints { label in
             label.top.equalTo(view.safeAreaLayoutGuide)
             label.trailing.equalTo(-16)
         }

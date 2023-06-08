@@ -5,8 +5,8 @@
 //  Created by jito on 2023/04/02.
 //
 
-import Foundation
+import MyPackNetwork
 
 protocol LoginService {
-    func login(token: String) async throws -> UserModel?
+    func login(token: String) async throws -> LoginResponse?
 }

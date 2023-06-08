@@ -8,6 +8,14 @@
 import Foundation
 
 public struct CardRequest: Codable {
+    public init(title: String, content: String, imageId: Int, color: String, theme: String) {
+        self.title = title
+        self.content = content
+        self.imageId = imageId
+        self.color = color
+        self.theme = theme
+    }
+
     var title: String
     var content: String
     var imageId: Int
@@ -19,7 +27,7 @@ struct CardResponse: Codable {
     var id: Int
     var title: String
     var content: String
-    var imageId: Int
+    var imageUrl: String
     var color: String
     var theme: String
     var likeCount: Int
@@ -33,7 +41,7 @@ struct CardResponse: Codable {
             id: id,
             title: title,
             content: content,
-            imageId: imageId,
+            imageUrl: imageUrl,
             color: color,
             theme: theme,
             likeCount: likeCount,
@@ -50,7 +58,6 @@ public class CardAPI {
 
     public func uploadData(token: String, request: CardRequest) async throws -> CardDto {
         let parameters = APIClient.shared.convertToDictionary(request)
-        print(parameters)
         do {
             let data = try await APIClient.shared.post(endPoint: "/cards", parameters: parameters, token: token)
             let cardResponse = try JSONDecoder().decode(CardResponse.self, from: data)

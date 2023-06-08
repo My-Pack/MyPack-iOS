@@ -26,7 +26,7 @@ public class APIClient {
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         if let token = token {
-            urlRequest.setValue(token, forHTTPHeaderField: "Authorization")
+            urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
 
         if let parameters = parameters {
