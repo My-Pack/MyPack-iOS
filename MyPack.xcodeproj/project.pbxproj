@@ -11,8 +11,8 @@
 		2A21231C2A2E62A100034420 /* CardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A21231B2A2E62A100034420 /* CardDataSource.swift */; };
 		2A21231E2A2E62D700034420 /* CardCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A21231D2A2E62D700034420 /* CardCellModel.swift */; };
 		2A2123202A2E636F00034420 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A21231F2A2E636F00034420 /* Card.swift */; };
-		2A3AEA022A1456B0009451D4 /* BottomSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3AEA012A1456B0009451D4 /* BottomSheetViewModel.swift */; };
-		2A3AEA042A14570E009451D4 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3AEA032A14570E009451D4 /* BottomSheetViewController.swift */; };
+		2A3AEA022A1456B0009451D4 /* BottomModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3AEA012A1456B0009451D4 /* BottomModalViewModel.swift */; };
+		2A3AEA042A14570E009451D4 /* BottomModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3AEA032A14570E009451D4 /* BottomModalViewController.swift */; };
 		2A3CDDEA29D3AAF600BCF348 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDE929D3AAF600BCF348 /* MainTabBarViewModel.swift */; };
 		2A3CDDEC29D3AB7700BCF348 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDEB29D3AB7700BCF348 /* MainTabBarViewController.swift */; };
 		2A3CDDEE29D3AC6700BCF348 /* MainTabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CDDED29D3AC6700BCF348 /* MainTabBarModel.swift */; };
@@ -100,8 +100,8 @@
 		2A21231B2A2E62A100034420 /* CardDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDataSource.swift; sourceTree = "<group>"; };
 		2A21231D2A2E62D700034420 /* CardCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellModel.swift; sourceTree = "<group>"; };
 		2A21231F2A2E636F00034420 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		2A3AEA012A1456B0009451D4 /* BottomSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewModel.swift; sourceTree = "<group>"; };
-		2A3AEA032A14570E009451D4 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		2A3AEA012A1456B0009451D4 /* BottomModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomModalViewModel.swift; sourceTree = "<group>"; };
+		2A3AEA032A14570E009451D4 /* BottomModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomModalViewController.swift; sourceTree = "<group>"; };
 		2A3CDDE929D3AAF600BCF348 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
 		2A3CDDEB29D3AB7700BCF348 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		2A3CDDED29D3AC6700BCF348 /* MainTabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarModel.swift; sourceTree = "<group>"; };
@@ -344,7 +344,7 @@
 				2A3CDDF229D3AE6C00BCF348 /* SecondViewModel.swift */,
 				2A3CDDF429D3AE8900BCF348 /* ThirdViewModel.swift */,
 				2A3CDDE929D3AAF600BCF348 /* MainTabBarViewModel.swift */,
-				2A3AEA012A1456B0009451D4 /* BottomSheetViewModel.swift */,
+				2A3AEA012A1456B0009451D4 /* BottomModalViewModel.swift */,
 				2A21231D2A2E62D700034420 /* CardCellModel.swift */,
 			);
 			path = ViewModel;
@@ -375,7 +375,7 @@
 				2A3CDDF729D3AFB400BCF348 /* FirstViewController.swift */,
 				2A3CDDF929D3B01F00BCF348 /* SecondViewContorller.swift */,
 				2A3CDDFB29D3B04F00BCF348 /* ThirdViewController.swift */,
-				2A3AEA032A14570E009451D4 /* BottomSheetViewController.swift */,
+				2A3AEA032A14570E009451D4 /* BottomModalViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -774,7 +774,7 @@
 				2A3CDDEE29D3AC6700BCF348 /* MainTabBarModel.swift in Sources */,
 				2A3CDDF529D3AE8900BCF348 /* ThirdViewModel.swift in Sources */,
 				4399C61A29D8913E00794E69 /* LoginCoordinatorProtocol.swift in Sources */,
-				2A3AEA042A14570E009451D4 /* BottomSheetViewController.swift in Sources */,
+				2A3AEA042A14570E009451D4 /* BottomModalViewController.swift in Sources */,
 				4399C60529D889F000794E69 /* LoginServiceImpl.swift in Sources */,
 				4399C61629D88DF500794E69 /* Tab.swift in Sources */,
 				2A3CDDEA29D3AAF600BCF348 /* MainTabBarViewModel.swift in Sources */,
@@ -790,7 +790,7 @@
 				2AEF7B0D29E51F9C00CA5A93 /* BoxView.swift in Sources */,
 				439E953C29D568AA00F104EF /* Coordinator.swift in Sources */,
 				2A2123202A2E636F00034420 /* Card.swift in Sources */,
-				2A3AEA022A1456B0009451D4 /* BottomSheetViewModel.swift in Sources */,
+				2A3AEA022A1456B0009451D4 /* BottomModalViewModel.swift in Sources */,
 				2A21231E2A2E62D700034420 /* CardCellModel.swift in Sources */,
 				43CEE77A29C2D69500AC7B28 /* SceneDelegate.swift in Sources */,
 				439E952F29D5275F00F104EF /* LoginViewController.swift in Sources */,

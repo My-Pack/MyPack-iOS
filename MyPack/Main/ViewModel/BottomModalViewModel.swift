@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class BottomSheetViewModel {
+class BottomModalViewModel {
     let title: String
     let message: String
 

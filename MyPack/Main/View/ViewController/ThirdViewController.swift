@@ -108,45 +108,47 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UIImagePi
         return button
     }()
 
-    private lazy var myCardCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 10
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - 50), collectionViewLayout: layout)
-        collectionView.dataSource = myCardDataSource
-        collectionView.delegate = self
-        collectionView.register(CardCell.self, forCellWithReuseIdentifier: "MyCardCell")
-        collectionView.backgroundColor = .black
-        return collectionView
-    }()
+    private lazy var myCardView: UIView = {
+        let view = UIView()
+        view.frame = CGRect(x: 0, y: 10, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
 
-    private let myCardDataSource = CardDataSource()
+        let columnCount = 2
+        let itemWidth: CGFloat = 185
+        let itemHeight: CGFloat = 276
+        let horizontalSpacing: CGFloat = 10
+        let verticalSpacing: CGFloat = 10
 
-    private func setupMyCards() {
-        let myCardData = fetchMyCardData()
-        var infiniteMyCardData: [Card] = []
-        let numberOfLoops = 2
-        for _ in 0 ..< numberOfLoops {
-            infiniteMyCardData += myCardData
+        var currentRow = 0
+        var currentColumn = 0
+
+        for _ in 0 ..< dataCount {
+            let x = CGFloat(currentColumn) * (itemWidth + horizontalSpacing)
+            let y = CGFloat(currentRow) * (itemHeight + verticalSpacing)
+
+            let cardButton = UIButton()
+            cardButton.setImage(UIImage(named: "myCard.jpeg"), for: .normal)
+            cardButton.frame = CGRect(x: x, y: y, width: itemWidth, height: itemHeight)
+            cardButton.layer.cornerRadius = 10
+            cardButton.clipsToBounds = true
+
+            view.addSubview(cardButton)
+
+            currentColumn += 1
+            if currentColumn == columnCount {
+                currentColumn = 0
+                currentRow += 1
+            }
         }
 
-        myCardDataSource.myCardData = infiniteMyCardData
-        myCardCollectionView.reloadData()
-    }
+        let rowCount = Int(ceil(Double(dataCount) / Double(columnCount)))
+        let totalWidth = CGFloat(columnCount) * itemWidth + CGFloat(columnCount - 1) * horizontalSpacing
+        let totalHeight = CGFloat(rowCount) * itemHeight + CGFloat(rowCount - 1) * verticalSpacing
+        view.frame.size = CGSize(width: totalWidth, height: totalHeight)
 
-    func fetchMyCardData() -> [Card] {
-        let card1 = Card(cardID: 1, cardImage: UIImage(named: "myCard.png")!, cardTitle: "Card 1", cardDescription: "This is Card 1.")
-        let card2 = Card(cardID: 2, cardImage: UIImage(named: "myCard.png")!, cardTitle: "Card 2", cardDescription: "This is Card 2.")
+        return view
+    }()
 
-        return [card1, card2]
-    }
-
-    private func updateCollectionViewHeight() {
-        let contentHeight = myCardCollectionView.contentSize.height
-        myCardCollectionView.frame.size.height = contentHeight
-        scrollView.contentSize.height = contentHeight + 20 // myCard가 시작되는 위치
-    }
+    private var dataCount: Int = 8 // 데이터 개수에 따라 동적으로 설정해주세요
 
     private lazy var myPackView: UIView = {
         let view = UIView()
@@ -171,7 +173,7 @@ class ThirdViewController: UIViewController, UICollectionViewDelegate, UIImagePi
         scrollView.showsHorizontalScrollIndicator = false
 
         // 각 탭에 해당하는 뷰를 스크롤 뷰에 추가합니다.
-        scrollView.addSubview(myCardCollectionView)
+        scrollView.addSubview(myCardView)
         scrollView.addSubview(myPackView)
 
         return scrollView
@@ -189,7 +191,7 @@ extension ThirdViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addUI()
-        myCardCollectionView.isHidden = false
+        myCardView.isHidden = false
         myPackView.isHidden = true
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
@@ -212,55 +214,39 @@ private extension ThirdViewController {
     }
 
     @objc func editButtonTapped() {
-//        let bottomSheetView = BottomSheetView(frame: CGRect(x: 0, y: view.bounds.height - 180, width: view.bounds.width, height: 180))
-        let bottomSheetView = BottomSheetView()
-        bottomSheetView.profileImageSelected = { [weak self] image in
+        let bottomModalView = BottomModalView()
+        bottomModalView.profileImageSelected = { [weak self] image in
             // Update profile image logic
             self?.profileView.setImage(image, for: .normal)
         }
-        bottomSheetView.backgroundImageSelected = { [weak self] image in
+        bottomModalView.backgroundImageSelected = { [weak self] image in
             // Update background image logic
             self?.backgroundView.setImage(image, for: .normal)
         }
 
-        let bottomSheetViewController = UIViewController()
-        bottomSheetViewController.view.addSubview(bottomSheetView)
-        bottomSheetView.translatesAutoresizingMaskIntoConstraints = false
+        let bottomModalViewController = UIViewController()
+        bottomModalViewController.view.addSubview(bottomModalView)
+        bottomModalView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            bottomSheetView.leadingAnchor.constraint(equalTo: bottomSheetViewController.view.leadingAnchor),
-            bottomSheetView.trailingAnchor.constraint(equalTo: bottomSheetViewController.view.trailingAnchor),
-            bottomSheetView.bottomAnchor.constraint(equalTo: bottomSheetViewController.view.bottomAnchor),
-            bottomSheetView.heightAnchor.constraint(equalToConstant: 150)
+            bottomModalView.leadingAnchor.constraint(equalTo: bottomModalViewController.view.leadingAnchor),
+            bottomModalView.trailingAnchor.constraint(equalTo: bottomModalViewController.view.trailingAnchor),
+            bottomModalView.bottomAnchor.constraint(equalTo: bottomModalViewController.view.bottomAnchor),
+            bottomModalView.heightAnchor.constraint(equalToConstant: 150)
         ])
 
-        present(bottomSheetViewController, animated: true, completion: nil)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCardCell", for: indexPath) as? CardCell else {
-            return UICollectionViewCell()
-        }
-
-        let card = myCardDataSource.myCardData[indexPath.item]
-        cell.configure(with: card)
-
-        return cell
-    }
-
-    func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-        return myCardDataSource.myCardData.count
+        present(bottomModalViewController, animated: true, completion: nil)
     }
 
     @objc func tab1ButtonTapped() {
-        myCardCollectionView.isHidden = false
+        myCardView.isHidden = false
         myPackView.isHidden = true
         tab1Button.backgroundColor = UIColor.gray
         tab2Button.backgroundColor = UIColor.white
     }
 
     @objc func tab2ButtonTapped() {
-        myCardCollectionView.isHidden = true
+        myCardView.isHidden = true
         myPackView.isHidden = false
         tab1Button.backgroundColor = UIColor.white
         tab2Button.backgroundColor = UIColor.gray
