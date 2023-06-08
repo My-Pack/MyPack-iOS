@@ -212,7 +212,8 @@ private extension ThirdViewController {
     }
 
     @objc func editButtonTapped() {
-        let bottomSheetView = BottomSheetView(frame: CGRect(x: 0, y: view.bounds.height - 180, width: view.bounds.width, height: 180))
+//        let bottomSheetView = BottomSheetView(frame: CGRect(x: 0, y: view.bounds.height - 180, width: view.bounds.width, height: 180))
+        let bottomSheetView = BottomSheetView()
         bottomSheetView.profileImageSelected = { [weak self] image in
             // Update profile image logic
             self?.profileView.setImage(image, for: .normal)
@@ -225,6 +226,7 @@ private extension ThirdViewController {
         let bottomSheetViewController = UIViewController()
         bottomSheetViewController.view.addSubview(bottomSheetView)
         bottomSheetView.translatesAutoresizingMaskIntoConstraints = false
+
         NSLayoutConstraint.activate([
             bottomSheetView.leadingAnchor.constraint(equalTo: bottomSheetViewController.view.leadingAnchor),
             bottomSheetView.trailingAnchor.constraint(equalTo: bottomSheetViewController.view.trailingAnchor),

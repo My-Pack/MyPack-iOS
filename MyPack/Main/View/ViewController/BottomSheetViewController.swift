@@ -42,12 +42,18 @@ class BottomSheetView: UIView, UIImagePickerControllerDelegate, UINavigationCont
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = true
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let bottomSheetViewController = windowScene.windows.first?.rootViewController
-        else {
-            return
+
+        var parentViewController: UIViewController?
+        var responder: UIResponder? = self
+        while responder != nil {
+            responder = responder?.next
+            if let viewController = responder as? UIViewController {
+                parentViewController = viewController
+                break
+            }
         }
-        bottomSheetViewController.present(imagePicker, animated: true, completion: nil)
+
+        parentViewController?.present(imagePicker, animated: true, completion: nil)
     }
 
     @objc func backgroundButtonTapped() {
@@ -56,12 +62,18 @@ class BottomSheetView: UIView, UIImagePickerControllerDelegate, UINavigationCont
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = true
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let bottomSheetViewController = windowScene.windows.first?.rootViewController
-        else {
-            return
+
+        var parentViewController: UIViewController?
+        var responder: UIResponder? = self
+        while responder != nil {
+            responder = responder?.next
+            if let viewController = responder as? UIViewController {
+                parentViewController = viewController
+                break
+            }
         }
-        bottomSheetViewController.present(imagePicker, animated: true, completion: nil)
+
+        parentViewController?.present(imagePicker, animated: true, completion: nil)
     }
 
     override init(frame: CGRect) {
@@ -71,13 +83,6 @@ class BottomSheetView: UIView, UIImagePickerControllerDelegate, UINavigationCont
         addSubviews()
     }
 
-    @available(*, unavailable)
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-extension BottomSheetView {
     func addSubviews() {
         addSubview(profileButton)
         addSubview(separatorView)
@@ -103,5 +108,10 @@ extension BottomSheetView {
             backgroundButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             backgroundButton.heightAnchor.constraint(equalToConstant: 30)
         ])
+    }
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
