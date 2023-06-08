@@ -36,6 +36,7 @@ class LoginViewModel {
             }
         }
     }
+
     // MARK: - 그라데이션 색상
 
     func gradientColor() -> UIColor {
