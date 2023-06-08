@@ -62,7 +62,7 @@ class FirstViewModel {
             let url = URL(string: i.imageUrl)!
             do {
                 let image = try await fetchImage(from: url)
-                cardDeck.cardDeck.append(Card(isInteraction: false, color: UIColor(hexString: i.color), effect: [CardEffect(image: i.theme)], image: image))
+                cardDeck.cardDeck.append(Card(isInteraction: false, color: UIColor(hexString: i.color), effect: [CardEffect(image: i.theme)], image: image, title: i.title, content: i.content))
             } catch {
                 throw NSError(domain: "Cannot Append Card", code: -1, userInfo: nil)
             }

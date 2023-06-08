@@ -31,6 +31,8 @@ class Card: UIView {
     var imageView: UIImageView!
     var backView: UIView = .init()
     var icon: UIImageView!
+    var title: UILabel = .init()
+    var content: UILabel = .init()
     private var color: UIColor?
     private let cardAnimator: CardAnimator = .init()
     private var startLocation: CGPoint = .zero
@@ -43,11 +45,15 @@ class Card: UIView {
         isInteraction: Bool = true,
         color: UIColor = .white,
         effect: [CardEffect] = [CardEffect(image: "heart")],
-        image: UIImage
+        image: UIImage,
+        title: String,
+        content: String
     ) {
         self.image = image
         self.color = color
         self.effect = effect
+        self.title.text = title
+        self.content.text = content
         self.imageView = UIImageView(image: image)
         self.icon = UIImageView(image: UIImage(named: effect.first!.image))
         super.init(frame: CGRect.zero)
@@ -113,6 +119,24 @@ extension Card {
             make.trailing.equalToSuperview().offset(-8)
             make.width.equalTo(20)
             make.height.equalTo(20)
+        }
+
+        backView.addSubview(title)
+        title.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        title.textColor = .black
+        title.snp.makeConstraints { make in
+            make.top.equalTo(16)
+            make.leading.equalTo(16)
+            make.trailing.equalTo(-16)
+        }
+
+        backView.addSubview(content)
+        content.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        content.textColor = .black
+        content.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).offset(10)
+            make.leading.equalTo(16)
+            make.trailing.equalTo(-16)
         }
     }
 }
