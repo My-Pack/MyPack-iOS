@@ -69,7 +69,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = loginViewModel.gradientColor()
+        view.backgroundColor = gradientColor()
         addUI()
     }
 }
