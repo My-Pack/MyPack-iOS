@@ -9,29 +9,47 @@ import Foundation
 import UIKit
 
 class LoginViewModel {
-    private let loginService: LoginServiceProtocol
-    weak var loginCoordinator: LoginCoordinatorProtocol?
+    private let loginService: LoginService
+    weak var loginCoordinator: LoginCoordinator?
 
-    init(loginService: LoginServiceProtocol, loginCoordinator: LoginCoordinatorImpl) {
+    init(loginService: LoginService, loginCoordinator: LoginCoordinator) {
         self.loginCoordinator = loginCoordinator
         self.loginService = loginService
     }
 
-    private func fetchUserName() async -> String? {
+    private func fetchUserName(token: String) async -> String? {
         do {
-            let userModel = try await loginService.login()
-            return userModel?.name
+            let loginToken = try await loginService.login(token: token)
+
+            UserDefaults.standard.set(loginToken?.accessToken, forKey: "UserToken")
+            return "name"
         } catch {
             print("Error: \(error.localizedDescription)")
             return nil
         }
     }
 
-    func login() {
+    func login(token: String) {
         Task {
-            if let userName = await fetchUserName() {
+            if let userName = await fetchUserName(token: token) {
                 await loginCoordinator?.didLoginSuccessfully(userName: userName)
             }
         }
+    }
+    // MARK: - 그라데이션 색상
+
+    func gradientColor() -> UIColor {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor(rgb: 0x000000).cgColor, UIColor(rgb: 0x434343).cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        gradientLayer.frame = UIScreen.main.bounds
+
+        UIGraphicsBeginImageContext(gradientLayer.bounds.size)
+        gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return UIColor(patternImage: image!)
     }
 }

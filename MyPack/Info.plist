@@ -7,6 +7,17 @@
 		<key>Privacy - Photo Library Usage Description</key>
 		<string>앨범에서 사진 선택하기</string>
 	</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.359063232439-c70rvi9jpapuurtmohl8ila077omosk9</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -24,5 +35,7 @@
 			</array>
 		</dict>
 	</dict>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>이 앱에서 사진 라이브러리에 접근하려면 권한이 필요합니다.</string>
 </dict>
 </plist>

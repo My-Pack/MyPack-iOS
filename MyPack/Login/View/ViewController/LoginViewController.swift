@@ -5,6 +5,7 @@
 //  Created by jito on 2023/03/30.
 //
 
+import GoogleSignIn
 import UIKit
 
 // MARK: - 뷰컨트롤러 생성자
@@ -34,7 +35,11 @@ class LoginViewController: UIViewController {
 
     private lazy var googleloginButton: LoginButton = {
         let button = LoginButton(title: "Google Login", frame: CGRect(x: 39, y: 529, width: 316, height: 60), action: UIAction(title: "title") { [weak self] _ in
-            self?.loginViewModel.login()
+            GIDSignIn.sharedInstance.signIn(withPresenting: self!) { result, _ in
+                guard result != nil else { fatalError("Google Signin result is null") }
+                guard result!.user.idToken != nil else { fatalError("idToken is null") }
+                self?.loginViewModel.login(token: result!.user.idToken!.tokenString)
+            }
         })
         button.setImage(UIImage(named: "googlelogo"), for: .normal)
         return button
@@ -42,7 +47,7 @@ class LoginViewController: UIViewController {
 
     private lazy var appleloginButton: LoginButton = {
         let button = LoginButton(title: "Apple Login", frame: CGRect(x: 39, y: 605, width: 316, height: 60), action: UIAction(title: "title") { [weak self] _ in
-            self?.loginViewModel.login()
+//            self?.loginViewModel.login()
         })
         button.setImage(UIImage(named: "applelogo"), for: .normal)
         return button

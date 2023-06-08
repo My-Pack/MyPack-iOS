@@ -8,17 +8,11 @@
 import Foundation
 import MyPackNetwork
 
-class LoginServiceImpl: LoginServiceProtocol {
-    let api = APIClient()
+class LoginServiceImpl: LoginService {
+    let api = LoginAPI()
 
-    func login() async throws -> UserModel? {
-        do {
-            let data = try await api.fetchData()
-            return data.toUserModel()
-        } catch {
-            print("Error: \(error.localizedDescription)")
-            return nil
-        }
+    func login(token: String) async throws -> LoginResponse? {
+        try await api.fetchData(token: token)
     }
 }
 
