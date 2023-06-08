@@ -62,7 +62,7 @@ public class APIClient {
         return try await request(endPoint: endPoint, method: "POST", parameters: parameters, token: token)
     }
 
-    func uploadImage(endPoint: String, imageData: Data, fileName: String) async throws -> Data {
+    func uploadImage(endPoint: String, token: String, imageData: Data, fileName: String) async throws -> Data {
         let urlString = baseURL + endPoint
         let boundary = "Boundary-\(UUID().uuidString)"
 
@@ -73,6 +73,7 @@ public class APIClient {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
         var data = Data()
 
