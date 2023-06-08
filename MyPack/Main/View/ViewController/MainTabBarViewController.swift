@@ -31,7 +31,6 @@ extension MainTabBarViewController {
         super.viewDidLoad()
         delegate = self
         view.backgroundColor = .white
-
         setBindings()
     }
 }
