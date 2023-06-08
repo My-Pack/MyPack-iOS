@@ -11,7 +11,7 @@ class ImageView: UIImageView {
     init(image: UIImage, frame: CGRect) {
         super.init(frame: frame)
         self.image = image
-        self.contentMode = .scaleAspectFit
+        self.contentMode = .scaleToFill
     }
 
     @available(*, unavailable)
