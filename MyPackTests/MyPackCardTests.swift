@@ -31,6 +31,20 @@ final class MyPackCardTests: XCTestCase {
 //        }
 //    }
 
+//    func testGetCardList() async {
+//        let api = CardAPI()
+//
+//        Task {
+//            do {
+//                let result = try await api.getCardList(token: "")
+//                print(result)
+//                XCTAssertTrue(type(of: result) == CardListDto.self, "Expected result to be of type CardDto")
+//            } catch {
+//                print("Error: \(error)")
+//            }
+//        }
+//    }
+
     func testPerformanceExample() throws {
         measure {}
     }

@@ -18,13 +18,15 @@ class LoginViewController: UIViewController {
         return view
     }()
 
-    private lazy var logoView: ImageView = {
-        let view = ImageView(image: UIImage(named: "imgmypack.png")!, frame: CGRect(x: 95, y: 204, width: 204, height: 184))
+    private lazy var logoView: UIImageView = {
+        let view = UIImageView(frame: CGRect(x: 95, y: 204, width: 204, height: 184))
+        view.image = UIImage(named: "imgmypack.png")!
         return view
     }()
 
-    private lazy var logoShadowView: ImageView = {
-        let view = ImageView(image: UIImage(named: "shadowmypack.png")!, frame: CGRect(x: 108, y: 340, width: 180, height: 90))
+    private lazy var logoShadowView: UIImageView = {
+        let view = UIImageView(frame: CGRect(x: 108, y: 340, width: 180, height: 90))
+        view.image = UIImage(named: "imgmypack.png")!
         return view
     }()
 
@@ -69,7 +71,6 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = gradientColor()
         addUI()
     }
 }

@@ -9,17 +9,16 @@ import Foundation
 import UIKit
 
 class CardDeck: UIView {
-    var cardDeck: [Card] = [
-        Card(isInteraction: false, color: .white),
-        Card(isInteraction: false, color: .white, effect: [CardEffect(image: "heart", color: UIColor(rgb: 0xF699CD))]),
-        Card(isInteraction: true, color: .white, effect: [CardEffect(image: "star_gold", color: UIColor(rgb: 0xE5B80B)),
-                                                          CardEffect(image: "heart_gold", color: UIColor(rgb: 0xE5B80B))])
-    ]
+    var cardDeck: [Card] = []
 
-    init() {
+    init(cardDeck: [Card] = []) {
         super.init(frame: CGRect.zero)
         self.backgroundColor = .clear
         self.isUserInteractionEnabled = true
+
+        if cardDeck.count > 0 {
+            self.cardDeck = cardDeck
+        }
         setPosition()
     }
 
@@ -38,11 +37,12 @@ class CardDeck: UIView {
 
 extension CardDeck {
     func setPosition() {
-        let rotationAngle = CGFloat(-5 * Double.pi / 180.0)
-        cardDeck.first?.transform = CGAffineTransform(rotationAngle: rotationAngle)
-        cardDeck.last?.layer.zPosition = 1000
-        for i in cardDeck {
+//        let rotationAngle = CGFloat(-5 * Double.pi / 180.0)
+//        cardDeck.first?.transform = CGAffineTransform(rotationAngle: rotationAngle)
+        for (index, i) in cardDeck.enumerated() {
             i.delegate = self
+            i.layer.zPosition = CGFloat(index * 100)
+            i.layer.shadowOpacity = 0
             addSubview(i)
             i.snp.makeConstraints { deck in
                 deck.width.equalTo(200)
@@ -50,6 +50,14 @@ extension CardDeck {
                 deck.centerX.equalTo(self)
                 deck.centerY.equalTo(self)
             }
+        }
+        cardDeck.last?.layer.shadowOpacity = 1
+    }
+
+    func setPositionZ() {
+        for (index, i) in cardDeck.enumerated() {
+            i.layer.zPosition = CGFloat(index * 100)
+            i.layer.shadowOpacity = 0
         }
     }
 }
@@ -60,27 +68,15 @@ extension CardDeck: CardDelegate {
     func cardDidFlip(_ card: Card) {
         card.layer.zPosition = 0
         card.isUserInteractionEnabled = false
-        cardDeck[1].isUserInteractionEnabled = true
-        cardDeck[1].layer.zPosition = 1000
-        cardDeck.swapAt(1, 2)
+        card.layer.shadowOpacity = 0
+
+        let flipCard = cardDeck.popLast()!
+        cardDeck.insert(flipCard, at: 0)
+        setPositionZ()
+
+        cardDeck[cardDeck.count - 1].isUserInteractionEnabled = true
+        cardDeck[cardDeck.count - 1].layer.shadowOpacity = 1
     }
 
-    func cardDidDisappear(_: Card) {
-        cardDeck.remove(at: cardDeck.firstIndex(where: { $0.isUserInteractionEnabled })!)
-        cardDeck.last?.isUserInteractionEnabled = true
-        cardDeck.last?.layer.zPosition = 1000
-
-        let nextCard = Card(isInteraction: false, color: UIColor.white)
-        addSubview(nextCard)
-
-        nextCard.delegate = self
-        nextCard.layer.zPosition = 0
-        cardDeck.insert(nextCard, at: 1)
-        nextCard.snp.makeConstraints { card in
-            card.width.equalTo(200)
-            card.height.equalTo(300)
-            card.centerX.equalTo(self)
-            card.centerY.equalTo(self)
-        }
-    }
+    func cardDidDisappear(_: Card) {}
 }

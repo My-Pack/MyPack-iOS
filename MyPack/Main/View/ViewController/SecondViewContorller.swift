@@ -54,7 +54,6 @@ class SecondViewController: UIViewController {
                     )
                     if let imageId = imageId {
                         let result = try await self?.viewModel.uploadCard(token: UserDefaults.standard.string(forKey: "UserToken") ?? "", imageId: imageId)
-                        print(result as Any)
                         self?.viewModel.mainTabBarCoordinator?.navigationController?.popViewController(animated: true)
                     }
                 } catch {

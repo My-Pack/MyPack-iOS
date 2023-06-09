@@ -26,11 +26,10 @@ struct ImageResponse: Codable {
 public class ImageAPI {
     public init() {}
 
-    public func uploadImage(image: Data, fileName: String) async throws -> ImageDto {
+    public func uploadImage(token: String, image: Data, fileName: String) async throws -> ImageDto {
         do {
-            let data = try await APIClient.shared.uploadImage(endPoint: "/images", imageData: image, fileName: fileName)
+            let data = try await APIClient.shared.uploadImage(endPoint: "/images", token: token, imageData: image, fileName: fileName)
             let imageResponse = try JSONDecoder().decode(ImageResponse.self, from: data)
-            print("Image Response:", imageResponse)
             return imageResponse.toDto()
         } catch {
             throw error
