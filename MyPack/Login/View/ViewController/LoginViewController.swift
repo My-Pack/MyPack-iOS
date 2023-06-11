@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     }()
 
     private lazy var logoView: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 95, y: 204, width: 204, height: 184))
+        let view = UIImageView(frame: CGRect(x: 95, y: 204, width: 204, height: 204))
         view.image = UIImage(named: "imgmypack.png")!
         return view
     }()
