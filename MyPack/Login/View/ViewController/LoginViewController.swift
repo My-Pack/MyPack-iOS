@@ -24,12 +24,6 @@ class LoginViewController: UIViewController {
         return view
     }()
 
-    private lazy var logoShadowView: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 108, y: 340, width: 180, height: 90))
-        view.image = UIImage(named: "imgmypack.png")!
-        return view
-    }()
-
     private lazy var logoLabel: LogoLabel = {
         let label = LogoLabel(text: "My Pack", font: UIFont(name: "PingFangSC-Semibold", size: 64)!, textColor: UIColor(rgb: 0x3A3A3A), shadow: true)
         return label
@@ -81,7 +75,6 @@ extension LoginViewController {
     func addUI() {
         view.addSubview(boxView)
         view.addSubview(logoView)
-        view.addSubview(logoShadowView)
         view.addSubview(logoLabel)
         view.addSubview(googleloginButton)
         view.addSubview(appleloginButton)
