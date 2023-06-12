@@ -33,6 +33,6 @@ class LogoLabel: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        label.frame = CGRect(x: 66, y: 400, width: 265, height: 85)
+        label.frame = CGRect(x: 66, y: 420, width: 265, height: 85)
     }
 }
